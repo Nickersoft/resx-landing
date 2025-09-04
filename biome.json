@@ -7,12 +7,14 @@
     "enabled": true,
     "rules": {
       "suspicious": {
-        "noExplicitAny": "warn"
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn"
       },
       "style": {
         "noNonNullAssertion": "warn"
       }
-    }
+    },
+    "includes": ["src/**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}"]
   },
   "assist": {
     "enabled": true,

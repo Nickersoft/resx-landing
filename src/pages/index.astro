@@ -1,15 +1,13 @@
 ---
-import { Typography } from "@/components/ui/Typography";
+import Hero from "@/components/home/Hero.astro";
+import HowItWorks from "@/components/home/HowItWorks.astro";
+import Premium from "@/components/home/Premium.astro";
 
 import PageLayout from "@/layouts/PageLayout.astro";
 ---
 
 <PageLayout title="Home">
-  <Typography
-    variant="display"
-    size="lg"
-    className="animate-in fade-in duration-10000"
-  >
-    Hero text
-  </Typography>
+  <Hero />
+  <HowItWorks />
+  <Premium />
 </PageLayout>

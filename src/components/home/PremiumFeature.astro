@@ -1,0 +1,15 @@
+---
+import { Card } from "@/components/ui/Card";
+import { GradientBorder } from "../ui/GradientBorder";
+import { Typography } from "../ui/Typography";
+---
+
+<Card className="bg-card/30 rounded-2xl border-none">
+  <GradientBorder
+    className="flex flex-row items-center gap-4 p-4 before:bg-gradient-to-b before:from-white/15 before:to-white/10 [&>svg]:size-12"
+  >
+    <Typography variant="body" size="lg">
+      <slot />
+    </Typography>
+  </GradientBorder>
+</Card>

@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource/damion";
+@import "@fontsource-variable/outfit";
 
 @plugin "@tailwindcss/typography";
 
@@ -10,23 +13,30 @@
 /* -------------------------------------------------------------------------- */
 
 :root {
-  --background: var(--color-zinc-50);
-  --foreground: var(--color-zinc-950);
-  --card: var(--color-white);
+  --black: #191919;
+  --dunes: #cfbba5;
+  --cinnamon: #a85d31;
+  --clay: #fbfcfc;
+  --sand-storm: #ffd9a1;
+  --umbra: #6c2d16;
+
+  --background: var(--black);
+  --foreground: var(--color-white);
+  --card: --alpha(var(--color-white) / 0.15);
   --card-foreground: var(--color-foreground);
   --popover: var(--color-white);
   --popover-foreground: var(--color-foreground);
-  --primary: var(--color-blue-600);
+  --primary: var(--sand-storm);
   --primary-foreground: var(--color-blue-50);
   --secondary: var(--color-zinc-200);
-  --secondary-foreground: var(--color-zinc-600);
+  --secondary-foreground: --alpha(var(--foreground) / 0.8);
   --muted: var(--color-zinc-300);
   --muted-foreground: var(--color-zinc-300);
   --accent: var(--color-purple-500);
   --accent-foreground: var(--color-purple-50);
   --destructive: var(--color-red-500);
   --destructive-foreground: var(--color-red-50);
-  --border: color-mix(in oklab, var(--color-black) 10%, transparent);
+  --border: --alpha(var(--color-white) / 0.08);
   --input: var(--border);
   --ring: var(--primary);
   --chart-1: hsl(12 76% 61%);
@@ -34,33 +44,6 @@
   --chart-3: hsl(197 37% 24%);
   --chart-4: hsl(43 74% 66%);
   --chart-5: hsl(27 87% 67%);
-}
-
-.dark {
-  --background: var(--color-zinc-950);
-  --foreground: var(--color-zinc-50);
-  --card: var(--color-zinc-800);
-  --card-foreground: var(--color-zinc-50);
-  --popover: var(--color-zinc-800);
-  --popover-foreground: var(--color-zinc-50);
-  --primary: var(--color-blue-500);
-  --primary-foreground: var(--color-blue-50);
-  --secondary: var(--color-zinc-700);
-  --secondary-foreground: var(--color-zinc-300);
-  --muted: var(--color-zinc-600);
-  --muted-foreground: var(--color-zinc-600);
-  --accent: var(--color-purple-500);
-  --accent-foreground: var(--color-purple-50);
-  --destructive: var(--color-red-500);
-  --destructive-foreground: var(--color-red-50);
-  --border: color-mix(in oklab, var(--color-white) 10%, transparent);
-  --input: var(--border);
-  --ring: var(--primary);
-  --chart-1: hsl(220 70% 50%);
-  --chart-2: hsl(160 60% 45%);
-  --chart-3: hsl(30 80% 55%);
-  --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%);
 }
 
 @theme inline {
@@ -93,6 +76,12 @@
 }
 
 @theme {
+  --shadow-md:
+    0px 563px 225px rgba(0, 0, 0, 0.01), 0px 317px 190px rgba(0, 0, 0, 0.03),
+    0px 141px 141px rgba(0, 0, 0, 0.05), 0px 35px 77px rgba(0, 0, 0, 0.06);
+}
+
+@theme inline {
   /* ------------------------------- Animations ------------------------------- */
 
   @keyframes carousel-left {
@@ -114,17 +103,42 @@
     }
   }
 
-  --animate-carousel-left: carousel-left calc(var(--carousel-count) * 16s)
-    linear infinite;
+  @keyframes carousel-up {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
 
-  --animate-carousel-right: carousel-right calc(var(--carousel-count) * 16s)
-    linear infinite;
+  @keyframes carousel-down {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+
+  --animate-carousel-left: carousel-left
+    calc(var(--carousel-count) * var(--carousel-duration)) linear infinite;
+
+  --animate-carousel-right: carousel-right
+    calc(var(--carousel-count) * var(--carousel-duration)) linear infinite;
+
+  --animate-carousel-up: carousel-up
+    calc(var(--carousel-count) * var(--carousel-duration)) linear infinite;
+
+  --animate-carousel-down: carousel-down
+    calc(var(--carousel-count) * var(--carousel-duration)) linear infinite;
 
   /* ---------------------------------- Fonts --------------------------------- */
 
   --font-*: initial;
   --font-sans: Inter Variable, Arial, Helvetica, sans-serif;
-  --font-display: Inter Variable, Arial, Helvetica, sans-serif;
+  --font-display: Outfit Variable, Arial, Helvetica, sans-serif;
+  --font-script: Damion, cursive;
 
   /* -------------------------------- Text Size ------------------------------- */
 

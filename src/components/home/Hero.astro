@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+
+import background from "@/assets/hero.jpg";
+import { Separator } from "@/components/ui/Separator";
+import { Stack } from "@/components/ui/Stack";
+import { Typography } from "@/components/ui/Typography";
+
+import { RestaurantCarousel } from "./RestaurantCarousel";
+---
+
+<section class="relative overflow-hidden">
+  <div class="container grid grid-cols-[--spacing(180)_1fr] gap-16">
+    <header class="space-y-8 py-32">
+      <Typography
+        variant="display"
+        size="lg"
+        className="mb-8 text-[5rem] text-balance"
+      >
+        Good things happen
+        <span
+          class="font-script text-primary text-[6rem] leading-none tracking-normal"
+        >
+          last minute
+        </span>
+      </Typography>
+
+      <Typography variant="body" size="lg" className="px-2.5 text-lg">
+        <strong>Never miss out on the best tables.</strong> Claim last-minute openings
+        or trade reservations you can't use.
+      </Typography>
+
+      <Separator className="w-full" />
+
+      <Stack orientation="row" align="center" gap="lg">
+        <div class="size-40 rounded-lg bg-[red]"></div>
+
+        <div>
+          <Typography variant="headline" size="sm">
+            Download for your device
+          </Typography>
+          <Typography variant="body" size="md">
+            Scan the QR code to download for your device
+          </Typography>
+        </div>
+      </Stack>
+    </header>
+
+    <div class="relative flex-1">
+      <div class="absolute">
+        <RestaurantCarousel client:load />
+      </div>
+    </div>
+  </div>
+
+  <Image
+    src={background}
+    alt="Hero Background"
+    class="pointer-events-none absolute inset-0 size-full object-cover opacity-10"
+    layout="constrained"
+  />
+</section>

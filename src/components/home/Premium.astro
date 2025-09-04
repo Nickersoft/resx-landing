@@ -1,0 +1,53 @@
+---
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/Card";
+import { Separator } from "../ui/Separator";
+import { Stack } from "../ui/Stack";
+import { Typography } from "../ui/Typography";
+import PremiumFeature from "./PremiumFeature.astro";
+---
+
+<section class="container grid grid-cols-2">
+  <aside class="space-y-8">
+    <header>
+      <Typography variant="display" size="md" className="mb-2 text-balance">
+        Get even more with <span class="text-primary">ResX Premium</span>
+      </Typography>
+      <Typography className="text-xl" color="secondary">
+        Claim. Earn. Save with ResX Rewards.
+      </Typography>
+    </header>
+
+    <Stack orientation="row" align="center">
+      <Typography color="muted" variant="label" size="lg">
+        Supercharge your experience with
+      </Typography>
+      <Separator className="flex-1" />
+    </Stack>
+
+    <div class="grid grid-cols-2 gap-4">
+      <PremiumFeature>
+        <strong>Early access</strong> to all reservations up to 5 days in advance
+      </PremiumFeature>
+      <PremiumFeature>
+        Up to <strong>5 custom and 5 restaurant alerts</strong>
+      </PremiumFeature>
+      <PremiumFeature>
+        <strong>More reservation bookings</strong> per week
+      </PremiumFeature>
+      <PremiumFeature>
+        <strong>Earn more tokens</strong> from your submissions
+      </PremiumFeature>
+      <PremiumFeature>
+        <strong>Priority access</strong> for alerts 5 minutes before everyone else
+      </PremiumFeature>
+      <PremiumFeature>
+        <strong>Unlimited access</strong> to exclusive Premium reservations
+      </PremiumFeature>
+    </div>
+  </aside>
+</section>

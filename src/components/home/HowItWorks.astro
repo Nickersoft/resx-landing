@@ -1,0 +1,35 @@
+---
+import { Separator } from "../ui/Separator";
+import { Stack } from "../ui/Stack";
+import { Typography } from "../ui/Typography";
+import FeatureCard from "./FeatureCard.astro";
+---
+
+<section
+  class="bg-background z-20 -mt-8 overflow-hidden rounded-t-[6%] bg-gradient-to-b from-white/10 to-50% py-24 shadow-[0_-2px_0_-1px] shadow-white/20 backdrop-blur-lg"
+>
+  <div class="container">
+    <header class="mb-12 grid grid-cols-[1fr_auto_1fr] items-center gap-8">
+      <Separator />
+      <Typography variant="display" size="md">
+        How It <span class="text-primary">Works</span>
+      </Typography>
+      <Separator />
+    </header>
+
+    <div class="grid grid-cols-3 gap-6">
+      <FeatureCard
+        title="Claim"
+        description="Get the best tables in town without the weeks of planning."
+      />
+      <FeatureCard
+        title="Share"
+        description="Can't make your reservation? Share it and make someone's day."
+      />
+      <FeatureCard
+        title="Earn"
+        description="Earn tokens with every booking and redeem them for exclusive rewards."
+      />
+    </div>
+  </div>
+</section>
