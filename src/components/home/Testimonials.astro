@@ -1,0 +1,38 @@
+---
+import { getImage } from "astro:assets";
+import noiseTexture from "@/assets/noise.png";
+import { Separator } from "@/components/ui/Separator";
+import { Typography } from "@/components/ui/Typography";
+import { url } from "@/lib/units";
+import { TestimonialCarousel } from "./TestimonialCarousel";
+import { TextAccent } from "./TextAccent";
+
+const noise = await getImage({ src: noiseTexture });
+---
+
+<section
+  class="from-cinnamon/30 relative overflow-x-clip bg-radial-[100%_50%_at_50%_0%] pb-24"
+>
+  <div class="noise"></div>
+
+  <Separator
+    className="bg-sand-storm mask-x-to-transparent mix-blend-plus-lighter"
+  />
+
+  <header class="container py-24">
+    <Typography variant="display" size="lg" className="text-center">
+      Join 100K+ food lovers
+      <TextAccent>elevating their dining experience</TextAccent>
+    </Typography>
+  </header>
+
+  <TestimonialCarousel client:visible />
+</section>
+
+<style define:vars={{ noise: url(noise.src) }} lang="postcss">
+  @import "tailwindcss";
+
+  .noise {
+    @apply absolute inset-0 bg-(image:--noise) opacity-40 bg-repeat mask-radial-at-top mask-radial-farthest-corner mask-radial-to-transparent;
+  }
+</style>

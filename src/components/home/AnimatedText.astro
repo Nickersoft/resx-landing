@@ -1,0 +1,39 @@
+---
+interface Props {
+  recursive?: boolean;
+}
+
+const { recursive = false } = Astro.props;
+---
+
+<animated-text class="" data-recursive={recursive}>
+  <slot />
+</animated-text>
+
+<script>
+  import { splitText } from "@kojodesign/split-text";
+  import { animate, stagger } from "motion";
+
+  class AnimatedText extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      const text = splitText(this, {
+        recursive: this.dataset.recursive === "true",
+      });
+
+      animate(
+        text.chars,
+        {
+          translateY: ["-20%", "0%"],
+          opacity: [0, 1],
+        },
+        { delay: stagger(0.03), duration: 0.5 },
+      );
+    }
+  }
+
+  customElements.define("animated-text", AnimatedText);
+</script>

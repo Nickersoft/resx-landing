@@ -1,21 +1,18 @@
 ---
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/Card";
-import { Separator } from "../ui/Separator";
-import { Stack } from "../ui/Stack";
-import { Typography } from "../ui/Typography";
+import { Separator } from "@/components/ui/Separator";
+import { Stack } from "@/components/ui/Stack";
+import { Typography } from "@/components/ui/Typography";
 import PremiumFeature from "./PremiumFeature.astro";
+import { TextAccent } from "./TextAccent";
 ---
 
-<section class="container grid grid-cols-2">
+<section
+  class="relative container flex flex-row items-center gap-16 overflow-y-clip py-24"
+>
   <aside class="space-y-8">
     <header>
       <Typography variant="display" size="md" className="mb-2 text-balance">
-        Get even more with <span class="text-primary">ResX Premium</span>
+        Get even more with <TextAccent>ResX Premium</TextAccent>
       </Typography>
       <Typography className="text-xl" color="secondary">
         Claim. Earn. Save with ResX Rewards.
@@ -50,4 +47,17 @@ import PremiumFeature from "./PremiumFeature.astro";
       </PremiumFeature>
     </div>
   </aside>
+
+  <div class="absolute right-0 bottom-20 -z-10 translate-y-full">
+    <div class="relative aspect-[1.3] w-[50vw]">
+      <div
+        class="from-sand-storm to-cinnamon absolute inset-0 rounded-full bg-radial mix-blend-plus-lighter blur-[40px]"
+      >
+      </div>
+      <div
+        class="from-sand-storm to-cinnamon absolute inset-0 rounded-full bg-radial opacity-50 mix-blend-plus-lighter blur-[80px]"
+      >
+      </div>
+    </div>
+  </div>
 </section>

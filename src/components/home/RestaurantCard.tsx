@@ -1,5 +1,5 @@
-import { Card, CardContent } from "../ui/card";
-import { Typography } from "../ui/Typography";
+import { Card, CardContent } from "@/components/ui/Card";
+import { Typography } from "@/components/ui/Typography";
 
 export function RestaurantCard() {
   return (

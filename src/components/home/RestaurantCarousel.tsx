@@ -1,7 +1,5 @@
-import { Carousel } from "../ui/Carousel";
-import { Card } from "../ui/card";
-import { Stack } from "../ui/Stack";
-import { Typography } from "../ui/Typography";
+import { Carousel } from "@/components/ui/Carousel";
+import { Stack } from "@/components/ui/Stack";
 import { RestaurantCard } from "./RestaurantCard";
 
 interface RestaurantCarouselProps {

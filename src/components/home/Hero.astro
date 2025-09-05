@@ -5,7 +5,7 @@ import background from "@/assets/hero.jpg";
 import { Separator } from "@/components/ui/Separator";
 import { Stack } from "@/components/ui/Stack";
 import { Typography } from "@/components/ui/Typography";
-
+import AnimatedText from "./AnimatedText.astro";
 import { RestaurantCarousel } from "./RestaurantCarousel";
 ---
 
@@ -17,12 +17,14 @@ import { RestaurantCarousel } from "./RestaurantCarousel";
         size="lg"
         className="mb-8 text-[5rem] text-balance"
       >
-        Good things happen
-        <span
-          class="font-script text-primary text-[6rem] leading-none tracking-normal"
-        >
-          last minute
-        </span>
+        <AnimatedText recursive>
+          <span> Good things happen </span>
+          <span
+            class="font-script text-primary text-[6rem] leading-none tracking-normal"
+          >
+            last minute
+          </span>
+        </AnimatedText>
       </Typography>
 
       <Typography variant="body" size="lg" className="px-2.5 text-lg">
