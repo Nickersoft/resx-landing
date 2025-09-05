@@ -15,7 +15,7 @@ interface NewsCardProps {
 
 export function NewsCard({ article, image }: NewsCardProps) {
   return (
-    <div className="hover:shadow-primary/20 group cursor-pointer rounded-3xl transition-all duration-400 ease-out hover:scale-101 hover:shadow-[0_12px_24px]">
+    <div className="hover:shadow-primary/20 group cursor-pointer rounded-3xl transition-all duration-400 ease-out hover:scale-101 hover:rotate-x-1 hover:shadow-[0_12px_24px]">
       <Card className="group-hover:border-primary overflow-hidden rounded-[inherit] bg-gradient-to-br from-white/0 via-white/10 to-white/0 transition-all duration-400">
         <CardHeader className="p-0">{image}</CardHeader>
         <CardContent className="border-t p-4">

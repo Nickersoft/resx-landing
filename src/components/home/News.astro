@@ -20,7 +20,7 @@ const articles = await getCollection("articles");
     </Typography>
   </div>
 
-  <div class="grid grid-cols-3 gap-6">
+  <div class="grid grid-cols-3 gap-6 perspective-normal transform-3d">
     {
       articles.map((article) => (
         <NewsCard article={article}>

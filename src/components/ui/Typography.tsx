@@ -38,8 +38,7 @@ export const typographyVariants = cva("", {
     {
       variant: "display",
       size: "lg",
-      class:
-        "tablet:text-[3rem] text-[4.5rem] -tracking-[0.04em] leading-[0.8]!",
+      class: "text-6xl -tracking-[0.04em] leading-[0.8]!",
     },
     {
       variant: "display",

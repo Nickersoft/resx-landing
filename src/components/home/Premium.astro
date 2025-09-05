@@ -2,62 +2,98 @@
 import { Separator } from "@/components/ui/Separator";
 import { Stack } from "@/components/ui/Stack";
 import { Typography } from "@/components/ui/Typography";
+import InView from "../InView.astro";
 import PremiumFeature from "./PremiumFeature.astro";
 import { TextAccent } from "./TextAccent";
 ---
 
-<section
-  class="relative container flex flex-row items-center gap-16 overflow-y-clip py-24"
->
-  <aside class="space-y-8">
-    <header>
-      <Typography variant="display" size="md" className="mb-2 text-balance">
-        Get even more with <TextAccent>ResX Premium</TextAccent>
-      </Typography>
-      <Typography className="text-xl" color="secondary">
-        Claim. Earn. Save with ResX Rewards.
-      </Typography>
-    </header>
+<InView once>
+  <section
+    id="premium"
+    class="relative container grid grid-cols-2 items-center gap-16 overflow-y-clip py-24"
+  >
+    <aside class="space-y-8">
+      <header>
+        <Typography
+          variant="display"
+          size="md"
+          className="in-view:animate-in in-view:slide-in-from-bottom-2 fill-mode-both in-view:fade-in mb-2 text-balance duration-1000"
+        >
+          Get even more with <TextAccent>ResX Premium</TextAccent>
+        </Typography>
+        <Typography className="text-xl" color="secondary">
+          Claim. Earn. Save with ResX Rewards.
+        </Typography>
+      </header>
 
-    <Stack orientation="row" align="center">
-      <Typography color="muted" variant="label" size="lg">
-        Supercharge your experience with
-      </Typography>
-      <Separator className="flex-1" />
-    </Stack>
+      <Stack orientation="row" align="center">
+        <Typography color="muted" variant="label" size="lg">
+          Supercharge your experience with
+        </Typography>
+        <Separator className="flex-1" />
+      </Stack>
 
-    <div class="grid grid-cols-2 gap-4">
-      <PremiumFeature>
-        <strong>Early access</strong> to all reservations up to 5 days in advance
-      </PremiumFeature>
-      <PremiumFeature>
-        Up to <strong>5 custom and 5 restaurant alerts</strong>
-      </PremiumFeature>
-      <PremiumFeature>
-        <strong>More reservation bookings</strong> per week
-      </PremiumFeature>
-      <PremiumFeature>
-        <strong>Earn more tokens</strong> from your submissions
-      </PremiumFeature>
-      <PremiumFeature>
-        <strong>Priority access</strong> for alerts 5 minutes before everyone else
-      </PremiumFeature>
-      <PremiumFeature>
-        <strong>Unlimited access</strong> to exclusive Premium reservations
-      </PremiumFeature>
-    </div>
-  </aside>
-
-  <div class="absolute right-0 bottom-20 -z-10 translate-y-full">
-    <div class="relative aspect-[1.3] w-[50vw]">
-      <div
-        class="from-sand-storm to-cinnamon absolute inset-0 rounded-full bg-radial mix-blend-plus-lighter blur-[40px]"
-      >
+      <div class="grid grid-cols-2 gap-4">
+        <PremiumFeature>
+          <strong>Early access</strong> to all reservations up to 5 days in advance
+        </PremiumFeature>
+        <PremiumFeature>
+          Up to <strong>5 custom and 5 restaurant alerts</strong>
+        </PremiumFeature>
+        <PremiumFeature>
+          <strong>More reservation bookings</strong> per week
+        </PremiumFeature>
+        <PremiumFeature>
+          <strong>Earn more tokens</strong> from your submissions
+        </PremiumFeature>
+        <PremiumFeature>
+          <strong>Priority access</strong> for alerts 5 minutes before everyone else
+        </PremiumFeature>
+        <PremiumFeature>
+          <strong>Unlimited access</strong> to exclusive Premium reservations
+        </PremiumFeature>
       </div>
-      <div
-        class="from-sand-storm to-cinnamon absolute inset-0 rounded-full bg-radial opacity-50 mix-blend-plus-lighter blur-[80px]"
+    </aside>
+
+    <div class="relative h-full">
+      <video
+        id="premium-video"
+        width="100%"
+        class="absolute top-0 left-1/2 max-w-[400px] -translate-x-1/2 mask-y-from-90% mask-y-to-transparent mask-x-from-90% mask-x-to-transparent lg:-mt-16"
+        height="auto"
+        muted
+        playsinline
       >
+        <source src="/video/phone.webm" />
+      </video>
+    </div>
+
+    <div
+      class="in-view:translate-y-[80%] absolute right-0 bottom-0 z-10 translate-y-full transition-transform duration-1000"
+    >
+      <div class="relative aspect-[1.3] w-[50vw] opacity-90">
+        <div
+          class="from-sand-storm to-cinnamon absolute inset-0 rounded-full bg-radial mix-blend-plus-lighter blur-[80px]"
+        >
+        </div>
+        <div
+          class="from-sand-storm to-cinnamon absolute inset-0 rounded-full bg-radial opacity-50 mix-blend-plus-lighter blur-[150px]"
+        >
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</InView>
+
+<script>
+  import { inView } from "motion";
+
+  const section = document.getElementById("premium");
+  const video = document.getElementById("premium-video") as HTMLVideoElement;
+
+  if (section && video) {
+    inView(section, () => {
+      video.play();
+    });
+  }
+</script>

@@ -9,7 +9,7 @@ import AnimatedText from "./AnimatedText.astro";
 import { RestaurantCarousel } from "./RestaurantCarousel";
 ---
 
-<section class="relative overflow-hidden">
+<section id="site-hero" class="relative overflow-hidden">
   <div class="container grid grid-cols-[--spacing(180)_1fr] gap-16">
     <header class="space-y-8 py-32">
       <Typography
@@ -17,14 +17,16 @@ import { RestaurantCarousel } from "./RestaurantCarousel";
         size="lg"
         className="mb-8 text-[5rem] text-balance"
       >
-        <AnimatedText recursive>
-          <span> Good things happen </span>
-          <span
-            class="font-script text-primary text-[6rem] leading-none tracking-normal"
-          >
-            last minute
-          </span>
-        </AnimatedText>
+        <span
+          class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block duration-1000"
+        >
+          Good things happen
+        </span>
+        <span
+          class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in font-script text-primary inline-block text-[6rem] leading-none tracking-normal delay-130 duration-1000"
+        >
+          last minute
+        </span>
       </Typography>
 
       <Typography variant="body" size="lg" className="px-2.5 text-lg">
@@ -62,3 +64,14 @@ import { RestaurantCarousel } from "./RestaurantCarousel";
     layout="constrained"
   />
 </section>
+
+<script>
+  import { scroll, animate } from "motion";
+
+  const hero = document.querySelector("#site-hero");
+
+  if (hero) {
+    const animation = animate(hero, { y: [0, 300] });
+    scroll(animation, { offset: ["start start", "end start"], target: hero });
+  }
+</script>
