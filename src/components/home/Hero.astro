@@ -5,13 +5,13 @@ import background from "@/assets/hero.jpg";
 import { Separator } from "@/components/ui/Separator";
 import { Stack } from "@/components/ui/Stack";
 import { Typography } from "@/components/ui/Typography";
-import AnimatedText from "./AnimatedText.astro";
+import { DownloadQR } from "./DownloadQR";
 import { RestaurantCarousel } from "./RestaurantCarousel";
 ---
 
 <section id="site-hero" class="relative overflow-hidden">
   <div class="container grid grid-cols-[--spacing(180)_1fr] gap-16">
-    <header class="space-y-8 py-32">
+    <header class="space-y-8 pt-48 pb-32">
       <Typography
         variant="display"
         size="lg"
@@ -21,11 +21,12 @@ import { RestaurantCarousel } from "./RestaurantCarousel";
           class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block duration-1000"
         >
           Good things happen
-        </span>
-        <span
-          class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in font-script text-primary inline-block text-[6rem] leading-none tracking-normal delay-130 duration-1000"
-        >
-          last minute
+
+          <span
+            class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in font-script text-primary inline-block text-[6rem] leading-none tracking-normal delay-130 duration-1000"
+          >
+            last minute
+          </span>
         </span>
       </Typography>
 
@@ -37,7 +38,7 @@ import { RestaurantCarousel } from "./RestaurantCarousel";
       <Separator className="w-full" />
 
       <Stack orientation="row" align="center" gap="lg">
-        <div class="size-40 rounded-lg bg-[red]"></div>
+        <DownloadQR className="size-40" />
 
         <div>
           <Typography variant="headline" size="sm">
