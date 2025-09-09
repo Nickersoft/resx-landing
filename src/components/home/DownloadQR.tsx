@@ -10,7 +10,7 @@ export function DownloadQR({ className, ...props }: DownloadQRProps) {
     <GradientBorder
       {...props}
       className={cn(
-        "before:bg-bronze z-10 rounded-xl bg-black p-2 shadow-lg",
+        "before:bg-bronze bg-coal z-10 rounded-xl p-2 shadow-lg",
         className,
       )}
     >

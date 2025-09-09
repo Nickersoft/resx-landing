@@ -8,14 +8,14 @@
 /* -------------------------------------------------------------------------- */
 
 :root {
-  --black: #191919;
+  --coal: #191919;
   --dunes: #cfbba5;
   --cinnamon: #a85d31;
   --clay: #fbfcfc;
   --sand-storm: #ffd9a1;
   --umbra: #6c2d16;
 
-  --background: var(--black);
+  --background: var(--coal);
   --foreground: var(--color-white);
   --card: --alpha(var(--color-white) / 0.1);
   --card-foreground: var(--color-foreground);
@@ -45,7 +45,7 @@
   /* --------------------------------- Colors --------------------------------- */
 
   --color-sand-storm: var(--sand-storm);
-  --color-black: var(--black);
+  --color-coal: var(--coal);
   --color-dunes: var(--dunes);
   --color-cinnamon: var(--cinnamon);
   --color-clay: var(--clay);
