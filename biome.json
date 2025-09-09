@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
   "formatter": {
     "enabled": false
   },
@@ -7,12 +7,14 @@
     "enabled": true,
     "rules": {
       "suspicious": {
-        "noExplicitAny": "warn"
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn"
       },
       "style": {
         "noNonNullAssertion": "warn"
       }
-    }
+    },
+    "includes": ["src/**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}"]
   },
   "assist": {
     "enabled": true,

@@ -1,0 +1,36 @@
+---
+import logo from "@/assets/svg/logo.svg?url";
+import { Separator } from "@/components/ui/Separator";
+import { Stack } from "@/components/ui/Stack";
+import Logo from "~icons/assets/logo";
+import { Typography } from "./ui/Typography";
+---
+
+<footer class="container max-h-110 overflow-hidden py-24">
+  <Stack orientation="row" justify="between" align="center">
+    <Stack orientation="row" className="h-12" gap="lg" align="center">
+      <Logo className="h-auto w-34" />
+      <Separator className="h-full" orientation="vertical" />
+      <Typography variant="body" size="md" color="muted">
+        Follow us on
+      </Typography>
+    </Stack>
+
+    <Stack
+      orientation="row"
+      className="[&>a]:text-muted-foreground [&>a]:hover:text-primary h-12 text-sm *:transition-all *:duration-300"
+      gap="lg"
+      align="center"
+    >
+      <a href="#">About Us</a>
+      <a href="#">Submit on ResX</a>
+      <a href="#">Claim on ResX</a>
+    </Stack>
+  </Stack>
+
+  <img
+    src={logo}
+    alt="ResX Logo"
+    class="mt-16 w-full mask-x-to-transparent opacity-75 grayscale"
+  />
+</footer>

@@ -2,3 +2,7 @@
   margin-inline: auto;
   padding-inline: 2rem;
 }
+
+@utility bg-bronze {
+  @apply from-cinnamon to-cinnamon via-sand-storm bg-gradient-to-br;
+}

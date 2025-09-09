@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+
+import { Typography } from "@/components/ui/Typography";
+
+import NewsCard from "./NewsCard.astro";
+import TextAccent from "./TextAccent.astro";
+
+const articles = await getCollection("articles");
+---
+
+<section class="container py-24">
+  <div class="">
+    <Typography
+      variant="display"
+      size="md"
+      className="mb-16 max-w-xl text-balance"
+    >
+      Our users aren't the only ones
+      <TextAccent>talking about us</TextAccent>
+    </Typography>
+  </div>
+
+  <div class="grid grid-cols-3 gap-6">
+    {articles.map((article) => <NewsCard article={article} />)}
+  </div>
+</section>

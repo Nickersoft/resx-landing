@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "lenis/dist/lenis.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/damion";
+@import "@fontsource-variable/outfit";
 
 @import "./theme.css";
 @import "./utilities.css";
@@ -15,6 +19,10 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+
+  strong {
+    @apply font-medium;
   }
 }

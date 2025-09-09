@@ -1,17 +1,16 @@
-import { forwardRef } from "react";
-
-import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
+import { forwardRef } from "react";
+import { cn } from "@/lib/utils";
 
 export const typographyVariants = cva("", {
   variants: {
     variant: {
-      display: "font-display font-medium",
-      headline: "font-display",
-      title: "font-sans font-bold",
+      display: "font-display font-normal",
+      headline: "font-display font-medium",
+      title: "font-sans font-bold tracking-tight",
       body: "font-sans font-normal",
-      label: "font-sans font-bold",
+      label: "font-sans font-normal",
     },
     size: {
       sm: "",
@@ -29,7 +28,7 @@ export const typographyVariants = cva("", {
       warn: "text-warn",
       primary: "text-primary",
       default: "text-default",
-      subtle: "text-subtle",
+      secondary: "text-secondary-foreground",
       muted: "text-muted",
       invert: "text-invert",
       inherit: "text-inherit",
@@ -39,7 +38,7 @@ export const typographyVariants = cva("", {
     {
       variant: "display",
       size: "lg",
-      class: "tablet:text-[3rem] text-[4.5rem] leading-none",
+      class: "text-6xl -tracking-[0.04em] leading-[0.8]!",
     },
     {
       variant: "display",

@@ -1,7 +1,6 @@
-import type * as React from "react";
-
-import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
+import type * as React from "react";
+import { cn } from "@/lib/utils";
 
 interface GradientBorderProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: number;
@@ -30,7 +29,8 @@ export function GradientBorder({
     <Tag
       className={cn(
         "relative",
-        "before:absolute before:border-solid before:border-[transparent] before:inset-[calc(-1*var(--width))] before:rounded-[inherit]",
+        "rounded-[inherit]",
+        "before:absolute before:inset-[calc(-1*var(--width))] before:rounded-[inherit] before:border-solid before:border-[transparent]",
         "before:pointer-events-none",
         "before:[mask-image:linear-gradient(#000_0_0),linear-gradient(#000_0_0)]",
         "before:[mask-clip:content-box,no-clip]",

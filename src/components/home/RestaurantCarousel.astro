@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import { chunk, last } from "es-toolkit";
+import { Carousel } from "@/components/ui/Carousel";
+import { Stack } from "@/components/ui/Stack";
+import RestaurantCard from "./RestaurantCard.astro";
+
+const count = 5;
+const restaurants = await getCollection("restaurants");
+const columns = chunk(restaurants, Math.ceil(restaurants.length / count));
+const duration = (last(columns)?.length ?? 1) * 23;
+---
+
+<Stack
+  orientation="row"
+  gap="md"
+  className="mt-28 mask-t-from-70% mask-t-to-transparent mask-b-from-70% mask-b-to-transparent"
+>
+  {
+    columns.map((cells, i) => (
+      <Carousel duration={duration} gap={4} direction={i % 2 ? "up" : "down"}>
+        {cells.map((restaurant) => (
+          <RestaurantCard restaurant={restaurant} />
+        ))}
+      </Carousel>
+    ))
+  }
+</Stack>

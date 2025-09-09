@@ -1,12 +1,13 @@
 ---
 interface Props {
   amount?: number;
+  once?: boolean;
 }
 
-const { amount = 0.3 } = Astro.props;
+const { amount = 0.3, once = false } = Astro.props;
 ---
 
-<in-view data-amount={amount}>
+<in-view data-amount={amount} data-once={once}>
   <slot />
 </in-view>
 
@@ -21,7 +22,12 @@ const { amount = 0.3 } = Astro.props;
         this,
         () => {
           this.setAttribute("data-in-view", "");
-          return () => this.removeAttribute("data-in-view");
+
+          return () => {
+            const once = this.dataset.once === "true";
+            if (once) return;
+            this.removeAttribute("data-in-view");
+          };
         },
         {
           ...(this.dataset.amount && {

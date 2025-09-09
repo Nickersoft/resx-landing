@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@plugin "@tailwindcss/typography";
-
 @variant dark (&:where(.dark, .dark *));
 @variant in-view (:where(*:is([data-in-view])) &);
 
@@ -10,23 +8,30 @@
 /* -------------------------------------------------------------------------- */
 
 :root {
-  --background: var(--color-zinc-50);
-  --foreground: var(--color-zinc-950);
-  --card: var(--color-white);
+  --black: #191919;
+  --dunes: #cfbba5;
+  --cinnamon: #a85d31;
+  --clay: #fbfcfc;
+  --sand-storm: #ffd9a1;
+  --umbra: #6c2d16;
+
+  --background: var(--black);
+  --foreground: var(--color-white);
+  --card: --alpha(var(--color-white) / 0.1);
   --card-foreground: var(--color-foreground);
   --popover: var(--color-white);
   --popover-foreground: var(--color-foreground);
-  --primary: var(--color-blue-600);
+  --primary: var(--sand-storm);
   --primary-foreground: var(--color-blue-50);
   --secondary: var(--color-zinc-200);
-  --secondary-foreground: var(--color-zinc-600);
+  --secondary-foreground: --alpha(var(--foreground) / 0.8);
   --muted: var(--color-zinc-300);
   --muted-foreground: var(--color-zinc-300);
   --accent: var(--color-purple-500);
   --accent-foreground: var(--color-purple-50);
   --destructive: var(--color-red-500);
   --destructive-foreground: var(--color-red-50);
-  --border: color-mix(in oklab, var(--color-black) 10%, transparent);
+  --border: --alpha(var(--color-white) / 0.08);
   --input: var(--border);
   --ring: var(--primary);
   --chart-1: hsl(12 76% 61%);
@@ -36,35 +41,15 @@
   --chart-5: hsl(27 87% 67%);
 }
 
-.dark {
-  --background: var(--color-zinc-950);
-  --foreground: var(--color-zinc-50);
-  --card: var(--color-zinc-800);
-  --card-foreground: var(--color-zinc-50);
-  --popover: var(--color-zinc-800);
-  --popover-foreground: var(--color-zinc-50);
-  --primary: var(--color-blue-500);
-  --primary-foreground: var(--color-blue-50);
-  --secondary: var(--color-zinc-700);
-  --secondary-foreground: var(--color-zinc-300);
-  --muted: var(--color-zinc-600);
-  --muted-foreground: var(--color-zinc-600);
-  --accent: var(--color-purple-500);
-  --accent-foreground: var(--color-purple-50);
-  --destructive: var(--color-red-500);
-  --destructive-foreground: var(--color-red-50);
-  --border: color-mix(in oklab, var(--color-white) 10%, transparent);
-  --input: var(--border);
-  --ring: var(--primary);
-  --chart-1: hsl(220 70% 50%);
-  --chart-2: hsl(160 60% 45%);
-  --chart-3: hsl(30 80% 55%);
-  --chart-4: hsl(280 65% 60%);
-  --chart-5: hsl(340 75% 55%);
-}
-
 @theme inline {
   /* --------------------------------- Colors --------------------------------- */
+
+  --color-sand-storm: var(--sand-storm);
+  --color-black: var(--black);
+  --color-dunes: var(--dunes);
+  --color-cinnamon: var(--cinnamon);
+  --color-clay: var(--clay);
+  --color-umbra: var(--umbra);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -90,17 +75,36 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
+  /* -------------------------------- Text Size ------------------------------- */
+
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: var(--text-xs--line-height);
+
+  /* ------------------------------ Border Radius ----------------------------- */
+
+  --radius: 0.5rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* ------------------------------- Animations ------------------------------- */
+
+  --animate-carousel-left: carousel-left var(--tw-duration, 30s) linear infinite;
+  --animate-carousel-right: carousel-right var(--tw-duration, 30s) linear
+    infinite;
+  --animate-carousel-up: carousel-up var(--tw-duration, 30s) linear infinite;
+  --animate-carousel-down: carousel-down var(--tw-duration, 30s) linear infinite;
 }
 
 @theme {
-  /* ------------------------------- Animations ------------------------------- */
+  /* -------------------------------- Keyframes ------------------------------- */
 
   @keyframes carousel-left {
-    0%: {
+    0% {
       transform: translate3d(0, 0, 0);
     }
-    ,
-    100%: {
+    100% {
       transform: translate3d(-100%, 0, 0);
     }
   }
@@ -114,27 +118,34 @@
     }
   }
 
-  --animate-carousel-left: carousel-left calc(var(--carousel-count) * 16s)
-    linear infinite;
+  @keyframes carousel-up {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
 
-  --animate-carousel-right: carousel-right calc(var(--carousel-count) * 16s)
-    linear infinite;
+  @keyframes carousel-down {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+
+  /* --------------------------------- Shadows -------------------------------- */
+
+  --shadow-md:
+    0px 563px 225px rgba(0, 0, 0, 0.01), 0px 317px 190px rgba(0, 0, 0, 0.03),
+    0px 141px 141px rgba(0, 0, 0, 0.05), 0px 35px 77px rgba(0, 0, 0, 0.06);
 
   /* ---------------------------------- Fonts --------------------------------- */
 
   --font-*: initial;
   --font-sans: Inter Variable, Arial, Helvetica, sans-serif;
-  --font-display: Inter Variable, Arial, Helvetica, sans-serif;
-
-  /* -------------------------------- Text Size ------------------------------- */
-
-  --text-2xs: 0.625rem;
-  --text-2xs--line-height: var(--text-xs--line-height);
-
-  /* ------------------------------ Border Radius ----------------------------- */
-
-  --radius: 0.5rem;
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+  --font-display: Outfit Variable, Arial, Helvetica, sans-serif;
+  --font-script: Damion, cursive;
 }
