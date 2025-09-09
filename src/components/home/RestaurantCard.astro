@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { Card, CardContent } from "@/components/ui/Card";
+import { Typography } from "@/components/ui/Typography";
+import { Stack } from "../ui/Stack";
+import { StarRating } from "../ui/StarRating";
+
+interface Props {
+  restaurant: CollectionEntry<"restaurants">;
+}
+
+const {
+  restaurant: {
+    data: { name, rating, image },
+  },
+} = Astro.props;
+---
+
+<Card className="flex w-36 flex-col overflow-hidden rounded-xl">
+  <Image
+    alt={name}
+    src={image}
+    class="aspect-video w-full flex-1 object-cover"
+    layout="constrained"
+  />
+  <CardContent className="flex flex-col justify-start gap-1 p-2">
+    <Typography variant="title" size="sm">
+      {name}
+    </Typography>
+    <Stack orientation="row" gap="xs" align="center">
+      <StarRating className="h-3" rating={rating} />
+      <Typography
+        variant="body"
+        size="sm"
+        className="mt-px leading-none font-semibold"
+        color="primary"
+      >
+        {rating.toFixed(1)}
+      </Typography>
+    </Stack>
+  </CardContent>
+</Card>

@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import { chunk } from "es-toolkit";
+import { Carousel } from "../ui/Carousel";
+import { Stack } from "../ui/Stack";
+import TestimonialCard from "./TestimonialCard.astro";
+
+const testimonials = await getCollection("testimonials");
+const rows = chunk(testimonials, Math.ceil(testimonials.length / 2));
+---
+
+<Stack orientation="column" align="center" gap="lg">
+  {
+    rows.map((row, i) => (
+      <Carousel
+        style={{ animationDelay: `${(i + 1) * 0.15}s` }}
+        data-idx={i}
+        className="in-view:animate-in in-view:slide-in-from-bottom-12 in-view:fade-in fill-mode-both mask-x-from-80% mask-x-to-transparent duration-1000"
+        duration={rows[0].length * 20}
+        direction={i % 2 === 0 ? "left" : "right"}
+      >
+        {row.map((testimonial) => (
+          <TestimonialCard testimonial={testimonial} />
+        ))}
+      </Carousel>
+    ))
+  }
+</Stack>

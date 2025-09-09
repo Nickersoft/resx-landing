@@ -1,9 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
-@import "@fontsource/damion";
-@import "@fontsource-variable/outfit";
-
-@plugin "@tailwindcss/typography";
 
 @variant dark (&:where(.dark, .dark *));
 @variant in-view (:where(*:is([data-in-view])) &);
@@ -80,19 +75,33 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
+  /* -------------------------------- Text Size ------------------------------- */
+
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: var(--text-xs--line-height);
+
+  /* ------------------------------ Border Radius ----------------------------- */
+
+  --radius: 0.5rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* ------------------------------- Animations ------------------------------- */
+
+  --animate-carousel-left: carousel-left var(--tw-duration, 30s) linear infinite;
+  --animate-carousel-right: carousel-right var(--tw-duration, 30s) linear
+    infinite;
+  --animate-carousel-up: carousel-up var(--tw-duration, 30s) linear infinite;
+  --animate-carousel-down: carousel-down var(--tw-duration, 30s) linear infinite;
 }
 
 @theme {
-  --shadow-md:
-    0px 563px 225px rgba(0, 0, 0, 0.01), 0px 317px 190px rgba(0, 0, 0, 0.03),
-    0px 141px 141px rgba(0, 0, 0, 0.05), 0px 35px 77px rgba(0, 0, 0, 0.06);
-}
-
-@theme inline {
-  /* ------------------------------- Animations ------------------------------- */
+  /* -------------------------------- Keyframes ------------------------------- */
 
   @keyframes carousel-left {
-    0%: {
+    0% {
       transform: translate3d(0, 0, 0);
     }
     100% {
@@ -127,17 +136,11 @@
     }
   }
 
-  --animate-carousel-left: carousel-left
-    calc(var(--carousel-count) * var(--carousel-duration)) linear infinite;
+  /* --------------------------------- Shadows -------------------------------- */
 
-  --animate-carousel-right: carousel-right
-    calc(var(--carousel-count) * var(--carousel-duration)) linear infinite;
-
-  --animate-carousel-up: carousel-up
-    calc(var(--carousel-count) * var(--carousel-duration)) linear infinite;
-
-  --animate-carousel-down: carousel-down
-    calc(var(--carousel-count) * var(--carousel-duration)) linear infinite;
+  --shadow-md:
+    0px 563px 225px rgba(0, 0, 0, 0.01), 0px 317px 190px rgba(0, 0, 0, 0.03),
+    0px 141px 141px rgba(0, 0, 0, 0.05), 0px 35px 77px rgba(0, 0, 0, 0.06);
 
   /* ---------------------------------- Fonts --------------------------------- */
 
@@ -145,16 +148,4 @@
   --font-sans: Inter Variable, Arial, Helvetica, sans-serif;
   --font-display: Outfit Variable, Arial, Helvetica, sans-serif;
   --font-script: Damion, cursive;
-
-  /* -------------------------------- Text Size ------------------------------- */
-
-  --text-2xs: 0.625rem;
-  --text-2xs--line-height: var(--text-xs--line-height);
-
-  /* ------------------------------ Border Radius ----------------------------- */
-
-  --radius: 0.5rem;
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
 }

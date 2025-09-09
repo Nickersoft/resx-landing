@@ -1,9 +1,10 @@
 ---
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import { Typography } from "../ui/Typography";
-import { NewsCard } from "./NewsCard";
-import { TextAccent } from "./TextAccent";
+
+import { Typography } from "@/components/ui/Typography";
+
+import NewsCard from "./NewsCard.astro";
+import TextAccent from "./TextAccent.astro";
 
 const articles = await getCollection("articles");
 ---
@@ -20,17 +21,7 @@ const articles = await getCollection("articles");
     </Typography>
   </div>
 
-  <div class="grid grid-cols-3 gap-6 perspective-normal transform-3d">
-    {
-      articles.map((article) => (
-        <NewsCard article={article}>
-          <Image
-            src={article.data.image}
-            alt={article.data.title}
-            slot="image"
-          />
-        </NewsCard>
-      ))
-    }
+  <div class="grid grid-cols-3 gap-6">
+    {articles.map((article) => <NewsCard article={article} />)}
   </div>
 </section>

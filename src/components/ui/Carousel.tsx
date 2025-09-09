@@ -1,9 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
+import type * as React from "react";
+
+import { cssVars } from "@/lib/utils";
 
 const carouselVariants = cva(
   [
-    "relative flex w-max gap-[--spacing(var(--gap))]",
+    "relative duration-(--duration) flex w-max gap-[--spacing(var(--gap))]",
     "*:data-[slot=clone]:absolute *:data-[slot=clone]:top-0 *:data-[slot=clone]:flex *:data-[slot=clone]:gap-[--spacing(var(--gap))]",
   ],
   {
@@ -29,8 +31,9 @@ const carouselVariants = cva(
   },
 );
 
-export interface CarouselProps extends VariantProps<typeof carouselVariants> {
-  className?: string;
+export interface CarouselProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof carouselVariants> {
   gap?: number;
   duration?: number;
   children: React.ReactNode;
@@ -38,25 +41,18 @@ export interface CarouselProps extends VariantProps<typeof carouselVariants> {
 
 export function Carousel({
   direction = "left",
-  className,
-  duration = 16,
+  duration = 30,
   children,
   gap = 4,
+  ...props
 }: CarouselProps) {
-  const count = React.Children.count(children);
-
   return (
-    <div
-      style={
-        {
-          "--carousel-count": count,
-          "--gap": `${gap}`,
-          "--carousel-duration": `${duration}s`,
-        } as React.CSSProperties
-      }
-      className={className}
-    >
-      <div className={carouselVariants({ direction })} data-slot="carousel">
+    <div {...props}>
+      <div
+        style={cssVars({ gap, duration: `${duration}s` })}
+        className={carouselVariants({ direction })}
+        data-slot="carousel"
+      >
         {children}
         <div data-slot="clone">{children}</div>
       </div>

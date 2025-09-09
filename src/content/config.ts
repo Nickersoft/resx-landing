@@ -34,7 +34,7 @@ const blog = defineCollection({
 
 const restaurants = defineCollection({
   loader: glob({
-    pattern: "restaurants/*.{mdx,md}",
+    pattern: "restaurants/*.yml",
     base: "src/data",
   }),
   schema: ({ image }) =>
@@ -50,7 +50,10 @@ const testimonials = defineCollection({
     pattern: "testimonials/*.{mdx,md}",
     base: "src/data",
   }),
-  schema: z.object({ name: z.string() }),
+  schema: z.object({
+    name: z.string(),
+    label: z.string().optional(),
+  }),
 });
 
 const articles = defineCollection({

@@ -5,8 +5,9 @@ import background from "@/assets/hero.jpg";
 import { Separator } from "@/components/ui/Separator";
 import { Stack } from "@/components/ui/Stack";
 import { Typography } from "@/components/ui/Typography";
+import AnimatedUnderline from "./AnimatedUnderline.astro";
 import { DownloadQR } from "./DownloadQR";
-import { RestaurantCarousel } from "./RestaurantCarousel";
+import RestaurantCarousel from "./RestaurantCarousel.astro";
 ---
 
 <section id="site-hero" class="relative overflow-hidden">
@@ -15,7 +16,7 @@ import { RestaurantCarousel } from "./RestaurantCarousel";
       <Typography
         variant="display"
         size="lg"
-        className="mb-8 text-[5rem] text-balance"
+        className="mb-6 text-[5rem] text-balance"
       >
         <span
           class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block duration-1000"
@@ -26,6 +27,7 @@ import { RestaurantCarousel } from "./RestaurantCarousel";
             class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in font-script text-primary inline-block text-[6rem] leading-none tracking-normal delay-130 duration-1000"
           >
             last minute
+            <AnimatedUnderline delay={0.4} class="w-full" />
           </span>
         </span>
       </Typography>
@@ -51,9 +53,9 @@ import { RestaurantCarousel } from "./RestaurantCarousel";
       </Stack>
     </header>
 
-    <div class="relative flex-1">
-      <div class="absolute">
-        <RestaurantCarousel client:load />
+    <div class="relative h-full flex-1">
+      <div class="absolute h-full">
+        <RestaurantCarousel />
       </div>
     </div>
   </div>

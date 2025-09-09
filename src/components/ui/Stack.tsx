@@ -1,5 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -37,6 +37,7 @@ const stackVariants = cva("flex", {
     },
     gap: {
       none: "",
+      xs: "gap-1",
       sm: "gap-2",
       md: "gap-4",
       lg: "gap-8",
