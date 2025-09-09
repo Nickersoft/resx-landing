@@ -95,6 +95,13 @@
     infinite;
   --animate-carousel-up: carousel-up var(--tw-duration, 30s) linear infinite;
   --animate-carousel-down: carousel-down var(--tw-duration, 30s) linear infinite;
+
+  /* ---------------------------------- Fonts --------------------------------- */
+
+  --font-*: initial;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-outfit);
+  --font-script: var(--font-damion);
 }
 
 @theme {
@@ -141,11 +148,4 @@
   --shadow-md:
     0px 563px 225px rgba(0, 0, 0, 0.01), 0px 317px 190px rgba(0, 0, 0, 0.03),
     0px 141px 141px rgba(0, 0, 0, 0.05), 0px 35px 77px rgba(0, 0, 0, 0.06);
-
-  /* ---------------------------------- Fonts --------------------------------- */
-
-  --font-*: initial;
-  --font-sans: Inter Variable, Arial, Helvetica, sans-serif;
-  --font-display: Outfit Variable, Arial, Helvetica, sans-serif;
-  --font-script: Damion, cursive;
 }
