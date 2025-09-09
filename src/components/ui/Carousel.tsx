@@ -1,11 +1,11 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import type * as React from "react";
-
+import * as React from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { cssVars } from "@/lib/utils";
 
 const carouselVariants = cva(
   [
-    "relative duration-(--duration) flex w-max gap-[--spacing(var(--gap))]",
+    "relative duration-(--duration) flex gap-[--spacing(var(--gap))]",
     "*:data-[slot=clone]:absolute *:data-[slot=clone]:top-0 *:data-[slot=clone]:flex *:data-[slot=clone]:gap-[--spacing(var(--gap))]",
   ],
   {
@@ -21,11 +21,11 @@ const carouselVariants = cva(
     compoundVariants: [
       {
         direction: ["left", "right"],
-        className: "flex-row *:data-[slot=clone]:flex-row",
+        className: "flex-row w-max *:data-[slot=clone]:flex-row",
       },
       {
         direction: ["up", "down"],
-        className: "flex-col *:data-[slot=clone]:flex-col",
+        className: "flex-col h-max *:data-[slot=clone]:flex-col",
       },
     ],
   },
@@ -40,12 +40,28 @@ export interface CarouselProps
 }
 
 export function Carousel({
-  direction = "left",
+  direction: originalDirection = "left",
   duration = 30,
   children,
   gap = 4,
   ...props
 }: CarouselProps) {
+  const isMobile = useIsMobile();
+
+  const direction = React.useMemo(() => {
+    if (!isMobile) {
+      return originalDirection;
+    }
+
+    if (originalDirection === "up") {
+      return "left";
+    }
+
+    if (originalDirection === "down") {
+      return "right";
+    }
+  }, [originalDirection, isMobile]);
+
   return (
     <div {...props}>
       <div

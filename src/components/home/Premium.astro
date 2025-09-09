@@ -2,7 +2,14 @@
 import { Separator } from "@/components/ui/Separator";
 import { Stack } from "@/components/ui/Stack";
 import { Typography } from "@/components/ui/Typography";
-
+import {
+  Calendar,
+  ClockTimeTwo,
+  HandCoin,
+  LocalRestaurant,
+  NotificationsActive,
+  StarCircleOutline,
+} from "@/icons";
 import InView from "../InView.astro";
 import PremiumFeature from "./PremiumFeature.astro";
 import TextAccent from "./TextAccent.astro";
@@ -11,7 +18,7 @@ import TextAccent from "./TextAccent.astro";
 <InView once>
   <section
     id="premium"
-    class="relative container grid grid-cols-2 items-center gap-16 overflow-y-clip py-24"
+    class="relative container grid grid-cols-2 items-center gap-16 overflow-y-clip py-24 max-lg:grid-cols-1"
   >
     <aside class="space-y-8">
       <header>
@@ -34,29 +41,35 @@ import TextAccent from "./TextAccent.astro";
         <Separator className="flex-1" />
       </Stack>
 
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-2 gap-4 max-lg:grid-cols-1">
         <PremiumFeature>
+          <Calendar slot="icon" />
           <strong>Early access</strong> to all reservations up to 5 days in advance
         </PremiumFeature>
         <PremiumFeature>
+          <NotificationsActive slot="icon" />
           Up to <strong>5 custom and 5 restaurant alerts</strong>
         </PremiumFeature>
         <PremiumFeature>
+          <LocalRestaurant slot="icon" />
           <strong>More reservation bookings</strong> per week
         </PremiumFeature>
         <PremiumFeature>
+          <HandCoin slot="icon" />
           <strong>Earn more tokens</strong> from your submissions
         </PremiumFeature>
         <PremiumFeature>
+          <ClockTimeTwo slot="icon" />
           <strong>Priority access</strong> for alerts 5 minutes before everyone else
         </PremiumFeature>
         <PremiumFeature>
+          <StarCircleOutline slot="icon" />
           <strong>Unlimited access</strong> to exclusive Premium reservations
         </PremiumFeature>
       </div>
     </aside>
 
-    <div class="relative h-full">
+    <div class="relative h-full min-h-100">
       <video
         id="premium-video"
         width="100%"
@@ -65,7 +78,7 @@ import TextAccent from "./TextAccent.astro";
         muted
         playsinline
       >
-        <source src="/video/phone.webm" />
+        <source src="/video/phone.webm" type="video/webm" />
       </video>
     </div>
 
@@ -93,8 +106,14 @@ import TextAccent from "./TextAccent.astro";
   const video = document.getElementById("premium-video") as HTMLVideoElement;
 
   if (section && video) {
-    inView(section, () => {
-      video.play();
-    });
+    inView(
+      section,
+      () => {
+        video.play().catch((e) => {
+          console.error("Error playing video:", e);
+        });
+      },
+      { amount: 0.2 },
+    );
   }
 </script>

@@ -1,3 +1,14 @@
+export { default as Calendar } from "~icons/mdi/calendar";
 export { default as ChevronDown } from "~icons/mdi/chevron-down";
+export { default as ClockTimeTwo } from "~icons/mdi/clock-time-two";
 export { default as Close } from "~icons/mdi/close";
+export { default as HandCoin } from "~icons/mdi/hand-coin";
+export { default as Heart } from "~icons/mdi/heart";
+export { default as Instagram } from "~icons/mdi/instagram";
+export { default as KeyVariant } from "~icons/mdi/key-variant";
+export { default as LocalRestaurant } from "~icons/mdi/local-restaurant";
 export { default as Menu } from "~icons/mdi/menu";
+export { default as NotificationsActive } from "~icons/mdi/notifications-active";
+export { default as StarCircleOutline } from "~icons/mdi/star-circle-outline";
+export { default as StarShooting } from "~icons/mdi/star-shooting";
+export { default as TikTok } from "~icons/ic/baseline-tiktok";

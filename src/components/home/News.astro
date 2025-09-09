@@ -21,7 +21,7 @@ const articles = await getCollection("articles");
     </Typography>
   </div>
 
-  <div class="grid grid-cols-3 gap-6">
+  <div class="grid grid-cols-3 gap-6 max-lg:grid-cols-1">
     {articles.map((article) => <NewsCard article={article} />)}
   </div>
 </section>

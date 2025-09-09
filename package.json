@@ -59,6 +59,7 @@
     "@astrojs/vercel": "^8.2.7",
     "@biomejs/biome": "^2.2.3",
     "@chromatic-com/storybook": "^4.1.1",
+    "@iconify-json/ic": "^1.2.4",
     "@storybook/addon-a11y": "^9.1.5",
     "@storybook/addon-docs": "^9.1.5",
     "@storybook/addon-vitest": "^9.1.5",

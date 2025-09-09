@@ -11,7 +11,9 @@ import RestaurantCarousel from "./RestaurantCarousel.astro";
 ---
 
 <section id="site-hero" class="relative overflow-hidden">
-  <div class="container grid grid-cols-[--spacing(180)_1fr] gap-16">
+  <div
+    class="container grid grid-cols-[--spacing(180)_1fr] max-lg:grid-cols-1 lg:gap-16"
+  >
     <header class="space-y-8 pt-48 pb-32">
       <Typography
         variant="display"
@@ -24,10 +26,10 @@ import RestaurantCarousel from "./RestaurantCarousel.astro";
           Good things happen
 
           <span
-            class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in font-script text-primary inline-block text-[6rem] leading-none tracking-normal delay-130 duration-1000"
+            class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in font-script text-primary inline-block text-[6rem] leading-none tracking-normal delay-130 duration-1000 max-lg:leading-[0.7]!"
           >
             last minute
-            <AnimatedUnderline delay={0.4} class="w-full" />
+            <AnimatedUnderline delay={0.4} class="w-full max-lg:mt-2" />
           </span>
         </span>
       </Typography>
@@ -39,8 +41,13 @@ import RestaurantCarousel from "./RestaurantCarousel.astro";
 
       <Separator className="w-full" />
 
-      <Stack orientation="row" align="center" gap="lg">
-        <DownloadQR className="size-40" />
+      <Stack
+        orientation="row"
+        className="max-lg:flex-col max-lg:items-start"
+        align="center"
+        gap="lg"
+      >
+        <DownloadQR className="max-w-40" />
 
         <div>
           <Typography variant="headline" size="sm">
@@ -53,8 +60,8 @@ import RestaurantCarousel from "./RestaurantCarousel.astro";
       </Stack>
     </header>
 
-    <div class="relative h-full flex-1">
-      <div class="absolute h-full">
+    <div class="relative h-full flex-1 max-lg:aspect-[0.4] max-lg:w-full">
+      <div class="h-full lg:absolute">
         <RestaurantCarousel />
       </div>
     </div>
@@ -64,7 +71,8 @@ import RestaurantCarousel from "./RestaurantCarousel.astro";
     src={background}
     alt="Hero Background"
     class="pointer-events-none absolute inset-0 size-full object-cover opacity-10"
-    layout="constrained"
+    layout="full-width"
+    loading="eager"
   />
 </section>
 
