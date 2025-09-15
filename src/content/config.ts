@@ -52,7 +52,6 @@ const testimonials = defineCollection({
   }),
   schema: z.object({
     name: z.string(),
-    label: z.string().optional(),
   }),
 });
 

@@ -12,7 +12,7 @@ interface Props {
 
 const { testimonial } = Astro.props;
 const {
-  data: { name, label },
+  data: { name },
 } = testimonial;
 const { Content } = await render(testimonial);
 ---
@@ -27,9 +27,6 @@ const { Content } = await render(testimonial);
   <cite class="not-italic">
     <Typography variant="title" size="sm">
       {name}
-    </Typography>
-    <Typography variant="body" color="secondary" size="sm">
-      {label}
     </Typography>
   </cite>
 </Card>
