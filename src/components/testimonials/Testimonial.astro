@@ -11,9 +11,11 @@ interface Props {
 }
 
 const { testimonial } = Astro.props;
+
 const {
   data: { name },
 } = testimonial;
+
 const { Content } = await render(testimonial);
 ---
 

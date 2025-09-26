@@ -1,7 +1,10 @@
 import { Cuer } from "cuer";
+
 import { cn } from "@/lib/utils";
+
 import Icon from "~icons/assets/icon";
-import { GradientBorder } from "../ui/GradientBorder";
+
+import { GradientBorder } from "@/components/ui/GradientBorder";
 
 interface DownloadQRProps extends React.HTMLAttributes<HTMLElement> {}
 

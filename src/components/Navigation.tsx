@@ -5,7 +5,7 @@ import { Stack } from "./ui/Stack";
 
 export function Navigation() {
   return (
-    <nav className="bg-coal/80 fixed top-4 left-1/2 z-999 container flex h-18 -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-gradient-to-br from-white/0 via-white/3 to-white/0 p-4 pl-8 backdrop-blur-md">
+    <nav className="bg-coal/80 fixed top-4 left-1/2 z-999 container flex h-16 -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-gradient-to-br from-white/0 via-white/3 to-white/0 p-4 pl-8 backdrop-blur-md">
       <Logo className="h-9 w-20" />
 
       <NavigationBar>

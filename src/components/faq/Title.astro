@@ -1,0 +1,17 @@
+---
+import { Typography } from "@/components/ui/Typography";
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<Typography
+  variant="title"
+  size="lg"
+  className={`mb-12 text-center ${className || ""}`}
+>
+  <slot />
+</Typography>

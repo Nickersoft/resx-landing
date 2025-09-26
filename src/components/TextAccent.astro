@@ -1,0 +1,18 @@
+---
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"span"> {}
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<span
+  {...rest}
+  class={cn(
+    "bg-sand-storm! -mb-8 inline-block bg-gradient-to-b from-white/50 bg-[size:100%_1lh] bg-clip-text bg-repeat-y pb-8 text-transparent bg-blend-soft-light",
+    className,
+  )}
+>
+  <slot />
+</span>

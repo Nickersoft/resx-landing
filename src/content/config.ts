@@ -1,36 +1,5 @@
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
-
-const authors = defineCollection({
-  loader: glob({
-    pattern: "authors/*.yml",
-    base: "src/data",
-  }),
-  schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      image: image(),
-      linkedin: z.string(),
-    }),
-});
-
-const blog = defineCollection({
-  loader: glob({
-    pattern: "blog/*.{mdx,md}",
-    base: "src/data",
-  }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      subtitle: z.string().optional(),
-      date: z.date(),
-      authors: z
-        .array(reference("authors"))
-        .transform((authors) => Array.from(new Set(authors))),
-      image: image(),
-      draft: z.boolean().default(false),
-    }),
-});
 
 const restaurants = defineCollection({
   loader: glob({
@@ -68,10 +37,20 @@ const articles = defineCollection({
     }),
 });
 
+const faq = defineCollection({
+  loader: glob({
+    pattern: "faq/*.md",
+    base: "src/data",
+  }),
+  schema: z.object({
+    question: z.string(),
+    order: z.number().optional(),
+  }),
+});
+
 export const collections = {
-  authors,
-  blog,
   testimonials,
   articles,
   restaurants,
+  faq,
 };

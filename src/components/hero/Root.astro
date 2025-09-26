@@ -1,0 +1,79 @@
+---
+import { Separator } from "@/components/ui/Separator";
+import { Stack } from "@/components/ui/Stack";
+import { Typography } from "@/components/ui/Typography";
+
+import { DownloadQR } from "@/components/DownloadQR";
+
+interface Props {
+  withParallax?: boolean;
+}
+
+const { withParallax = false } = Astro.props;
+---
+
+<site-hero data-parallax={withParallax}>
+  <section class="from-sand-storm/10 relative overflow-hidden bg-gradient-to-b">
+    <div
+      class="container grid grid-cols-[--spacing(180)_1fr] max-lg:grid-cols-1 lg:gap-16"
+    >
+      <header class="space-y-8 pt-48 pb-32">
+        <slot name="title" />
+        <slot name="subtitle" />
+
+        <Separator className="w-full" />
+
+        <Stack
+          orientation="row"
+          className="max-lg:flex-col max-lg:items-start"
+          align="center"
+          gap="lg"
+        >
+          <DownloadQR className="max-w-40" />
+
+          <div>
+            <Typography variant="headline" size="sm">
+              Download for your device
+            </Typography>
+            <Typography variant="body" size="md">
+              Scan the QR code to download for your device
+            </Typography>
+          </div>
+        </Stack>
+      </header>
+
+      <div class="relative h-full flex-1 max-lg:aspect-[0.4] max-lg:w-full">
+        <div class="h-full lg:absolute">
+          <slot name="visual" />
+        </div>
+      </div>
+    </div>
+
+    <slot name="background" />
+  </section>
+</site-hero>
+
+<script>
+  import { scroll, animate } from "motion";
+
+  class Hero extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      const hero = this.querySelector("section");
+
+      if (hero && this.dataset.parallax === "true") {
+        const animation = animate(hero, { y: [0, 300] });
+
+        scroll(animation, {
+          offset: ["start start", "end start"],
+          target: hero,
+        });
+      }
+    }
+  }
+
+  customElements.define("site-hero", Hero);
+</script>

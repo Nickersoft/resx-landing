@@ -12,3 +12,5 @@ export { default as NotificationsActive } from "~icons/mdi/notifications-active"
 export { default as StarCircleOutline } from "~icons/mdi/star-circle-outline";
 export { default as StarShooting } from "~icons/mdi/star-shooting";
 export { default as TikTok } from "~icons/ic/baseline-tiktok";
+export { default as PiggyBank } from "~icons/mdi/piggy-bank";
+export { default as Lock } from "~icons/mdi/lock";

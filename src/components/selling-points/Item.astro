@@ -1,0 +1,25 @@
+---
+import { Stack } from "@/components/ui/Stack";
+import { Typography } from "../ui/Typography";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Stack orientation="column" className="gap-3">
+  <div class="mask-b-to-black/60 [&_svg]:size-10">
+    <slot />
+  </div>
+  <div>
+    <Typography variant="title" size="md">
+      {title}
+    </Typography>
+    <Typography variant="body" size="md" color="secondary">
+      {description}
+    </Typography>
+  </div>
+</Stack>

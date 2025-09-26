@@ -1,0 +1,27 @@
+---
+import { cva, type VariantProps } from "class-variance-authority";
+
+const variants = cva("z-20 py-24", {
+  variants: {
+    withBackground: {
+      true: "rounded-t-[6%] shadow-white/20 backdrop-blur-lg lg:-mt-8 shadow-[0_-2px_0_-1px] bg-gradient-to-b from-white/10 to-50%  bg-background ",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    withBackground: false,
+  },
+});
+
+interface Props extends VariantProps<typeof variants> {
+  withBackground?: boolean;
+}
+
+const { withBackground } = Astro.props;
+---
+
+<section class={variants({ withBackground })}>
+  <div class="container">
+    <slot />
+  </div>
+</section>

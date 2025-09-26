@@ -1,10 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+
 import { Card, CardContent } from "@/components/ui/Card";
 import { Typography } from "@/components/ui/Typography";
-import { Stack } from "../ui/Stack";
-import { StarRating } from "../ui/StarRating";
+import { Stack } from "@/components/ui/Stack";
+import { StarRating } from "@/components/ui/StarRating";
 
 interface Props {
   restaurant: CollectionEntry<"restaurants">;

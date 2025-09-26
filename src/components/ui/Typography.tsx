@@ -8,7 +8,7 @@ export const typographyVariants = cva("", {
     variant: {
       display: "font-display font-normal",
       headline: "font-display font-medium",
-      title: "font-sans font-bold tracking-tight",
+      title: "font-sans font-semibold tracking-tight",
       body: "font-sans font-normal",
       label: "font-sans font-normal",
     },

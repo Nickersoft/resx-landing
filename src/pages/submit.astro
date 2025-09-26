@@ -13,6 +13,8 @@ import * as Hero from "@/components/hero";
 import * as News from "@/components/news";
 import * as Premium from "@/components/premium";
 import * as Testimonials from "@/components/testimonials";
+import * as SellingPoints from "@/components/selling-points";
+import * as FAQ from "@/components/faq";
 
 import PageLayout from "@/layouts/PageLayout.astro";
 import AnimatedUnderline from "@/components/AnimatedUnderline.astro";
@@ -22,8 +24,10 @@ import {
   HandCoin,
   Heart,
   KeyVariant,
+  Lock,
   LocalRestaurant,
   NotificationsActive,
+  PiggyBank,
   StarCircleOutline,
   StarShooting,
 } from "@/icons";
@@ -32,45 +36,36 @@ import TextAccent from "@/components/TextAccent.astro";
 
 const testimonials = await getCollection("testimonials");
 const articles = await getCollection("articles");
+const faqs = await getCollection("faq");
 ---
 
 <PageLayout title="Home">
   {/* Hero Section */}
 
-  <Hero.Root withParallax>
+  <Hero.Root>
     <Hero.Title
-      className="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block leading-[0.65em]! duration-2000 ease-out"
+      className="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block duration-2000 ease-out"
       slot="title"
     >
-      Good things happen
-      <span
-        class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in font-script text-primary inline-block text-[6rem] leading-none tracking-normal delay-130 duration-2000 ease-out max-lg:leading-[0.7]!"
+      Plans changed?
+      <TextAccent
+        class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in text-primary inline-block delay-130 duration-2000 ease-out"
       >
-        last minute
-        <AnimatedUnderline delay={1} class="w-full max-lg:mt-2" />
-      </span>
+        Skip the fees.
+      </TextAccent>
     </Hero.Title>
 
     <Hero.Subtitle slot="subtitle">
-      <strong>Never miss out on the best tables.</strong> Claim last-minute openings
-      or submit reservations you can't use.
+      <strong>Your canceled res is someone else’s dream dinner</strong> – share it
+      with the ResX community and avoid unwanted cancellation fees.
     </Hero.Subtitle>
 
     <RestaurantCarousel slot="visual" />
-
-    <Image
-      slot="background"
-      src={hero}
-      alt="Hero Background"
-      class="pointer-events-none absolute inset-0 size-full object-cover opacity-10"
-      layout="full-width"
-      loading="eager"
-    />
   </Hero.Root>
 
   {/* How It Works Section */}
 
-  <HowItWorks.Root withBackground>
+  <HowItWorks.Root>
     <HowItWorks.Header>
       How it <TextAccent>works</TextAccent>
     </HowItWorks.Header>
@@ -117,56 +112,31 @@ const articles = await getCollection("articles");
     </HowItWorks.StepList>
   </HowItWorks.Root>
 
-  {/* Premium Section */}
-
-  <Premium.Root>
-    <Premium.Title slot="title">
-      Get even more with <TextAccent>ResX Premium</TextAccent>
-    </Premium.Title>
-    <Premium.Description slot="description">
-      Claim. Earn. Save with ResX Rewards.
-    </Premium.Description>
-    <Premium.FeatureList
-      title="Supercharge your experience with"
-      slot="feature-list"
-    >
-      <Premium.Feature>
-        <Calendar slot="icon" />
-        <strong>Early access</strong> to all reservations up to 5 days in advance
-      </Premium.Feature>
-      <Premium.Feature>
-        <NotificationsActive slot="icon" />
-        Up to <strong>5 custom and 5 restaurant alerts</strong>
-      </Premium.Feature>
-      <Premium.Feature>
-        <LocalRestaurant slot="icon" />
-        <strong>More reservation bookings</strong> per week
-      </Premium.Feature>
-      <Premium.Feature>
-        <HandCoin slot="icon" />
-        <strong>Earn more tokens</strong> from your submissions
-      </Premium.Feature>
-      <Premium.Feature>
-        <ClockTimeTwo slot="icon" />
-        <strong>Priority access</strong> for alerts 5 minutes before everyone else
-      </Premium.Feature>
-      <Premium.Feature>
-        <StarCircleOutline slot="icon" />
-        <strong>Unlimited access</strong> to exclusive Premium reservations
-      </Premium.Feature>
-    </Premium.FeatureList>
-  </Premium.Root>
-
-  {/* Testimonials Section */}
-
-  <Testimonials.Root>
-    <Testimonials.Title slot="title">
-      Join 100K+ food lovers <TextAccent>
-        elevating their dining experience
-      </TextAccent>
-    </Testimonials.Title>
-    <Testimonials.Carousel testimonials={testimonials} slot="carousel" />
-  </Testimonials.Root>
+  <SellingPoints.Root>
+    <SellingPoints.Title>
+      The <TextAccent>smarter way</TextAccent> to cancel
+    </SellingPoints.Title>
+    <SellingPoints.List>
+      <SellingPoints.Item
+        title="No wasted tables. No lost money."
+        description="Dodge cancellation fees by passing along your reservation to other hungry users."
+      >
+        <PiggyBank />
+      </SellingPoints.Item>
+      <SellingPoints.Item
+        title="Effortless & secure"
+        description="We handle the transaction securely from start to finish, so you can submit with confidence."
+      >
+        <Lock />
+      </SellingPoints.Item>
+      <SellingPoints.Item
+        title="Join a community of trusted diners."
+        description="Help restaurants avoid no-shows and fellow ResXers score their dream seats."
+      >
+        <Heart />
+      </SellingPoints.Item>
+    </SellingPoints.List>
+  </SellingPoints.Root>
 
   {/* News Section */}
 
@@ -178,4 +148,19 @@ const articles = await getCollection("articles");
       {articles.map((article) => <News.Article article={article} />)}
     </News.ArticleList>
   </News.Root>
+
+  {/* FAQ Section */}
+
+  <FAQ.Root>
+    <FAQ.Title slot="title">
+      Frequently Asked <TextAccent>Questions</TextAccent>
+    </FAQ.Title>
+    <FAQ.List slot="faq-list">
+      {
+        faqs
+          .sort((a, b) => (a.data.order || 999) - (b.data.order || 999))
+          .map((faq) => <FAQ.FAQItem faq={faq} />)
+      }
+    </FAQ.List>
+  </FAQ.Root>
 </PageLayout>
