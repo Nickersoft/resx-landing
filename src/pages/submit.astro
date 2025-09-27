@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+
 import { Image } from "astro:assets";
 
 import * as HowItWorks from "@/components/how-it-works";
@@ -17,26 +18,18 @@ import * as SellingPoints from "@/components/selling-points";
 import * as FAQ from "@/components/faq";
 
 import PageLayout from "@/layouts/PageLayout.astro";
-import AnimatedUnderline from "@/components/AnimatedUnderline.astro";
-import {
-  Calendar,
-  ClockTimeTwo,
-  HandCoin,
-  Heart,
-  KeyVariant,
-  Lock,
-  LocalRestaurant,
-  NotificationsActive,
-  PiggyBank,
-  StarCircleOutline,
-  StarShooting,
-} from "@/icons";
+
+import { Heart, KeyVariant, Lock, PiggyBank, StarShooting } from "@/icons";
 import RestaurantCarousel from "@/components/RestaurantCarousel.astro";
 import TextAccent from "@/components/TextAccent.astro";
 
-const testimonials = await getCollection("testimonials");
 const articles = await getCollection("articles");
-const faqs = await getCollection("faq");
+
+const faqs = (await getCollection("faq")).map((faq) => ({
+  answer: faq.rendered?.html ?? "",
+  id: faq.id,
+  question: faq.data.question,
+}));
 ---
 
 <PageLayout title="Home">
@@ -152,15 +145,9 @@ const faqs = await getCollection("faq");
   {/* FAQ Section */}
 
   <FAQ.Root>
-    <FAQ.Title slot="title">
+    <FAQ.Title>
       Frequently Asked <TextAccent>Questions</TextAccent>
     </FAQ.Title>
-    <FAQ.List slot="faq-list">
-      {
-        faqs
-          .sort((a, b) => (a.data.order || 999) - (b.data.order || 999))
-          .map((faq) => <FAQ.FAQItem faq={faq} />)
-      }
-    </FAQ.List>
+    <FAQ.QuestionList client:visible questions={faqs} />
   </FAQ.Root>
 </PageLayout>
