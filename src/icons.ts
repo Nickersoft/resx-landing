@@ -1,4 +1,5 @@
 export { default as Calendar } from "~icons/mdi/calendar";
+export { default as MapSearch } from "~icons/mdi/map-search";
 export { default as ChevronDown } from "~icons/mdi/chevron-down";
 export { default as ClockTimeTwo } from "~icons/mdi/clock-time-two";
 export { default as Close } from "~icons/mdi/close";

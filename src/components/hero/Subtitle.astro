@@ -10,7 +10,10 @@ const { className, ...rest } = Astro.props;
 <Typography
   variant="body"
   size="lg"
-  className={cn("max-w-2xl px-2.5", className)}
+  className={cn(
+    "animate-in fill-mode-both slide-in-from-bottom-6 fade-in inline-block max-w-2xl px-1.5 delay-500 duration-1000 ease-out",
+    className,
+  )}
 >
   <slot />
 </Typography>

@@ -38,16 +38,9 @@ const faqs = (await getCollection("faq")).map((faq) => ({
   {/* Hero Section */}
 
   <Hero.Root>
-    <Hero.Title
-      className="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block duration-1000 ease-out"
-      slot="title"
-    >
+    <Hero.Title slot="title">
       Plans changed?
-      <TextAccent
-        class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in text-primary inline-block delay-130 duration-1000 ease-out"
-      >
-        Skip the fees.
-      </TextAccent>
+      <TextAccent>Skip the fees.</TextAccent>
     </Hero.Title>
 
     <Hero.Subtitle slot="subtitle">

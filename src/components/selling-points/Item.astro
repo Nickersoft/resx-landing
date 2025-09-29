@@ -10,7 +10,10 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<Stack orientation="column" className="gap-3">
+<Stack
+  orientation="column"
+  className="gap-3 px-8 first-of-type:pl-1 last-of-type:pr-1"
+>
   <div class="mask-b-to-black/60 [&_svg]:size-10">
     <slot />
   </div>

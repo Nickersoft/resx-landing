@@ -17,7 +17,7 @@ export function Navigation({
   ];
 
   return (
-    <nav className="bg-coal/80 fixed top-4 left-1/2 z-999 container flex h-16 -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-gradient-to-br from-white/0 via-white/3 to-white/0 p-4 pl-8 backdrop-blur-md">
+    <nav className="bg-coal/80 fixed top-4 left-1/2 z-999 container flex h-16 -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-gradient-to-br from-white/0 via-white/3 to-white/0 pl-8 backdrop-blur-md">
       <a href="/">
         <Logo className="h-9 w-20" />
       </a>
@@ -27,17 +27,17 @@ export function Navigation({
           orientation="row"
           align="center"
           gap="lg"
-          className="max-lg:h-full max-lg:flex-col max-lg:items-start"
+          className="h-full max-lg:flex-col max-lg:items-start"
         >
           <Stack
             orientation="row"
-            gap="lg"
+            gap="none"
             align="center"
-            className="[&>a]:text-muted-foreground [&>a]:hover:text-primary flex text-sm max-lg:flex-1 max-lg:flex-col max-lg:items-start max-lg:justify-center max-lg:text-lg [&>a]:transition-colors [&>a]:duration-300"
+            className="[&>a]:text-muted-foreground [&>a]:hover:text-primary flex h-full text-sm max-lg:flex-1 max-lg:flex-col max-lg:items-start max-lg:justify-center max-lg:text-lg [&>a]:transition-colors [&>a]:duration-300"
           >
             {links.map((link) => (
               <a
-                className="aria-[current=page]:text-primary font-medium"
+                className="aria-[current=page]:text-primary flex h-full items-center px-4 py-4 font-medium"
                 aria-current={
                   currentPage.pathname.startsWith(link.href) ? "page" : "false"
                 }

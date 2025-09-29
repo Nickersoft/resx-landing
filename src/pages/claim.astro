@@ -2,14 +2,13 @@
 import { getEntry, getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
-import earn from "@/assets/earn.png";
-import share from "@/assets/share.png";
-import notifications from "@/assets/notifications.png";
-import phone from "@/assets/phone-submit.png";
+import claim from "@/assets/claim.png";
+import phone from "@/assets/phone-claim.png";
+import claimButton from "@/assets/claim-button.png";
+import booked from "@/assets/booked.png";
 
 import * as Hero from "@/components/hero";
 import * as HowItWorks from "@/components/how-it-works";
-import * as Testimonials from "@/components/testimonials";
 import * as SellingPoints from "@/components/selling-points";
 import * as FAQ from "@/components/faq";
 
@@ -18,15 +17,15 @@ import TextAccent from "@/components/TextAccent.astro";
 
 import {
   EmoticonOutline,
+  HandCoin,
   Heart,
   Lock,
+  MapSearch,
   PartyPopper,
   Star,
   StarShooting,
   TrayArrowUp,
 } from "@/icons";
-
-const testimonial = await getEntry("testimonials", "sl");
 
 const faqs = (await getCollection("faq")).map((faq) => ({
   answer: faq.rendered?.html ?? "",
@@ -39,16 +38,9 @@ const faqs = (await getCollection("faq")).map((faq) => ({
   {/* Hero Section */}
 
   <Hero.Root>
-    <Hero.Title
-      className="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block text-[4.5em] text-wrap duration-1000 ease-out"
-      slot="title"
-    >
+    <Hero.Title className="text-[4.3em] text-wrap" slot="title">
       Last-minute dinner?
-      <TextAccent
-        class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in text-primary inline-block delay-130 duration-1000 ease-out"
-      >
-        Skip the wait with ResX.
-      </TextAccent>
+      <TextAccent> Skip the wait with ResX. </TextAccent>
     </Hero.Title>
 
     <Hero.Subtitle slot="subtitle">
@@ -76,24 +68,18 @@ const faqs = (await getCollection("faq")).map((faq) => ({
         title="Discover"
         description="Browse last-minute tables submitted by our community of diners."
       >
-        <TrayArrowUp slot="icon" />
-        <Image
-          src={share}
-          layout="full-width"
-          slot="image"
-          class="object-bottom! max-lg:object-top!"
-          alt="Discover"
-        />
+        <MapSearch slot="icon" />
+        <Image src={claim} layout="full-width" slot="image" alt="Discover" />
       </HowItWorks.Step>
       <HowItWorks.Step
         title="Claim"
         description="See a spot you like? Secure your reservation instantly with just a few taps."
       >
-        <StarShooting slot="icon" />
+        <HandCoin slot="icon" />
         <Image
-          src={earn}
-          class="object-bottom! max-lg:object-top!"
-          layout="full-width"
+          src={claimButton}
+          class="mask-t-from-90% mask-t-to-transparent object-[50%_150%] drop-shadow-xl drop-shadow-black"
+          layout="constrained"
           slot="image"
           alt="Claim"
         />
@@ -103,13 +89,7 @@ const faqs = (await getCollection("faq")).map((faq) => ({
         description="Get confirmed 2 hours beforehand & ask the original submitter any questions you have."
       >
         <EmoticonOutline slot="icon" />
-        <Image
-          src={notifications}
-          class="object-[50%_70%] max-lg:object-[50%_20%]"
-          layout="full-width"
-          slot="image"
-          alt="You're In"
-        />
+        <Image src={booked} layout="full-width" slot="image" alt="You're In" />
       </HowItWorks.Step>
     </HowItWorks.StepList>
   </HowItWorks.Root>

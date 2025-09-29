@@ -38,17 +38,12 @@ const articles = await getCollection("articles");
   {/* Hero Section */}
 
   <Hero.Root withParallax>
-    <Hero.Title
-      className="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block leading-[0.65em]! duration-2000 ease-out"
-      slot="title"
-    >
+    <Hero.Title className="mb-2 leading-[0.65em]!" slot="title">
       Good things happen
-      <span
-        class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in font-script text-primary inline-block text-[6rem] leading-none tracking-normal delay-130 duration-2000 ease-out max-lg:leading-[0.7]!"
-      >
+      <TextAccent class="font-script text-[6rem] max-lg:leading-[0.7]!">
         last minute
-        <AnimatedUnderline delay={1} class="w-full max-lg:mt-2" />
-      </span>
+        <AnimatedUnderline delay={1} class="-mt-2 w-full max-lg:mt-2" />
+      </TextAccent>
     </Hero.Title>
 
     <Hero.Subtitle slot="subtitle">
@@ -62,7 +57,7 @@ const articles = await getCollection("articles");
       slot="background"
       src={hero}
       alt="Hero Background"
-      class="pointer-events-none absolute inset-0 size-full object-cover opacity-10"
+      class="pointer-events-none absolute inset-0 size-full object-cover opacity-4"
       layout="full-width"
       loading="eager"
     />
