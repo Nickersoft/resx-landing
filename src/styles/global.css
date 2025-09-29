@@ -19,6 +19,6 @@
   }
 
   strong {
-    @apply font-medium;
+    @apply font-semibold;
   }
 }

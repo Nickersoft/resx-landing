@@ -20,7 +20,8 @@ import {
   EmoticonOutline,
   Heart,
   Lock,
-  PiggyBank,
+  PartyPopper,
+  Star,
   StarShooting,
   TrayArrowUp,
 } from "@/icons";
@@ -39,20 +40,20 @@ const faqs = (await getCollection("faq")).map((faq) => ({
 
   <Hero.Root>
     <Hero.Title
-      className="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block duration-1000 ease-out"
+      className="animate-in fill-mode-both slide-in-from-bottom-10 fade-in inline-block text-[4.5em] text-wrap duration-1000 ease-out"
       slot="title"
     >
-      Plans changed?
+      Last-minute dinner?
       <TextAccent
         class="animate-in fill-mode-both slide-in-from-bottom-10 fade-in text-primary inline-block delay-130 duration-1000 ease-out"
       >
-        Skip the fees.
+        Skip the wait with ResX.
       </TextAccent>
     </Hero.Title>
 
     <Hero.Subtitle slot="subtitle">
-      <strong>Your canceled res is someone else’s dream dinner</strong> – share it
-      with the ResX community and avoid unwanted cancellation fees.
+      <strong>Snag the coveted tables that other diners can't use</strong> and turn
+      any night into your perfect night out. No connections, no waitlists, no hassle.
     </Hero.Subtitle>
 
     <Image
@@ -72,8 +73,8 @@ const faqs = (await getCollection("faq")).map((faq) => ({
     </HowItWorks.Header>
     <HowItWorks.StepList>
       <HowItWorks.Step
-        title="Submit"
-        description="Upload your reservation confirmations, fees, and more in just a few steps."
+        title="Discover"
+        description="Browse last-minute tables submitted by our community of diners."
       >
         <TrayArrowUp slot="icon" />
         <Image
@@ -81,12 +82,12 @@ const faqs = (await getCollection("faq")).map((faq) => ({
           layout="full-width"
           slot="image"
           class="object-bottom! max-lg:object-top!"
-          alt="Claim"
+          alt="Discover"
         />
       </HowItWorks.Step>
       <HowItWorks.Step
-        title="Earn"
-        description="Earn tokens and rewards every time you submit as new reservation."
+        title="Claim"
+        description="See a spot you like? Secure your reservation instantly with just a few taps."
       >
         <StarShooting slot="icon" />
         <Image
@@ -94,12 +95,12 @@ const faqs = (await getCollection("faq")).map((faq) => ({
           class="object-bottom! max-lg:object-top!"
           layout="full-width"
           slot="image"
-          alt="Share"
+          alt="Claim"
         />
       </HowItWorks.Step>
       <HowItWorks.Step
-        title="Feel Good"
-        description="We'll send you a quick ping when your table is claimed and you made someone's night."
+        title="You're In"
+        description="Get confirmed 2 hours beforehand & ask the original submitter any questions you have."
       >
         <EmoticonOutline slot="icon" />
         <Image
@@ -107,37 +108,40 @@ const faqs = (await getCollection("faq")).map((faq) => ({
           class="object-[50%_70%] max-lg:object-[50%_20%]"
           layout="full-width"
           slot="image"
-          alt="Earn"
+          alt="You're In"
         />
       </HowItWorks.Step>
     </HowItWorks.StepList>
   </HowItWorks.Root>
 
-  {/* Testimonial  */}
-  {testimonial && <Testimonials.Callout testimonial={testimonial} />}
-
   <SellingPoints.Root>
     <SellingPoints.Title>
-      The <TextAccent>smarter way</TextAccent> to cancel
+      <TextAccent>Your shortcut</TextAccent> to a better table
     </SellingPoints.Title>
     <SellingPoints.List>
       <SellingPoints.Item
-        title="No wasted tables. No lost money."
-        description="Dodge cancellation fees by passing along your reservation to other hungry users."
+        title="Unlock the exclusive"
+        description="Score hard-to-get tables at the city's most coveted tables without the waitlists or hassle."
       >
-        <PiggyBank />
+        <Star />
       </SellingPoints.Item>
       <SellingPoints.Item
-        title="Effortless & secure"
-        description="We handle the transaction securely from start to finish, so you can submit with confidence."
+        title="Seamless & secure"
+        description="Our process is simple, secure, and completely risk-free from start to finish."
       >
         <Lock />
       </SellingPoints.Item>
       <SellingPoints.Item
-        title="Join a community of trusted diners."
-        description="Help restaurants avoid no-shows and fellow ResXers score their dream seats."
+        title="Diner-to-Diner"
+        description="Every table comes from a trusted community member. No scalpers or bots here."
       >
         <Heart />
+      </SellingPoints.Item>
+      <SellingPoints.Item
+        title="Embrace Spontaneity"
+        description="The best nights are unplanned. Discover and claim your perfect last-minute table for tonight."
+      >
+        <PartyPopper />
       </SellingPoints.Item>
     </SellingPoints.List>
   </SellingPoints.Root>

@@ -37,7 +37,7 @@ const CardTitle = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      typographyVariants({ variant: "display", size: "sm" }),
+      typographyVariants({ variant: "headline", size: "lg" }),
       className,
     )}
     {...props}
@@ -52,7 +52,7 @@ const CardDescription = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      typographyVariants({ variant: "body", color: "secondary", size: "lg" }),
+      typographyVariants({ variant: "body", color: "secondary", size: "md" }),
       className,
     )}
     {...props}

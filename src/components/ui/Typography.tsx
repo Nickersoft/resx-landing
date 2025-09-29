@@ -53,7 +53,7 @@ export const typographyVariants = cva("", {
     {
       variant: "headline",
       size: "lg",
-      class: "text-3xl",
+      class: "text-3xl font-normal",
     },
     {
       variant: "headline",

@@ -9,7 +9,7 @@ export interface Props extends BaseLayoutProps {}
 
 <BaseLayout {...Astro.props}>
   <main>
-    <Navigation client:load />
+    <Navigation currentPage={Astro.url} client:load />
     <slot />
     <Footer />
   </main>

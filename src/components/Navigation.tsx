@@ -3,10 +3,24 @@ import Logo from "~icons/assets/logo";
 import { Button } from "./ui/Button";
 import { Stack } from "./ui/Stack";
 
-export function Navigation() {
+interface NavigationProps {
+  currentPage: URL;
+}
+
+export function Navigation({
+  currentPage,
+}: NavigationProps): React.JSX.Element {
+  const links = [
+    { href: "/about", label: "About ResX" },
+    { href: "/submit", label: "Submit" },
+    { href: "/claim", label: "Claim" },
+  ];
+
   return (
     <nav className="bg-coal/80 fixed top-4 left-1/2 z-999 container flex h-16 -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-gradient-to-br from-white/0 via-white/3 to-white/0 p-4 pl-8 backdrop-blur-md">
-      <Logo className="h-9 w-20" />
+      <a href="/">
+        <Logo className="h-9 w-20" />
+      </a>
 
       <NavigationBar>
         <Stack
@@ -21,9 +35,18 @@ export function Navigation() {
             align="center"
             className="[&>a]:text-muted-foreground [&>a]:hover:text-primary flex text-sm max-lg:flex-1 max-lg:flex-col max-lg:items-start max-lg:justify-center max-lg:text-lg [&>a]:transition-colors [&>a]:duration-300"
           >
-            <a href="#">About ResX</a>
-            <a href="#">Submit</a>
-            <a href="#">Claim</a>
+            {links.map((link) => (
+              <a
+                className="aria-[current=page]:text-primary font-medium"
+                aria-current={
+                  currentPage.pathname.startsWith(link.href) ? "page" : "false"
+                }
+                key={link.href}
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))}
           </Stack>
 
           <Button className="max-lg:h-12 max-lg:w-full max-lg:text-lg">

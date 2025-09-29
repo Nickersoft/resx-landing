@@ -1,5 +1,6 @@
 ---
 import { Typography } from "@/components/ui/Typography";
+import { cn } from "@/lib/utils";
 
 interface Props {
   className?: string;
@@ -8,10 +9,6 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<Typography
-  variant="title"
-  size="lg"
-  className={`mb-12 text-center ${className || ""}`}
->
+<Typography variant="display" size="sm" className={cn("mb-2 py-4", className)}>
   <slot />
 </Typography>

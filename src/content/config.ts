@@ -16,8 +16,8 @@ const restaurants = defineCollection({
 
 const testimonials = defineCollection({
   loader: glob({
-    pattern: "testimonials/*.{mdx,md}",
-    base: "src/data",
+    pattern: "*.{mdx,md}",
+    base: "src/data/testimonials",
   }),
   schema: z.object({
     name: z.string(),

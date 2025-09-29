@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Quote from "~icons/assets/quote";
+import { Typography } from "../ui/Typography";
+import { render } from "astro:content";
+import { Stack } from "../ui/Stack";
+
+interface Props {
+  testimonial: CollectionEntry<"testimonials">;
+}
+
+const { testimonial } = Astro.props;
+
+const { Content } = await render(testimonial);
+---
+
+<section class="from-sand-storm/15 bg-gradient-to-t py-24 text-center">
+  <Stack orientation="column" centered className="mx-auto max-w-2xl">
+    <Quote className="size-20" />
+    <div
+      class="[&_strong]:text-foreground text-secondary-foreground mb-2 text-lg"
+    >
+      <Content />
+    </div>
+    <Typography variant="title" size="sm">
+      {testimonial.data.name}
+    </Typography>
+  </Stack>
+</section>
