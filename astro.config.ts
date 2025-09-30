@@ -42,9 +42,9 @@ export default defineConfig({
   vite: {
     assetsInclude: [/\.riv$/],
     plugins: [
-      // @ts-expect-error https://github.com/withastro/astro/issues/14030
+      // @ts-ignore https://github.com/withastro/astro/issues/14030
       tailwindcss(),
-      // @ts-expect-error
+      // @ts-ignore
       icons({
         compiler: "jsx",
         customCollections: {
