@@ -4,15 +4,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/Accordion";
-
-interface Question {
-  id: string;
-  question: string;
-  answer: string;
-}
+import type { CollectionEntry } from "astro:content";
 
 interface QuestionListProps {
-  questions: Question[];
+  questions: CollectionEntry<"faq">[];
 }
 
 export function QuestionList({
@@ -23,10 +18,14 @@ export function QuestionList({
       {questions.map((faq) => (
         <AccordionItem key={faq.id} value={faq.id}>
           <AccordionTrigger className="text-left">
-            {faq.question}
+            {faq.data.question}
           </AccordionTrigger>
           <AccordionContent className="prose prose-sm text-foreground prose-invert max-w-none [&_p]:first:mt-0 [&_p]:last:mb-0">
-            <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: faq.rendered?.html ?? "",
+              }}
+            />
           </AccordionContent>
         </AccordionItem>
       ))}

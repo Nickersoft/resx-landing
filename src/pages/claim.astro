@@ -27,11 +27,9 @@ import {
   TrayArrowUp,
 } from "@/icons";
 
-const faqs = (await getCollection("faq")).map((faq) => ({
-  answer: faq.rendered?.html ?? "",
-  id: faq.id,
-  question: faq.data.question,
-}));
+const faqs = await getCollection("faq", (entry) => {
+  return entry.data.pages?.includes("home");
+});
 ---
 
 <PageLayout title="Submit" templated>
@@ -129,9 +127,17 @@ const faqs = (await getCollection("faq")).map((faq) => ({
   {/* FAQ Section */}
 
   <FAQ.Root>
-    <FAQ.Title>
-      Frequently Asked <TextAccent>Questions</TextAccent>
-    </FAQ.Title>
+    <FAQ.Header>
+      <FAQ.Title>
+        Claiming a reservation is exciting, but we understand
+        <TextAccent>you might have questions. </TextAccent>
+      </FAQ.Title>
+      <FAQ.Subtitle>
+        All reservations on ResX are shared by our community, so we ask that
+        you’re mindful and considerate when claiming one.
+      </FAQ.Subtitle>
+    </FAQ.Header>
+
     <FAQ.QuestionList client:visible questions={faqs} />
   </FAQ.Root>
 </PageLayout>

@@ -33,11 +33,11 @@ export function Navigation({
             orientation="row"
             gap="none"
             align="center"
-            className="[&>a]:text-muted-foreground [&>a]:hover:text-primary flex h-full text-sm max-lg:flex-1 max-lg:flex-col max-lg:items-start max-lg:justify-center max-lg:text-lg [&>a]:transition-colors [&>a]:duration-300"
+            className="[&>a]:text-muted-foreground [&>a]:hover:text-primary flex text-sm max-lg:flex-1 max-lg:flex-col max-lg:items-start max-lg:justify-center max-lg:text-lg lg:h-full [&>a]:transition-colors [&>a]:duration-300"
           >
             {links.map((link) => (
               <a
-                className="aria-[current=page]:text-primary flex h-full items-center px-4 py-4 font-medium"
+                className="aria-[current=page]:text-primary flex items-center px-4 py-4 font-medium lg:h-full"
                 aria-current={
                   currentPage.pathname.startsWith(link.href) ? "page" : "false"
                 }

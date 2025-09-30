@@ -45,6 +45,7 @@ const faq = defineCollection({
   schema: z.object({
     question: z.string(),
     order: z.number().optional(),
+    pages: z.array(z.enum(["home", "submit", "claim"])).default(["home"]),
   }),
 });
 

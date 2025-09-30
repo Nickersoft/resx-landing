@@ -29,6 +29,7 @@ import {
 } from "@/icons";
 import RestaurantCarousel from "@/components/RestaurantCarousel.astro";
 import TextAccent from "@/components/TextAccent.astro";
+import { getEntries } from "astro:content";
 
 const testimonials = await getCollection("testimonials");
 const articles = await getCollection("articles");

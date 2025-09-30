@@ -27,11 +27,9 @@ import {
 
 const testimonial = await getEntry("testimonials", "sl");
 
-const faqs = (await getCollection("faq")).map((faq) => ({
-  answer: faq.rendered?.html ?? "",
-  id: faq.id,
-  question: faq.data.question,
-}));
+const faqs = await getCollection("faq", (entry) =>
+  entry.data.pages.includes("submit"),
+);
 ---
 
 <PageLayout title="Submit" templated>
@@ -138,9 +136,20 @@ const faqs = (await getCollection("faq")).map((faq) => ({
   {/* FAQ Section */}
 
   <FAQ.Root>
-    <FAQ.Title>
-      Frequently Asked <TextAccent>Questions</TextAccent>
-    </FAQ.Title>
+    <FAQ.Header>
+      <FAQ.Title>
+        Submitting a reservation is <TextAccent>
+          just as important as claiming one.
+        </TextAccent>
+      </FAQ.Title>
+      <FAQ.Subtitle>
+        When you share a reservation, you’re helping someone else in the
+        community get a great table they might not otherwise find. We ask that
+        you submit reservations thoughtfully and with accurate details so others
+        can count on them.
+      </FAQ.Subtitle>
+    </FAQ.Header>
+
     <FAQ.QuestionList client:visible questions={faqs} />
   </FAQ.Root>
 </PageLayout>
