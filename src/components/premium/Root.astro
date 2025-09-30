@@ -1,16 +1,9 @@
 ---
+import * as Download from "@/components/download";
+
+import InView from "@/components/InView.astro";
+
 import { Separator } from "@/components/ui/Separator";
-import { Stack } from "@/components/ui/Stack";
-import { Typography } from "@/components/ui/Typography";
-import {
-  Calendar,
-  ClockTimeTwo,
-  HandCoin,
-  LocalRestaurant,
-  NotificationsActive,
-  StarCircleOutline,
-} from "@/icons";
-import InView from "../InView.astro";
 ---
 
 <InView once>
@@ -25,13 +18,24 @@ import InView from "../InView.astro";
       </header>
 
       <slot name="feature-list" />
+
+      <Separator />
+
+      <Download.Root>
+        <Download.Title>
+          Download for your device and upgrade in-app
+        </Download.Title>
+        <Download.Description>
+          Scan the QR code to download for your device
+        </Download.Description>
+      </Download.Root>
     </aside>
 
     <div class="relative h-full min-h-100">
       <video
         id="premium-video"
         width="100%"
-        class="absolute top-0 left-1/2 max-w-[400px] -translate-x-1/2 mask-y-from-90% mask-y-to-transparent mask-x-from-90% mask-x-to-transparent lg:-mt-16"
+        class="absolute top-0 left-1/2 max-w-[500px] -translate-x-1/2 mask-y-from-90% mask-y-to-transparent mask-x-from-90% mask-x-to-transparent lg:-mt-16"
         height="auto"
         muted
         playsinline

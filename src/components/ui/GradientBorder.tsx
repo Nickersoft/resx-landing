@@ -1,8 +1,8 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, type SlotProps } from "@radix-ui/react-slot";
 import type * as React from "react";
 import { cn } from "@/lib/utils";
 
-interface GradientBorderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface GradientBorderProps extends React.ComponentProps<"div"> {
   width?: number;
   left?: boolean;
   right?: boolean;
@@ -42,7 +42,7 @@ export function GradientBorder({
         className,
       )}
       style={{ "--width": `${width}px` } as React.CSSProperties}
-      {...props}
+      {...(props as SlotProps)}
     >
       {children}
     </Tag>

@@ -1,5 +1,5 @@
 ---
-import { getEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 import claim from "@/assets/claim.png";
@@ -23,8 +23,6 @@ import {
   MapSearch,
   PartyPopper,
   Star,
-  StarShooting,
-  TrayArrowUp,
 } from "@/icons";
 
 const faqs = await getCollection("faq", (entry) => {

@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { cssVars } from "@/lib/utils";
 
 const carouselVariants = cva(
@@ -40,28 +39,12 @@ export interface CarouselProps
 }
 
 export function Carousel({
-  direction: originalDirection = "left",
+  direction = "left",
   duration = 30,
   children,
   gap = 4,
   ...props
 }: CarouselProps) {
-  const isMobile = useIsMobile();
-
-  const direction = React.useMemo(() => {
-    if (!isMobile) {
-      return originalDirection;
-    }
-
-    if (originalDirection === "up") {
-      return "left";
-    }
-
-    if (originalDirection === "down") {
-      return "right";
-    }
-  }, [originalDirection, isMobile]);
-
   return (
     <div {...props}>
       <div

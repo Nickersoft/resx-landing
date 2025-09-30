@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, type SlotProps } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
@@ -217,7 +217,7 @@ const tagVariants = cva("", {
 });
 
 export interface TypographyProps
-  extends Omit<React.HTMLAttributes<HTMLParagraphElement>, "color">,
+  extends Omit<React.ComponentProps<"p">, "color">,
     VariantProps<typeof typographyVariants> {
   asChild?: boolean;
 }
@@ -244,7 +244,7 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
           }),
           className,
         )}
-        {...props}
+        {...(props as SlotProps)}
         ref={ref}
       />
     );

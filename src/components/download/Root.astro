@@ -1,0 +1,28 @@
+---
+import { LINK_DOWNLOAD } from "@/consts";
+
+import Icon from "~icons/assets/icon";
+
+import { Stack } from "@/components/ui/Stack";
+import { GradientBorder } from "@/components/ui/GradientBorder";
+import { QRCode } from "@/components/ui/QRCode";
+---
+
+<Stack
+  orientation="row"
+  className="max-lg:flex-col max-lg:items-start"
+  align="center"
+  gap="lg"
+>
+  <GradientBorder
+    className="before:bg-bronze bg-coal z-10 aspect-square rounded-xl p-2 shadow-lg"
+  >
+    <QRCode value={LINK_DOWNLOAD} className="max-w-40">
+      <Icon />
+    </QRCode>
+  </GradientBorder>
+
+  <div>
+    <slot />
+  </div>
+</Stack>

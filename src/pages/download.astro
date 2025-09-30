@@ -1,0 +1,19 @@
+---
+import { UAParser } from "ua-parser-js";
+
+import { LINK_ANDROID_STORE, LINK_IOS_STORE } from "@/consts";
+
+export const prerender = false;
+
+const ua = Astro.request.headers.get("user-agent");
+
+if (ua) {
+  const agent = new UAParser(ua);
+
+  if (agent.getOS().name === "iOS" || agent.getOS().name === "macOS") {
+    return Astro.redirect(LINK_IOS_STORE);
+  }
+}
+
+return Astro.redirect(LINK_ANDROID_STORE);
+---

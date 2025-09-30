@@ -4,14 +4,14 @@ import { cn } from "@/lib/utils";
 
 interface Props extends TypographyProps {}
 
-const { className, ...rest } = Astro.props;
+const { className } = Astro.props;
 ---
 
 <Typography
   variant="body"
   size="lg"
   className={cn(
-    "animate-in fill-mode-both slide-in-from-bottom-6 fade-in inline-block max-w-2xl px-1.5 delay-500 duration-1000 ease-out",
+    "animate-in fill-mode-both slide-in-from-left-3 fade-in inline-block max-w-2xl px-1.5 delay-500 duration-1000 ease-out",
     className,
   )}
 >

@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, type SlotProps } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
@@ -69,7 +69,7 @@ const stackVariants = cva("flex", {
 });
 
 interface StackProps
-  extends React.HTMLAttributes<HTMLElement>,
+  extends React.ComponentProps<"div">,
     VariantProps<typeof stackVariants> {
   asChild?: boolean;
 }
@@ -95,7 +95,7 @@ const Stack = React.forwardRef<HTMLDivElement, StackProps>(
 
     return (
       <Component
-        {...props}
+        {...(props as SlotProps)}
         ref={ref}
         className={cn(
           stackVariants({

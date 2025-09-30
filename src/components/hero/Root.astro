@@ -1,9 +1,7 @@
 ---
 import { Separator } from "@/components/ui/Separator";
-import { Stack } from "@/components/ui/Stack";
-import { Typography } from "@/components/ui/Typography";
 
-import { DownloadQR } from "@/components/DownloadQR";
+import * as Download from "@/components/download";
 
 interface Props {
   withParallax?: boolean;
@@ -17,29 +15,18 @@ const { withParallax = false } = Astro.props;
     <div
       class="container grid grid-cols-[--spacing(180)_1fr] max-lg:grid-cols-1 lg:gap-16"
     >
-      <header class="space-y-8 pt-48 pb-32">
+      <header class="space-y-8 pt-64 pb-32">
         <slot name="title" />
         <slot name="subtitle" />
 
         <Separator className="w-full" />
 
-        <Stack
-          orientation="row"
-          className="max-lg:flex-col max-lg:items-start"
-          align="center"
-          gap="lg"
-        >
-          <DownloadQR className="max-w-40" />
-
-          <div>
-            <Typography variant="headline" size="sm">
-              Download for your device
-            </Typography>
-            <Typography variant="body" size="md">
-              Scan the QR code to download for your device
-            </Typography>
-          </div>
-        </Stack>
+        <Download.Root>
+          <Download.Title>Download for your device</Download.Title>
+          <Download.Description>
+            Scan the QR code to download for your device
+          </Download.Description>
+        </Download.Root>
       </header>
 
       <div class="relative h-full flex-1 max-lg:aspect-[0.4] max-lg:w-full">

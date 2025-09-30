@@ -49,8 +49,8 @@ export function Navigation({
             ))}
           </Stack>
 
-          <Button className="max-lg:h-12 max-lg:w-full max-lg:text-lg">
-            Download
+          <Button className="max-lg:h-12 max-lg:w-full max-lg:text-lg" asChild>
+            <a href="/download">Download</a>
           </Button>
         </Stack>
       </NavigationBar>

@@ -29,7 +29,6 @@ import {
 } from "@/icons";
 import RestaurantCarousel from "@/components/RestaurantCarousel.astro";
 import TextAccent from "@/components/TextAccent.astro";
-import { getEntries } from "astro:content";
 
 const testimonials = await getCollection("testimonials");
 const articles = await getCollection("articles");
@@ -43,7 +42,10 @@ const articles = await getCollection("articles");
       Good things happen
       <TextAccent class="font-script text-[6rem] max-lg:leading-[0.7]!">
         last minute
-        <AnimatedUnderline delay={1} class="-mt-2 w-full max-lg:mt-2" />
+        <AnimatedUnderline
+          delay={1}
+          class="-mt-2 w-full max-lg:mt-2 max-lg:hidden"
+        />
       </TextAccent>
     </Hero.Title>
 
@@ -80,7 +82,7 @@ const articles = await getCollection("articles");
           src={claim}
           layout="full-width"
           slot="image"
-          class="object-bottom! max-lg:object-top!"
+          position="bottom"
           alt="Claim"
         />
       </HowItWorks.Step>
@@ -91,8 +93,8 @@ const articles = await getCollection("articles");
         <Heart slot="icon" />
         <Image
           src={share}
-          class="object-top-right"
           layout="full-width"
+          position="left"
           slot="image"
           alt="Share"
         />
@@ -104,9 +106,10 @@ const articles = await getCollection("articles");
         <StarShooting slot="icon" />
         <Image
           src={earn}
-          class="object-[50%_70%] max-lg:object-[50%_20%]"
           layout="full-width"
+          position="left"
           slot="image"
+          class="-translate-y-10"
           alt="Earn"
         />
       </HowItWorks.Step>
