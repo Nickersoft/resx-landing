@@ -12,7 +12,7 @@ interface QuestionListProps {
 
 export function QuestionList({
   questions,
-}: QuestionListProps): React.JSX.Element {
+}: QuestionListProps): React.ReactElement {
   return (
     <Accordion type="multiple" className="w-full">
       {questions.map((faq) => (
