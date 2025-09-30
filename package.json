@@ -8,9 +8,9 @@
     "lint": "biome lint",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "ui": "bunx shadcn@latest",
+    "ui": "pnpm dlx shadcn@latest",
     "check": "astro check",
-    "utils": "bunx atmx@latest",
+    "utils": "pnpm dlx atmx@latest",
     "prepare": "husky",
     "storybook:dev": "storybook dev -p 6006",
     "storybook:build": "storybook build"
@@ -77,5 +77,6 @@
     "unplugin-icons": "^22.3.0",
     "vite": "^7.1.7",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
 }

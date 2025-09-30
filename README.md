@@ -8,7 +8,7 @@ To get started, simply hit the "Use This Template" button on this repo to start 
 
 ### Building Blocks
 
-- 📦 **[Bun](https://bun.com)** for package management, as it's much faster and more performant than NPM. You can download it from the official website, or replace it with a package manager of your choice.
+- 📦 **[PNPM](https://pnpm.io)** for package management, as it's much faster and more performant than NPM. You can enable it via corepack via `corepack enable`.
 - 🚀 **[Astro](https://astro.build)**, a framework for creating highly-versatile and high-performance webpages. It comes packed with a boatload of features such as partial hydration, content collections, and server endpoints. [See here](https://docs.astro.build/en/concepts/why-astro/) for more.
 - ⚛️ **[React](https://react.dev)** for creating interactive component islands that leverage React's booming ecosystem.
 - 👷 **[TypeScript](https://www.typescriptlang.org/)** for writing type-safe, maintainable code.
