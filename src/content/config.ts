@@ -26,12 +26,13 @@ const testimonials = defineCollection({
 
 const articles = defineCollection({
   loader: glob({
-    pattern: "articles/*.yml",
-    base: "src/data",
+    pattern: "*.yml",
+    base: "src/data/articles",
   }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      link: z.string().url(),
       description: z.string(),
       image: image(),
     }),

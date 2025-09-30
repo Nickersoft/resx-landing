@@ -19,3 +19,4 @@ export { default as TrayArrowUp } from "~icons/mdi/tray-arrow-up";
 export { default as EmoticonOutline } from "~icons/mdi/emoticon-outline";
 export { default as Star } from "~icons/mdi/star";
 export { default as PartyPopper } from "~icons/mdi/party-popper";
+export { default as ArrowRight } from "~icons/mdi/arrow-right";

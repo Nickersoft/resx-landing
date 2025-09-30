@@ -11,23 +11,21 @@ const columns = chunk(restaurants, Math.ceil(restaurants.length / count));
 const duration = (last(columns)?.length ?? 1) * 23;
 ---
 
-<Stack
-  orientation="row"
-  gap="md"
-  className="mt-28 mask-t-from-70% mask-t-to-transparent mask-b-from-70% mask-b-to-transparent"
->
-  {
-    columns.map((cells, i) => (
-      <Carousel
-        duration={duration}
-        gap={4}
-        direction={i % 2 ? "up" : "down"}
-        client:load
-      >
-        {cells.map((restaurant) => (
-          <RestaurantCard restaurant={restaurant} />
-        ))}
-      </Carousel>
-    ))
-  }
-</Stack>
+<div class="h-full mask-y-from-90% mask-y-to-transparent">
+  <Stack orientation="row" gap="md">
+    {
+      columns.map((cells, i) => (
+        <Carousel
+          duration={duration}
+          gap={4}
+          direction={i % 2 ? "up" : "down"}
+          client:load
+        >
+          {cells.map((restaurant) => (
+            <RestaurantCard restaurant={restaurant} />
+          ))}
+        </Carousel>
+      ))
+    }
+  </Stack>
+</div>

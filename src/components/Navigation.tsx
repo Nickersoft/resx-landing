@@ -17,8 +17,8 @@ export function Navigation({
   ];
 
   return (
-    <nav className="bg-coal/80 fixed top-4 left-1/2 z-999 container flex h-16 -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-gradient-to-br from-white/0 via-white/3 to-white/0 pl-8 backdrop-blur-md">
-      <a href="/">
+    <nav className="fixed top-4 left-1/2 z-999 container flex -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-black/85 bg-gradient-to-br from-white/0 via-white/6 to-white/0 px-4 py-0 pl-8 ring-1 ring-black backdrop-blur-md">
+      <a href="/" className="h-full">
         <Logo className="h-9 w-20" />
       </a>
 
@@ -26,8 +26,8 @@ export function Navigation({
         <Stack
           orientation="row"
           align="center"
-          gap="lg"
-          className="h-full max-lg:flex-col max-lg:items-start"
+          gap="md"
+          className="max-lg:flex-col max-lg:items-start"
         >
           <Stack
             orientation="row"
@@ -37,7 +37,7 @@ export function Navigation({
           >
             {links.map((link) => (
               <a
-                className="aria-[current=page]:text-primary flex items-center px-4 py-4 font-medium lg:h-full"
+                className="aria-[current=page]:text-primary flex items-center px-4 py-4 font-medium"
                 aria-current={
                   currentPage.pathname.startsWith(link.href) ? "page" : "false"
                 }
@@ -49,7 +49,10 @@ export function Navigation({
             ))}
           </Stack>
 
-          <Button className="max-lg:h-12 max-lg:w-full max-lg:text-lg" asChild>
+          <Button
+            className="my-4 max-lg:h-12 max-lg:w-full max-lg:text-lg"
+            asChild
+          >
             <a href="/download">Download</a>
           </Button>
         </Stack>
