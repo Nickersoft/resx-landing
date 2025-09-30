@@ -1,16 +1,180 @@
 ---
-import Hero from "@/components/home/Hero.astro";
-import HowItWorks from "@/components/home/HowItWorks.astro";
-import News from "@/components/home/News.astro";
-import Premium from "@/components/home/Premium.astro";
-import Testimonials from "@/components/home/Testimonials.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+import * as HowItWorks from "@/components/how-it-works";
+
+import earn from "@/assets/earn.png";
+import share from "@/assets/share.png";
+import claim from "@/assets/claim.png";
+import hero from "@/assets/hero.jpg";
+
+import * as Hero from "@/components/hero";
+import * as News from "@/components/news";
+import * as Premium from "@/components/premium";
+import * as Testimonials from "@/components/testimonials";
+
 import PageLayout from "@/layouts/PageLayout.astro";
+import AnimatedUnderline from "@/components/AnimatedUnderline.astro";
+import {
+  Calendar,
+  ClockTimeTwo,
+  HandCoin,
+  Heart,
+  KeyVariant,
+  LocalRestaurant,
+  NotificationsActive,
+  StarCircleOutline,
+  StarShooting,
+} from "@/icons";
+import RestaurantCarousel from "@/components/RestaurantCarousel.astro";
+import TextAccent from "@/components/TextAccent.astro";
+
+const testimonials = await getCollection("testimonials");
+const articles = await getCollection("articles");
 ---
 
 <PageLayout title="Home">
-  <Hero />
-  <HowItWorks />
-  <Premium />
-  <Testimonials />
-  <News />
+  {/* Hero Section */}
+
+  <Hero.Root withParallax>
+    <Hero.Title className="mb-2 leading-[0.65em]!" slot="title">
+      Good things happen
+      <TextAccent class="font-script text-[6rem] max-lg:leading-[0.7]!">
+        last minute
+        <AnimatedUnderline
+          delay={1}
+          class="-mt-2 w-full max-lg:mt-2 max-lg:hidden"
+        />
+      </TextAccent>
+    </Hero.Title>
+
+    <Hero.Subtitle slot="subtitle">
+      <strong>Never miss out on the best tables.</strong> Claim last-minute openings
+      or submit reservations you can't use.
+    </Hero.Subtitle>
+
+    <RestaurantCarousel slot="visual" />
+
+    <Image
+      slot="background"
+      src={hero}
+      alt="Hero Background"
+      class="pointer-events-none absolute inset-0 size-full object-cover opacity-4"
+      layout="full-width"
+      loading="eager"
+    />
+  </Hero.Root>
+
+  {/* How It Works Section */}
+
+  <HowItWorks.Root withBackground>
+    <HowItWorks.Header>
+      How it <TextAccent>works</TextAccent>
+    </HowItWorks.Header>
+    <HowItWorks.StepList>
+      <HowItWorks.Step
+        title="Claim"
+        description="Get the best tables in town without the weeks of planning."
+      >
+        <KeyVariant slot="icon" />
+        <Image
+          src={claim}
+          layout="full-width"
+          slot="image"
+          position="bottom"
+          alt="Claim"
+        />
+      </HowItWorks.Step>
+      <HowItWorks.Step
+        title="Share"
+        description="Can't make your reservation? Share it and make someone's day."
+      >
+        <Heart slot="icon" />
+        <Image
+          src={share}
+          layout="full-width"
+          position="left"
+          slot="image"
+          alt="Share"
+        />
+      </HowItWorks.Step>
+      <HowItWorks.Step
+        title="Earn"
+        description="Earn tokens with every booking and redeem them for exclusive rewards."
+      >
+        <StarShooting slot="icon" />
+        <Image
+          src={earn}
+          layout="full-width"
+          position="left"
+          slot="image"
+          class="-translate-y-10"
+          alt="Earn"
+        />
+      </HowItWorks.Step>
+    </HowItWorks.StepList>
+  </HowItWorks.Root>
+
+  {/* Premium Section */}
+
+  <Premium.Root>
+    <Premium.Title slot="title">
+      Get even more with <TextAccent>ResX Premium</TextAccent>
+    </Premium.Title>
+    <Premium.Description slot="description">
+      Claim. Earn. Save with ResX Rewards.
+    </Premium.Description>
+    <Premium.FeatureList
+      title="Supercharge your experience with"
+      slot="feature-list"
+    >
+      <Premium.Feature>
+        <Calendar slot="icon" />
+        <strong>Early access</strong> to all reservations up to 5 days in advance
+      </Premium.Feature>
+      <Premium.Feature>
+        <NotificationsActive slot="icon" />
+        Up to <strong>5 custom and 5 restaurant alerts</strong>
+      </Premium.Feature>
+      <Premium.Feature>
+        <LocalRestaurant slot="icon" />
+        <strong>More reservation bookings</strong> per week
+      </Premium.Feature>
+      <Premium.Feature>
+        <HandCoin slot="icon" />
+        <strong>Earn more tokens</strong> from your submissions
+      </Premium.Feature>
+      <Premium.Feature>
+        <ClockTimeTwo slot="icon" />
+        <strong>Priority access</strong> for alerts 5 minutes before everyone else
+      </Premium.Feature>
+      <Premium.Feature>
+        <StarCircleOutline slot="icon" />
+        <strong>Unlimited access</strong> to exclusive Premium reservations
+      </Premium.Feature>
+    </Premium.FeatureList>
+  </Premium.Root>
+
+  {/* Testimonials Section */}
+
+  <Testimonials.Root>
+    <Testimonials.Title slot="title">
+      Join 100K+ food lovers <TextAccent>
+        elevating their dining experience
+      </TextAccent>
+    </Testimonials.Title>
+    <Testimonials.Carousel testimonials={testimonials} slot="carousel" />
+  </Testimonials.Root>
+
+  {/* News Section */}
+
+  <News.Root>
+    <News.Title slot="title">
+      Our users aren't the only ones <TextAccent>talking about us</TextAccent>
+    </News.Title>
+    <News.ArticleList slot="article-list">
+      {articles.map((article) => <News.Article article={article} />)}
+    </News.ArticleList>
+  </News.Root>
 </PageLayout>

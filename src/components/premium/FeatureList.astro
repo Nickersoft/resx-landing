@@ -1,0 +1,22 @@
+---
+import { Stack } from "@/components/ui/Stack";
+import { Typography } from "@/components/ui/Typography";
+import { Separator } from "@/components/ui/Separator";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Stack orientation="row" align="center">
+  <Typography color="muted" variant="label" size="lg">
+    {title}
+  </Typography>
+  <Separator className="flex-1" />
+</Stack>
+
+<div class="grid grid-cols-2 gap-4 max-lg:grid-cols-1">
+  <slot />
+</div>

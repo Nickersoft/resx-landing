@@ -1,0 +1,156 @@
+---
+import { getEntry, getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+import earn from "@/assets/earn.png";
+import share from "@/assets/share.png";
+import notifications from "@/assets/notifications.png";
+import phone from "@/assets/phone-submit.png";
+
+import * as Hero from "@/components/hero";
+import * as HowItWorks from "@/components/how-it-works";
+import * as Testimonials from "@/components/testimonials";
+import * as SellingPoints from "@/components/selling-points";
+import * as FAQ from "@/components/faq";
+
+import PageLayout from "@/layouts/PageLayout.astro";
+import TextAccent from "@/components/TextAccent.astro";
+
+import {
+  EmoticonOutline,
+  Heart,
+  Lock,
+  PiggyBank,
+  StarShooting,
+  TrayArrowUp,
+} from "@/icons";
+
+const testimonial = await getEntry("testimonials", "sl");
+
+const faqs = await getCollection("faq", (entry) =>
+  entry.data.pages.includes("submit"),
+);
+---
+
+<PageLayout title="Submit" templated>
+  {/* Hero Section */}
+
+  <Hero.Root>
+    <Hero.Title slot="title">
+      Plans changed?
+      <TextAccent>Skip the fees.</TextAccent>
+    </Hero.Title>
+
+    <Hero.Subtitle slot="subtitle">
+      <strong>Your canceled res is someone else’s dream dinner</strong> – share it
+      with the ResX community and avoid unwanted cancellation fees.
+    </Hero.Subtitle>
+
+    <Image
+      src={phone}
+      layout="constrained"
+      class="animate-in slide-in-from-right mt-24 mask-b-from-50% mask-b-to-transparent duration-1200 ease-out"
+      alt="Submission screen"
+      slot="visual"
+    />
+  </Hero.Root>
+
+  {/* How It Works Section */}
+
+  <HowItWorks.Root>
+    <HowItWorks.Header>
+      How it <TextAccent>works</TextAccent>
+    </HowItWorks.Header>
+    <HowItWorks.StepList>
+      <HowItWorks.Step
+        title="Submit"
+        description="Upload your reservation confirmations, fees, and more in just a few steps."
+      >
+        <TrayArrowUp slot="icon" />
+        <Image
+          src={share}
+          layout="full-width"
+          slot="image"
+          position="left"
+          alt="Claim"
+        />
+      </HowItWorks.Step>
+      <HowItWorks.Step
+        title="Earn"
+        description="Earn tokens and rewards every time you submit as new reservation."
+      >
+        <StarShooting slot="icon" />
+        <Image
+          src={earn}
+          position="left"
+          class="-translate-y-10"
+          layout="full-width"
+          slot="image"
+          alt="Share"
+        />
+      </HowItWorks.Step>
+      <HowItWorks.Step
+        title="Feel Good"
+        description="We'll send you a quick ping when your table is claimed and you made someone's night."
+      >
+        <EmoticonOutline slot="icon" />
+        <Image
+          src={notifications}
+          layout="full-width"
+          position="center"
+          slot="image"
+          alt="Earn"
+        />
+      </HowItWorks.Step>
+    </HowItWorks.StepList>
+  </HowItWorks.Root>
+
+  {/* Testimonial  */}
+  {testimonial && <Testimonials.Callout testimonial={testimonial} />}
+
+  <SellingPoints.Root>
+    <SellingPoints.Title>
+      The <TextAccent>smarter way</TextAccent> to cancel
+    </SellingPoints.Title>
+    <SellingPoints.List>
+      <SellingPoints.Item
+        title="No wasted tables. No lost money."
+        description="Dodge cancellation fees by passing along your reservation to other hungry users."
+      >
+        <PiggyBank />
+      </SellingPoints.Item>
+      <SellingPoints.Item
+        title="Effortless & secure"
+        description="We handle the transaction securely from start to finish, so you can submit with confidence."
+      >
+        <Lock />
+      </SellingPoints.Item>
+      <SellingPoints.Item
+        title="Join a community of trusted diners."
+        description="Help restaurants avoid no-shows and fellow ResXers score their dream seats."
+      >
+        <Heart />
+      </SellingPoints.Item>
+    </SellingPoints.List>
+  </SellingPoints.Root>
+
+  {/* FAQ Section */}
+
+  <FAQ.Root>
+    <FAQ.Header>
+      <FAQ.Title>
+        Submitting a reservation is <TextAccent>
+          just as important as claiming one.
+        </TextAccent>
+      </FAQ.Title>
+      <FAQ.Subtitle>
+        When you share a reservation, you’re helping someone else in the
+        community get a great table they might not otherwise find. We ask that
+        you submit reservations thoughtfully and with accurate details so others
+        can count on them.
+      </FAQ.Subtitle>
+    </FAQ.Header>
+
+    <FAQ.QuestionList client:visible questions={faqs} />
+  </FAQ.Root>
+</PageLayout>

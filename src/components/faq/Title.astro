@@ -1,0 +1,16 @@
+---
+import { Typography, type TypographyProps } from "@/components/ui/Typography";
+import { cn } from "@/lib/utils";
+
+interface Props extends TypographyProps {}
+
+const { className } = Astro.props;
+---
+
+<Typography
+  variant="display"
+  size="md"
+  className={cn("text-balance", className)}
+>
+  <slot />
+</Typography>

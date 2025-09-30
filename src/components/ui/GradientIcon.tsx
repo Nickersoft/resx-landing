@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, type SlotProps } from "@radix-ui/react-slot";
 import * as React from "react";
 
 import { percent, url } from "@/lib/units";
@@ -89,7 +89,7 @@ function SVGGradient({
 }
 
 interface GradientIconProps
-  extends React.HTMLAttributes<HTMLSpanElement>,
+  extends React.ComponentProps<"span">,
     Omit<SVGGradientProps, "id"> {
   children: React.ReactNode;
   asChild?: boolean;
@@ -111,7 +111,7 @@ export function GradientIcon({
     <>
       <SVGGradient to={to} stops={stops} id={gradientId} />
       <Comp
-        {...props}
+        {...(props as SlotProps)}
         style={cssVars({ gradient: url(`#${gradientId}`) })}
         className={cn("[&_path]:fill-[var(--gradient)]", className)}
       >

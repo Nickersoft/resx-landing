@@ -1,0 +1,15 @@
+---
+import { getImage } from "astro:assets";
+
+import noiseTexture from "@/assets/noise.png";
+
+import { url } from "@/lib/units";
+
+const noise = await getImage({ src: noiseTexture });
+---
+
+<div
+  style={{ "--noise": url(noise.src) }}
+  class="absolute inset-0 bg-(image:--noise) mask-radial-to-transparent mask-radial-farthest-corner mask-radial-at-top bg-repeat opacity-40"
+>
+</div>

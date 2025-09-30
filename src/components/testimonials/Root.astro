@@ -1,0 +1,26 @@
+---
+import { Separator } from "@/components/ui/Separator";
+
+import InView from "@/components/InView.astro";
+import Noise from "@/components/Noise.astro";
+---
+
+<InView once amount={0.4}>
+  <section
+    class="from-cinnamon/30 relative overflow-x-clip bg-radial-[100%_50%_at_50%_0%] pb-24"
+  >
+    <Separator
+      className="bg-sand-storm mask-x-to-transparent mix-blend-plus-lighter"
+    />
+
+    <header
+      class="animate-in fade-in slide-in-from-top-4 fill-mode-both paused in-view:running container py-24 duration-1000 ease-out"
+    >
+      <slot name="title" />
+    </header>
+
+    <slot name="carousel" />
+
+    <Noise />
+  </section>
+</InView>

@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+
+import { Card } from "@/components/ui/Card";
+import { Separator } from "../ui/Separator";
+import { Typography } from "../ui/Typography";
+
+interface Props {
+  testimonial: CollectionEntry<"testimonials">;
+}
+
+const { testimonial } = Astro.props;
+
+const {
+  data: { name },
+} = testimonial;
+
+const { Content } = await render(testimonial);
+---
+
+<Card
+  className="bg-card/30 card from-primary/0 via-clay/7 to-primary/0 relative z-20 max-w-md space-y-4 bg-linear-56 from-30% to-90% p-6 text-base backdrop-blur-2xl"
+>
+  <Content />
+
+  <Separator />
+
+  <cite class="not-italic">
+    <Typography variant="title" size="sm">
+      {name}
+    </Typography>
+  </cite>
+</Card>
+
+<style>
+  @keyframes shine {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  .card {
+    background-size: 200% 200%;
+    animation: shine 30s linear infinite;
+  }
+</style>

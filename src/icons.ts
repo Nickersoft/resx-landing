@@ -1,4 +1,5 @@
 export { default as Calendar } from "~icons/mdi/calendar";
+export { default as MapSearch } from "~icons/mdi/map-search";
 export { default as ChevronDown } from "~icons/mdi/chevron-down";
 export { default as ClockTimeTwo } from "~icons/mdi/clock-time-two";
 export { default as Close } from "~icons/mdi/close";
@@ -12,3 +13,9 @@ export { default as NotificationsActive } from "~icons/mdi/notifications-active"
 export { default as StarCircleOutline } from "~icons/mdi/star-circle-outline";
 export { default as StarShooting } from "~icons/mdi/star-shooting";
 export { default as TikTok } from "~icons/ic/baseline-tiktok";
+export { default as PiggyBank } from "~icons/mdi/piggy-bank";
+export { default as Lock } from "~icons/mdi/lock";
+export { default as TrayArrowUp } from "~icons/mdi/tray-arrow-up";
+export { default as EmoticonOutline } from "~icons/mdi/emoticon-outline";
+export { default as Star } from "~icons/mdi/star";
+export { default as PartyPopper } from "~icons/mdi/party-popper";

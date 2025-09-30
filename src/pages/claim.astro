@@ -1,0 +1,141 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+import claim from "@/assets/claim.png";
+import phone from "@/assets/phone-claim.png";
+import claimButton from "@/assets/claim-button.png";
+import booked from "@/assets/booked.png";
+
+import * as Hero from "@/components/hero";
+import * as HowItWorks from "@/components/how-it-works";
+import * as SellingPoints from "@/components/selling-points";
+import * as FAQ from "@/components/faq";
+
+import PageLayout from "@/layouts/PageLayout.astro";
+import TextAccent from "@/components/TextAccent.astro";
+
+import {
+  EmoticonOutline,
+  HandCoin,
+  Heart,
+  Lock,
+  MapSearch,
+  PartyPopper,
+  Star,
+} from "@/icons";
+
+const faqs = await getCollection("faq", (entry) => {
+  return entry.data.pages?.includes("home");
+});
+---
+
+<PageLayout title="Submit" templated>
+  {/* Hero Section */}
+
+  <Hero.Root>
+    <Hero.Title className="text-[4.3em] text-wrap" slot="title">
+      Last-minute dinner?
+      <TextAccent> Skip the wait with ResX. </TextAccent>
+    </Hero.Title>
+
+    <Hero.Subtitle slot="subtitle">
+      <strong>Snag the coveted tables that other diners can't use</strong> and turn
+      any night into your perfect night out. No connections, no waitlists, no hassle.
+    </Hero.Subtitle>
+
+    <Image
+      src={phone}
+      layout="constrained"
+      class="animate-in slide-in-from-right mt-24 mask-b-from-50% mask-b-to-transparent duration-1200 ease-out"
+      alt="Submission screen"
+      slot="visual"
+    />
+  </Hero.Root>
+
+  {/* How It Works Section */}
+
+  <HowItWorks.Root>
+    <HowItWorks.Header>
+      How it <TextAccent>works</TextAccent>
+    </HowItWorks.Header>
+    <HowItWorks.StepList>
+      <HowItWorks.Step
+        title="Discover"
+        description="Browse last-minute tables submitted by our community of diners."
+      >
+        <MapSearch slot="icon" />
+        <Image src={claim} layout="full-width" slot="image" alt="Discover" />
+      </HowItWorks.Step>
+      <HowItWorks.Step
+        title="Claim"
+        description="See a spot you like? Secure your reservation instantly with just a few taps."
+      >
+        <HandCoin slot="icon" />
+        <Image
+          src={claimButton}
+          class="mask-t-from-90% mask-t-to-transparent object-[50%_150%] drop-shadow-xl drop-shadow-black"
+          layout="constrained"
+          slot="image"
+          alt="Claim"
+        />
+      </HowItWorks.Step>
+      <HowItWorks.Step
+        title="You're In"
+        description="Get confirmed 2 hours beforehand & ask the original submitter any questions you have."
+      >
+        <EmoticonOutline slot="icon" />
+        <Image src={booked} layout="full-width" slot="image" alt="You're In" />
+      </HowItWorks.Step>
+    </HowItWorks.StepList>
+  </HowItWorks.Root>
+
+  <SellingPoints.Root>
+    <SellingPoints.Title>
+      <TextAccent>Your shortcut</TextAccent> to a better table
+    </SellingPoints.Title>
+    <SellingPoints.List>
+      <SellingPoints.Item
+        title="Unlock the exclusive"
+        description="Score hard-to-get tables at the city's most coveted tables without the waitlists or hassle."
+      >
+        <Star />
+      </SellingPoints.Item>
+      <SellingPoints.Item
+        title="Seamless & secure"
+        description="Our process is simple, secure, and completely risk-free from start to finish."
+      >
+        <Lock />
+      </SellingPoints.Item>
+      <SellingPoints.Item
+        title="Diner-to-Diner"
+        description="Every table comes from a trusted community member. No scalpers or bots here."
+      >
+        <Heart />
+      </SellingPoints.Item>
+      <SellingPoints.Item
+        title="Embrace Spontaneity"
+        description="The best nights are unplanned. Discover and claim your perfect last-minute table for tonight."
+      >
+        <PartyPopper />
+      </SellingPoints.Item>
+    </SellingPoints.List>
+  </SellingPoints.Root>
+
+  {/* FAQ Section */}
+
+  <FAQ.Root>
+    <FAQ.Header>
+      <FAQ.Title>
+        Claiming a reservation is exciting, but we understand
+        <TextAccent>you might have questions. </TextAccent>
+      </FAQ.Title>
+      <FAQ.Subtitle>
+        All reservations on ResX are shared by our community, so we ask that
+        you’re mindful and considerate when claiming one.
+      </FAQ.Subtitle>
+    </FAQ.Header>
+
+    <FAQ.QuestionList client:visible questions={faqs} />
+  </FAQ.Root>
+</PageLayout>

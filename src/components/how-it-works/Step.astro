@@ -1,0 +1,30 @@
+---
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/Card";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Card
+  className="bg-card/20 flex aspect-[0.7] h-full flex-col bg-gradient-to-br from-white/5 p-0"
+>
+  <CardHeader
+    className="[&>svg]:text-muted-foreground flex flex-col items-center space-y-2 px-6 pt-12 [&>svg]:mb-6 [&>svg]:size-10 [&>svg]:mask-b-to-black/80"
+  >
+    <slot name="icon" />
+    <CardTitle>{title}</CardTitle>
+    <CardDescription className="text-center">{description}</CardDescription>
+  </CardHeader>
+  <div class="relative flex-1 overflow-hidden [&>img]:absolute [&>img]:inset-0">
+    <slot name="image" />
+  </div>
+</Card>

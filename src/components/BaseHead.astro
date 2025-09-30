@@ -3,8 +3,7 @@ import "../styles/global.css";
 
 import { Font } from "astro:assets";
 import { SEO } from "astro-seo";
-import { RIVE_WASM_URL, SITE_TITLE } from "@/consts";
-import Preload, { type Props as PreloadProps } from "./Preload.astro";
+import { SITE_TITLE } from "@/consts";
 
 export interface Props {
   title: string;
@@ -13,14 +12,12 @@ export interface Props {
   templated?: boolean;
   authors?: string[];
   publishedTime?: string;
-  preloadAssets?: (string | PreloadProps)[];
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {
   title,
-  preloadAssets = [],
   templated,
   authors,
   publishedTime,
@@ -28,22 +25,6 @@ const {
   image = "/og.png",
 } = Astro.props;
 ---
-
-{
-  preloadAssets.some((x) =>
-    (typeof x === "string" ? x : x.href).endsWith(".riv"),
-  ) && <Preload href={RIVE_WASM_URL} />
-}
-
-{
-  preloadAssets.map((props) =>
-    typeof props === "string" ? (
-      <Preload href={props} />
-    ) : (
-      <Preload {...props} />
-    ),
-  )
-}
 
 <meta charset="utf-8" />
 

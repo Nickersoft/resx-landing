@@ -1,6 +1,5 @@
-// TODO: change me
-export const BLOG_TITLE = "Blog Title";
-export const BLOG_DESCRIPTION = "Blog Description";
-export const SITE_TITLE = "Site Title";
-
-export { default as RIVE_WASM_URL } from "@rive-app/webgl2/rive.wasm?url";
+export const SITE_TITLE = "ResX";
+export const LINK_IOS_STORE = "https://apps.apple.com/us/app/resx/id6444920738";
+export const LINK_ANDROID_STORE =
+  "https://play.google.com/store/apps/details?id=com.resx.nyc&pli=1";
+export const LINK_DOWNLOAD = "https://resx.co/download";

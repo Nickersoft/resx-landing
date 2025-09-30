@@ -1,0 +1,21 @@
+---
+import { Typography, type TypographyProps } from "@/components/ui/Typography";
+import { cn } from "@/lib/utils";
+
+interface Props extends TypographyProps {}
+
+const { className, ...rest } = Astro.props;
+---
+
+<Typography
+  variant="display"
+  size="lg"
+  {...rest}
+  className={cn(
+    "animate-in fill-mode-both blur-in-sm slide-in-from-left-3 fade-in mb-6 inline-block text-[5rem] text-balance delay-100 duration-1000 ease-out",
+    "*:animate-in *:fill-mode-both *:slide-in-from-left-3 *:fade-in *:leading-none *:tracking-normal *:delay-200 *:duration-1000 *:ease-out",
+    className,
+  )}
+>
+  <slot />
+</Typography>
