@@ -7,6 +7,6 @@ interface Props extends HTMLAttributes<"header"> {}
 const { class: className, ...props } = Astro.props;
 ---
 
-<header {...props} class={cn("space-y-4 py-8 text-left border-b", className)}>
+<header {...props} class={cn("space-y-2 py-8 text-left border-b", className)}>
   <slot />
 </header>

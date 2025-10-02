@@ -24,6 +24,7 @@ import {
   StarShooting,
   TrayArrowUp,
 } from "@/icons";
+import Glow from "@/components/Glow.astro";
 
 const testimonial = await getEntry("testimonials", "sl");
 
@@ -46,13 +47,18 @@ const faqs = await getCollection("faq", (entry) =>
       with the ResX community and avoid unwanted cancellation fees.
     </Hero.Subtitle>
 
-    <Image
-      src={phone}
-      layout="constrained"
-      class="animate-in slide-in-from-right mt-24 mask-b-from-50% mask-b-to-transparent duration-1200 ease-out"
-      alt="Submission screen"
-      slot="visual"
-    />
+    <div slot="visual" class="relative flex flex-col justify-end lg:h-full">
+      <Image
+        src={phone}
+        layout="constrained"
+        width={380}
+        class="animate-in slide-in-from-bottom max-w-none mask-b-from-80% mask-b-to-transparent duration-1200 ease-out max-lg:w-full"
+        alt="Submission screen"
+      />
+      <Glow
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full transition-all duration-1000 starting:translate-y-[200%]"
+      />
+    </div>
   </Hero.Root>
 
   {/* How It Works Section */}

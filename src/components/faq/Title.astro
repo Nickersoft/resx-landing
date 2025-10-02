@@ -8,8 +8,17 @@ const { className } = Astro.props;
 ---
 
 <Typography
-  variant="display"
+  variant="label"
   size="md"
+  className="mb-4 inline-block"
+  color="primary"
+>
+  Frequently Asked Questions
+</Typography>
+
+<Typography
+  variant="display"
+  size="sm"
   className={cn("text-balance", className)}
 >
   <slot />

@@ -5,13 +5,13 @@ import { Carousel } from "@/components/ui/Carousel";
 import { Stack } from "@/components/ui/Stack";
 import RestaurantCard from "./RestaurantCard.astro";
 
-const count = 5;
+const count = 4;
 const restaurants = await getCollection("restaurants");
 const columns = chunk(restaurants, Math.ceil(restaurants.length / count));
 const duration = (last(columns)?.length ?? 1) * 23;
 ---
 
-<div class="h-full mask-y-from-90% mask-y-to-transparent">
+<div class="absolute h-full mask-y-from-70% mask-y-to-transparent">
   <Stack orientation="row" gap="md">
     {
       columns.map((cells, i) => (

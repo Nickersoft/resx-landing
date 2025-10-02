@@ -2,20 +2,30 @@
 import { Separator } from "@/components/ui/Separator";
 
 import * as Download from "@/components/download";
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
 
-interface Props {
+interface Props extends HTMLAttributes<"div"> {
   withParallax?: boolean;
 }
 
-const { withParallax = false } = Astro.props;
+const { class: className, withParallax = false, ...props } = Astro.props;
 ---
 
 <site-hero data-parallax={withParallax}>
-  <section class="from-sand-storm/10 relative overflow-hidden bg-gradient-to-b">
+  <section
+    class="from-sand-storm/20 relative overflow-hidden bg-gradient-to-tl"
+  >
     <div
-      class="container grid grid-cols-[--spacing(180)_1fr] max-lg:grid-cols-1 lg:gap-16"
+      {...props}
+      class={cn(
+        "container grid grid-cols-3 items-center max-lg:grid-cols-1 lg:gap-16",
+        className,
+      )}
     >
-      <header class="space-y-8 pt-64 pb-32">
+      <header
+        class="col-span-2 w-full max-w-2xl space-y-8 pt-64 pb-32 max-lg:pb-16"
+      >
         <slot name="title" />
         <slot name="subtitle" />
 
@@ -29,11 +39,7 @@ const { withParallax = false } = Astro.props;
         </Download.Root>
       </header>
 
-      <div class="relative h-full flex-1 max-lg:aspect-[0.4] max-lg:w-full">
-        <div class="h-full lg:absolute">
-          <slot name="visual" />
-        </div>
-      </div>
+      <slot name="visual" />
     </div>
 
     <slot name="background" />

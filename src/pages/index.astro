@@ -54,7 +54,9 @@ const articles = await getCollection("articles");
       or submit reservations you can't use.
     </Hero.Subtitle>
 
-    <RestaurantCarousel slot="visual" />
+    <div class="relative h-full" slot="visual">
+      <RestaurantCarousel />
+    </div>
 
     <Image
       slot="background"

@@ -1,0 +1,30 @@
+---
+import { px } from "@/lib/units";
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  size?: number;
+}
+
+const { size = 1200, class: className, ...props } = Astro.props;
+---
+
+<div
+  {...props}
+  style={{ "--width": px(size) }}
+  class={cn("relative w-(--width) aspect-square", className)}
+>
+  <div
+    class="bg-cinnamon/25 absolute inset-0 size-full rounded-full mix-blend-plus-lighter blur-3xl"
+  >
+  </div>
+  <div
+    class="bg-sand-storm absolute inset-0 size-full rounded-full mix-blend-plus-lighter blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute inset-0 top-20 left-1/2 aspect-square w-[calc(var(--width)/2)] -translate-x-1/2 rounded-full bg-white mix-blend-plus-lighter blur-xl"
+  >
+  </div>
+</div>

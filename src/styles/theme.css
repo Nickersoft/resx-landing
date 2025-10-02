@@ -102,6 +102,8 @@
   --font-sans: var(--font-inter);
   --font-display: var(--font-outfit);
   --font-script: var(--font-damion);
+
+  --breakpoint-xl: 72rem;
 }
 
 @theme {

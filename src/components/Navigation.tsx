@@ -17,7 +17,7 @@ export function Navigation({
   ];
 
   return (
-    <nav className="fixed top-4 left-1/2 z-999 container flex -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-black/85 bg-gradient-to-br from-white/0 via-white/6 to-white/0 px-4 py-0 pl-8 ring-1 ring-black backdrop-blur-md">
+    <nav className="fixed top-4 left-1/2 z-999 container flex min-h-17.5 -translate-x-1/2 flex-row items-center justify-between rounded-full border bg-black/85 bg-gradient-to-br from-white/0 via-white/6 to-white/0 px-4 py-0 pl-8 ring-1 ring-black backdrop-blur-md max-md:pr-8">
       <a href="/" className="h-full">
         <Logo className="h-9 w-20" />
       </a>
@@ -27,13 +27,13 @@ export function Navigation({
           orientation="row"
           align="center"
           gap="md"
-          className="max-lg:flex-col max-lg:items-start"
+          className="max-md:h-full max-md:flex-col max-md:items-start"
         >
           <Stack
             orientation="row"
             gap="none"
             align="center"
-            className="[&>a]:text-muted-foreground [&>a]:hover:text-primary flex text-sm max-lg:flex-1 max-lg:flex-col max-lg:items-start max-lg:justify-center max-lg:text-lg lg:h-full [&>a]:transition-colors [&>a]:duration-300"
+            className="[&>a]:text-muted-foreground [&>a]:hover:text-primary flex text-sm max-md:flex-1 max-md:flex-col max-md:items-start max-md:justify-center max-md:text-lg lg:h-full [&>a]:transition-colors [&>a]:duration-300"
           >
             {links.map((link) => (
               <a
@@ -50,7 +50,7 @@ export function Navigation({
           </Stack>
 
           <Button
-            className="my-4 max-lg:h-12 max-lg:w-full max-lg:text-lg"
+            className="my-4 max-md:h-12 max-md:w-full max-md:text-lg"
             asChild
           >
             <a href="/download">Download</a>
