@@ -17,12 +17,13 @@ const { amount = 0.3, once = false } = Astro.props;
   class InView extends HTMLElement {
     constructor() {
       super();
+    }
 
+    connectedCallback() {
       inView(
         this,
         () => {
           this.setAttribute("data-in-view", "");
-
           return () => {
             const once = this.dataset.once === "true";
             if (once) return;

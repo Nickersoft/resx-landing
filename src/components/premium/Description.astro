@@ -2,6 +2,9 @@
 import { Typography } from "@/components/ui/Typography";
 ---
 
-<Typography className="text-xl" color="secondary">
+<Typography
+  className="animate-in slide-in-from-bottom-2 paused in-view:running fill-mode-both fade-in-0 mb-2 text-xl delay-200 duration-1000"
+  color="secondary"
+>
   <slot />
 </Typography>
