@@ -11,7 +11,9 @@ const columns = chunk(restaurants, Math.ceil(restaurants.length / count));
 const duration = (last(columns)?.length ?? 1) * 23;
 ---
 
-<div class="absolute h-full mask-y-from-70% mask-y-to-transparent">
+<div
+  class="absolute h-full mask-y-from-70% mask-y-to-transparent max-md:left-1/2 max-md:-translate-x-1/2"
+>
   <Stack orientation="row" gap="md">
     {
       columns.map((cells, i) => (

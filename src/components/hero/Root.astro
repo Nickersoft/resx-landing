@@ -58,7 +58,9 @@ const { class: className, withParallax = false, ...props } = Astro.props;
       const hero = this.querySelector("section");
 
       if (hero && this.dataset.parallax === "true") {
-        const animation = animate(hero, { y: [0, 300] });
+        const animation = animate(hero, {
+          transform: ["translateY(0)", "translateY(50%)"],
+        });
 
         scroll(animation, {
           offset: ["start start", "end start"],
