@@ -7,9 +7,15 @@ import { cn } from "@/lib/utils";
 
 interface Props extends HTMLAttributes<"div"> {
   withParallax?: boolean;
+  noDownload?: boolean;
 }
 
-const { class: className, withParallax = false, ...props } = Astro.props;
+const {
+  noDownload,
+  class: className,
+  withParallax = false,
+  ...props
+} = Astro.props;
 ---
 
 <site-hero data-parallax={withParallax}>
@@ -24,19 +30,25 @@ const { class: className, withParallax = false, ...props } = Astro.props;
       )}
     >
       <header
+        data-slot="hero-header"
         class="col-span-2 w-full max-w-2xl space-y-8 pt-64 pb-32 max-lg:pb-16"
       >
         <slot name="title" />
         <slot name="subtitle" />
 
-        <Separator className="w-full" />
-
-        <Download.Root>
-          <Download.Title>Download for your device</Download.Title>
-          <Download.Description>
-            Scan the QR code to download for your device
-          </Download.Description>
-        </Download.Root>
+        {
+          !noDownload && (
+            <>
+              <Separator className="w-full" />
+              <Download.Root>
+                <Download.Title>Download for your device</Download.Title>
+                <Download.Description>
+                  Scan the QR code to download for your device
+                </Download.Description>
+              </Download.Root>
+            </>
+          )
+        }
       </header>
 
       <slot name="visual" />

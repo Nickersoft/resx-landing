@@ -17,7 +17,7 @@ interface Props extends VariantProps<typeof variants> {
   withBackground?: boolean;
 }
 
-const { withBackground } = Astro.props;
+const { withBackground = true } = Astro.props;
 ---
 
 <section class={variants({ withBackground })}>

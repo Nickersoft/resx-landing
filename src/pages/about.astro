@@ -1,0 +1,102 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+import hero from "@/assets/hero.jpg";
+
+import * as Hero from "@/components/hero";
+import * as Mission from "@/components/mission";
+import * as FAQ from "@/components/faq";
+
+import PageLayout from "@/layouts/PageLayout.astro";
+import TextAccent from "@/components/TextAccent.astro";
+
+import Glow from "@/components/Glow.astro";
+
+const faqs = await getCollection("faq", (entry) => {
+  return entry.data.pages?.includes("home");
+});
+---
+
+<PageLayout title="Submit" templated>
+  {/* Hero Section */}
+
+  <Hero.Root
+    noDownload
+    class="relative flex flex-col items-center justify-center **:data-[slot=hero-header]:max-w-4xl! **:data-[slot=hero-header]:pt-48"
+  >
+    <Hero.Title
+      className="slide-in-from-top-10 slide-in-from-left-0! text-center text-[5rem] text-wrap"
+      slot="title"
+    >
+      Making the
+      <TextAccent class="slide-in-from-top-10 slide-in-from-left-0!">
+        exclusive accessible
+      </TextAccent>
+    </Hero.Title>
+
+    <Hero.Subtitle
+      slot="subtitle"
+      className="slide-in-from-left-0! slide-in-from-top-10 mx-auto max-w-none text-center text-lg"
+    >
+      What began as an Instagram page helping people share their last-minute
+      reservations, has since grown into an app connecting diners to the city’s
+      most sought-after tables in both NYC and London
+    </Hero.Subtitle>
+
+    <Fragment slot="background">
+      <Image
+        src={hero}
+        alt="Hero Background"
+        class="pointer-events-none absolute inset-0 -z-10 size-full object-cover opacity-15"
+        layout="full-width"
+        loading="eager"
+      />
+      <Glow
+        class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%-2rem)] transition-all duration-1000 starting:translate-y-[200%]"
+      />
+    </Fragment>
+  </Hero.Root>
+
+  {/* How It Works Section */}
+
+  <Mission.Root>
+    <Mission.Content>
+      <p>
+        ResX was founded by regular people, for regular people, in response to a
+        social scene that has increasingly catered only to those who can pay a
+        premium or plan months ahead. Our goal is simple: to bring back the
+        flexibility of last-minute planning, so you can experience the best your
+        city has to offer.
+      </p>
+
+      <p>
+        We represent peak culture in motion - a live look at what’s
+        trending. Making the exclusive accessible without lowering the bar for
+        quality.
+      </p>
+
+      <p>
+        Because life’s best plans are often the last-minute ones - and everyone
+        deserves a seat at the table.
+      </p>
+    </Mission.Content>
+  </Mission.Root>
+
+  {/* FAQ Section */}
+
+  <FAQ.Root>
+    <FAQ.Header>
+      <FAQ.Title>
+        Claiming a reservation is exciting, but we understand
+        <TextAccent>you might have questions. </TextAccent>
+      </FAQ.Title>
+      <FAQ.Subtitle>
+        All reservations on ResX are shared by our community, so we ask that
+        you’re mindful and considerate when claiming one.
+      </FAQ.Subtitle>
+    </FAQ.Header>
+
+    <FAQ.QuestionList client:visible questions={faqs} />
+  </FAQ.Root>
+</PageLayout>
