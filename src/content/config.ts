@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 
 const restaurants = defineCollection({
   loader: glob({
@@ -50,9 +50,23 @@ const faq = defineCollection({
   }),
 });
 
+const team = defineCollection({
+  loader: file("src/data/team.yml"),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      role: z.string().optional(),
+      color: z.enum(["bronze", "cinnamon", "umbra", "sand-storm"]),
+      size: z.enum(["lg", "default"]),
+      alert: z.string(),
+      image: image(),
+    }),
+});
+
 export const collections = {
   testimonials,
   articles,
   restaurants,
   faq,
+  team,
 };

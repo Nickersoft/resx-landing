@@ -103,7 +103,18 @@
   --font-display: var(--font-outfit);
   --font-script: var(--font-damion);
 
+  /* ------------------------------- Breakpoints ------------------------------ */
+
   --breakpoint-xl: 72rem;
+
+  /* ------------------------------- Backgrounds ------------------------------ */
+
+  --background-image-bronze: linear-gradient(
+    -45deg,
+    var(--color-umbra),
+    #cb9065,
+    var(--color-umbra)
+  );
 }
 
 @theme {

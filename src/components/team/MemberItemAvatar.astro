@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+const avatarVariants = cva(
+  "overflow-hidden shrink-0 group-data-[size=lg]:rounded-2xl group-data-[size=lg]:size-30 [&>img]:size-full rounded-lg size-18 [&>img]:object-cover",
+  {
+    variants: {
+      color: {
+        bronze: "bg-bronze",
+        cinnamon: "bg-cinnamon",
+        umbra: "bg-umbra",
+        "sand-storm": "bg-sand-storm",
+      },
+    },
+  },
+);
+
+interface Props
+  extends Omit<HTMLAttributes<"div">, "color">,
+    VariantProps<typeof avatarVariants> {}
+
+const { color, class: className, ...props } = Astro.props;
+---
+
+<div
+  data-slot="avatar"
+  class={cn(avatarVariants({ color }), className)}
+  {...props}
+>
+  <slot />
+</div>

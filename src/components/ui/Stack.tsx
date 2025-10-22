@@ -68,7 +68,7 @@ const stackVariants = cva("flex", {
   },
 });
 
-interface StackProps
+export interface StackProps
   extends React.ComponentProps<"div">,
     VariantProps<typeof stackVariants> {
   asChild?: boolean;

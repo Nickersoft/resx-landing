@@ -1,0 +1,16 @@
+---
+import { cn } from "@/lib/utils";
+import { Stack, type StackProps } from "../ui/Stack";
+
+interface Props extends Omit<StackProps, "children"> {}
+
+const { className, ...props } = Astro.props;
+---
+
+<Stack
+  centered
+  className={cn("text-foreground aspect-[3]", className)}
+  {...props}
+>
+  <slot />
+</Stack>

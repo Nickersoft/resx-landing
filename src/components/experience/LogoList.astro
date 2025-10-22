@@ -1,0 +1,13 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
+import { Stack, type StackProps } from "../ui/Stack";
+
+interface Props extends Omit<StackProps, "children"> {}
+
+const props = Astro.props;
+---
+
+<Stack orientation="row" align="center" centered wrap {...props}>
+  <slot />
+</Stack>

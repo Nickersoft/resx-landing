@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
+
+interface Props extends HTMLAttributes<"div"> {
+  size?: "lg" | "default";
+}
+
+const { class: className, size = "default", ...props } = Astro.props;
+---
+
+<div
+  class={cn(
+    "group grid md:flex md:flex-row grid-cols-[--spacing(30)_1fr] max-md:*:data-[slot=avatar]:justify-self-center gap-x-6 items-center",
+    className,
+  )}
+  {...props}
+  data-size={size}
+>
+  <slot />
+</div>

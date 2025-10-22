@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import InView from "@/components/InView.astro";
+import { cn } from "@/lib/utils";
+import { Stack } from "../ui/Stack";
+
+interface Props extends HTMLAttributes<"section"> {}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<section {...props} class={cn("relative overflow-hidden py-24", className)}>
+  <Stack orientation="column" centered className="container">
+    <slot />
+  </Stack>
+</section>

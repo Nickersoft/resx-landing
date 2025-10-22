@@ -1,0 +1,11 @@
+---
+import { Typography, type TypographyProps } from "@/components/ui/Typography";
+
+interface Props extends Omit<TypographyProps, "children"> {}
+
+const { className, ...props } = Astro.props;
+---
+
+<Typography variant="body" align="center" size="md" color="muted" {...props}>
+  <slot />
+</Typography>

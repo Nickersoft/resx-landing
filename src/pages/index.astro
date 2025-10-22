@@ -1,21 +1,19 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-
-import * as HowItWorks from "@/components/how-it-works";
+import { getCollection } from "astro:content";
+import claim from "@/assets/claim.png";
 
 import earn from "@/assets/earn.png";
-import share from "@/assets/share.png";
-import claim from "@/assets/claim.png";
 import hero from "@/assets/hero.jpg";
-
+import share from "@/assets/share.png";
+import AnimatedUnderline from "@/components/AnimatedUnderline.astro";
 import * as Hero from "@/components/hero";
+import * as HowItWorks from "@/components/how-it-works";
 import * as News from "@/components/news";
 import * as Premium from "@/components/premium";
+import RestaurantCarousel from "@/components/RestaurantCarousel.astro";
+import TextAccent from "@/components/TextAccent.astro";
 import * as Testimonials from "@/components/testimonials";
-
-import PageLayout from "@/layouts/PageLayout.astro";
-import AnimatedUnderline from "@/components/AnimatedUnderline.astro";
 import {
   Calendar,
   ClockTimeTwo,
@@ -27,8 +25,7 @@ import {
   StarCircleOutline,
   StarShooting,
 } from "@/icons";
-import RestaurantCarousel from "@/components/RestaurantCarousel.astro";
-import TextAccent from "@/components/TextAccent.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
 
 const testimonials = await getCollection("testimonials");
 const articles = await getCollection("articles");

@@ -1,0 +1,36 @@
+mena:
+  name: "Mena Barakat"
+  role: "Co-founder"
+  color: "bronze"
+  size: "lg"
+  alert: "Tatiana"
+  image: "../assets/headshots/mena.png"
+
+sarah:
+  name: "Sarah Goldring"
+  role: "Co-founder"
+  color: "bronze"
+  size: "lg"
+  alert: "Red Hook Tavern"
+  image: "../assets/headshots/sarah.png"
+
+erika:
+  name: "Erika Bloes"
+  color: "sand-storm"
+  size: "default"
+  alert: "Da Toscano"
+  image: "../assets/headshots/erika.png"
+
+nishtha:
+  name: "Nishtha Dalal"
+  color: "cinnamon"
+  size: "default"
+  alert: "Lei"
+  image: "../assets/headshots/nishtha.png"
+
+utkarsh:
+  name: "Utkarsh Uppal"
+  color: "umbra"
+  size: "default"
+  alert: "4 Charles Prime Rib"
+  image: "../assets/headshots/utkarsh.png"

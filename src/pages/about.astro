@@ -1,21 +1,28 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-
+import { getCollection } from "astro:content";
 import hero from "@/assets/hero.jpg";
-
+import * as Experience from "@/components/experience";
+import * as FAQ from "@/components/faq";
+import Glow from "@/components/Glow.astro";
 import * as Hero from "@/components/hero";
 import * as Mission from "@/components/mission";
-import * as FAQ from "@/components/faq";
-
-import PageLayout from "@/layouts/PageLayout.astro";
 import TextAccent from "@/components/TextAccent.astro";
+import * as Team from "@/components/team";
+import PageLayout from "@/layouts/PageLayout.astro";
+import ApolloLogo from "~icons/assets/apollo";
+import DeutscheBankLogo from "~icons/assets/deutsche-bank";
+// Import company logos
+import FlexportLogo from "~icons/assets/flexport";
+import ICapitalLogo from "~icons/assets/icapital";
+import PelotonLogo from "~icons/assets/peloton";
+import ShopifyLogo from "~icons/assets/shopify";
 
-import Glow from "@/components/Glow.astro";
+const faqs = await getCollection("faq", (entry) =>
+  entry.data.pages?.includes("home"),
+);
 
-const faqs = await getCollection("faq", (entry) => {
-  return entry.data.pages?.includes("home");
-});
+const teamMembers = await getCollection("team");
 ---
 
 <PageLayout title="Submit" templated>
@@ -82,6 +89,59 @@ const faqs = await getCollection("faq", (entry) => {
       </p>
     </Mission.Content>
   </Mission.Root>
+
+  <Team.Root>
+    <Team.Header>The Team</Team.Header>
+    <Team.MemberGrid>
+      {
+        teamMembers.map((member) => (
+          <Team.MemberItem size={member.data.size}>
+            <Team.MemberItemAvatar color={member.data.color}>
+              <Image src={member.data.image} alt={member.data.name} />
+            </Team.MemberItemAvatar>
+            <Team.MemberItemContent>
+              <Team.MemberItemName>{member.data.name}</Team.MemberItemName>
+              {member.data.role && (
+                <Team.MemberItemRole>{member.data.role}</Team.MemberItemRole>
+              )}
+              <Team.MemberItemLabel>
+                Current ResX Alert:
+                <strong>{member.data.alert}</strong>
+              </Team.MemberItemLabel>
+            </Team.MemberItemContent>
+          </Team.MemberItem>
+        ))
+      }
+    </Team.MemberGrid>
+  </Team.Root>
+
+  {/* Experience Section */}
+
+  <Experience.Root>
+    <Experience.Title>
+      Experience from great teams, now serving something new
+    </Experience.Title>
+    <Experience.LogoList>
+      <Experience.Logo>
+        <FlexportLogo />
+      </Experience.Logo>
+      <Experience.Logo>
+        <ICapitalLogo />
+      </Experience.Logo>
+      <Experience.Logo>
+        <PelotonLogo />
+      </Experience.Logo>
+      <Experience.Logo>
+        <ShopifyLogo />
+      </Experience.Logo>
+      <Experience.Logo>
+        <DeutscheBankLogo />
+      </Experience.Logo>
+      <Experience.Logo>
+        <ApolloLogo />
+      </Experience.Logo>
+    </Experience.LogoList>
+  </Experience.Root>
 
   {/* FAQ Section */}
 

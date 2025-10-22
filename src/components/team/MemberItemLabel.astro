@@ -1,0 +1,13 @@
+---
+import type { ImageMetadata } from "astro";
+import { Typography } from "../ui/Typography";
+---
+
+<Typography
+  variant="body"
+  size="sm"
+  className="group-data-[size=lg]:text-sm"
+  color="primary"
+>
+  <slot />
+</Typography>

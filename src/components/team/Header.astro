@@ -1,0 +1,19 @@
+---
+import { Typography } from "@/components/ui/Typography";
+import { Separator } from "../ui/Separator";
+import { Stack } from "../ui/Stack";
+---
+
+<Stack
+  orientation="row"
+  align="center"
+  justify="center"
+  className="w-full"
+  gap="lg"
+>
+  <Separator className="flex-1 mask-l-to-transparent max-md:hidden" />
+  <Typography variant="display" size="sm" className="shrink-0">
+    <slot />
+  </Typography>
+  <Separator className="flex-1 mask-r-to-transparent" />
+</Stack>
