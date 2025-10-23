@@ -18,8 +18,14 @@ const { article } = Astro.props;
 ---
 
 <div
-  class="hover:shadow-primary/20 group cursor-pointer rounded-3xl transition-all duration-400 ease-out hover:scale-101 hover:shadow-[0_12px_24px]"
+  class="hover:shadow-primary/20 group relative cursor-pointer rounded-3xl transition-all duration-400 ease-out hover:scale-101 hover:shadow-[0_12px_24px]"
 >
+  <a
+    title={article.data.title}
+    href={article.data.link}
+    class="absolute inset-0 block"
+  >
+  </a>
   <Card
     className="group-hover:border-primary h-full overflow-hidden rounded-[inherit] bg-gradient-to-br from-white/0 via-white/10 to-white/0 transition-all duration-400"
   >

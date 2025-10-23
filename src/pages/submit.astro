@@ -33,7 +33,11 @@ const faqs = await getCollection("faq", (entry) =>
 );
 ---
 
-<PageLayout title="Submit" templated>
+<PageLayout
+  title="Submit"
+  description="Trade in restaurant reservations you can't make fast and easily."
+  templated
+>
   {/* Hero Section */}
 
   <Hero.Root>
@@ -51,8 +55,8 @@ const faqs = await getCollection("faq", (entry) =>
       <Image
         src={phone}
         layout="constrained"
-        width={380}
-        class="animate-in slide-in-from-bottom max-w-none mask-b-from-80% mask-b-to-transparent duration-1200 ease-out max-lg:w-full"
+        width={400}
+        class="animate-in slide-in-from-bottom mask-b-from-80% mask-b-to-transparent duration-900 ease-out max-lg:mx-auto lg:max-w-none"
         alt="Submission screen"
       />
       <Glow

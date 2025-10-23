@@ -19,7 +19,9 @@ import Noise from "@/components/Noise.astro";
       <slot name="title" />
     </header>
 
-    <slot name="carousel" />
+    <div class="relative z-20">
+      <slot name="carousel" />
+    </div>
 
     <Noise />
   </section>

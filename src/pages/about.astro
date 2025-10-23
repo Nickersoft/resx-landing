@@ -12,7 +12,7 @@ import * as Team from "@/components/team";
 import PageLayout from "@/layouts/PageLayout.astro";
 import ApolloLogo from "~icons/assets/apollo";
 import DeutscheBankLogo from "~icons/assets/deutsche-bank";
-// Import company logos
+
 import FlexportLogo from "~icons/assets/flexport";
 import ICapitalLogo from "~icons/assets/icapital";
 import PelotonLogo from "~icons/assets/peloton";
@@ -25,7 +25,11 @@ const faqs = await getCollection("faq", (entry) =>
 const teamMembers = await getCollection("team");
 ---
 
-<PageLayout title="Submit" templated>
+<PageLayout
+  title="About"
+  description="At ResX, our mission is to make the exclusive accessible to everyone."
+  templated
+>
   {/* Hero Section */}
 
   <Hero.Root
