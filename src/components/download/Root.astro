@@ -1,28 +1,31 @@
 ---
-import { LINK_DOWNLOAD } from "@/consts";
-
-import Icon from "~icons/assets/icon";
-
-import { Stack } from "@/components/ui/Stack";
+import { getEntry } from "astro:content";
 import { GradientBorder } from "@/components/ui/GradientBorder";
 import { QRCode } from "@/components/ui/QRCode";
+import { Stack } from "@/components/ui/Stack";
+import Icon from "~icons/assets/icon";
+
+const downloadLink = await getEntry("links", "download");
 ---
 
-<Stack
-  orientation="row"
-  className="max-lg:flex-col max-lg:items-start"
-  align="center"
-  gap="lg"
->
-  <GradientBorder
-    className="before:bg-bronze bg-coal z-10 rounded-xl bg-black p-2 shadow-lg"
-  >
-    <QRCode value={LINK_DOWNLOAD} className="aspect-square w-36">
-      <Icon />
-    </QRCode>
-  </GradientBorder>
+{
+  downloadLink && (
+    <Stack
+      orientation="row"
+      className="max-lg:flex-col max-lg:items-start"
+      align="center"
+      gap="lg"
+      title={downloadLink.data.title}
+    >
+      <GradientBorder className="before:bg-bronze bg-coal z-10 rounded-xl bg-black p-2 shadow-lg">
+        <QRCode value={downloadLink?.data.url} className="aspect-square w-36">
+          <Icon />
+        </QRCode>
+      </GradientBorder>
 
-  <div class="space-y-2">
-    <slot />
-  </div>
-</Stack>
+      <div class="space-y-2">
+        <slot />
+      </div>
+    </Stack>
+  )
+}

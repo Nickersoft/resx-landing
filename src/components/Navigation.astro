@@ -1,0 +1,75 @@
+---
+import { getEntry } from "astro:content";
+import { buttonVariants } from "@/components/ui/Button";
+import { NavigationBar } from "@/components/ui/NavigationBar";
+import { Stack } from "@/components/ui/Stack";
+import { cn } from "@/lib/utils";
+import Logo from "~icons/assets/logo";
+
+const currentPage = Astro.url;
+
+const navigation = await getEntry("navigation", "default");
+
+const links = await Promise.all(
+  navigation?.data.links.map((link) => getEntry(link)) ?? [],
+);
+
+const cta = navigation?.data.cta && (await getEntry(navigation.data.cta));
+---
+
+<nav class="fixed top-4 left-1/2 z-999 container -translate-x-1/2 px-8">
+  <div
+    class="flex min-h-17.5 w-full flex-row items-center justify-between rounded-full border bg-black/85 bg-gradient-to-br from-white/0 via-white/6 to-white/0 px-4 py-0 pl-8 ring-1 ring-black backdrop-blur-md max-md:pr-8"
+  >
+    <a href="/" class="h-full">
+      <Logo className="h-9 w-20" />
+    </a>
+
+    <NavigationBar client:load>
+      <Stack
+        orientation="row"
+        align="center"
+        gap="md"
+        className="max-md:h-full max-md:flex-col max-md:items-start"
+      >
+        <Stack
+          orientation="row"
+          gap="none"
+          align="center"
+          className="[&>a]:text-muted-foreground [&>a]:hover:text-primary flex text-sm max-md:flex-1 max-md:flex-col max-md:items-start max-md:justify-center max-md:text-lg lg:h-full [&>a]:transition-colors [&>a]:duration-300"
+        >
+          {
+            links.map((link) => (
+              <a
+                class="aria-[current=page]:text-primary flex items-center px-4 py-4 font-medium"
+                aria-current={
+                  currentPage.pathname.startsWith(link.data.url)
+                    ? "page"
+                    : "false"
+                }
+                title={link.data.title}
+                href={link.data.url}
+              >
+                {link.data.title}
+              </a>
+            ))
+          }
+        </Stack>
+
+        {
+          cta && (
+            <a
+              class={cn(
+                buttonVariants(),
+                "my-4 max-md:h-12 max-md:w-full max-md:text-lg",
+              )}
+              href={cta.data.url}
+            >
+              {cta.data.title}
+            </a>
+          )
+        }
+      </Stack>
+    </NavigationBar>
+  </div>
+</nav>

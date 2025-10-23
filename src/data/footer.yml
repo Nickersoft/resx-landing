@@ -1,0 +1,8 @@
+default:
+  links:
+    - about
+    - submit
+    - claim
+  socials:
+    - instagram-nyc
+    - tiktok

@@ -1,0 +1,6 @@
+default:
+  links:
+    - about
+    - submit
+    - claim
+  cta: download

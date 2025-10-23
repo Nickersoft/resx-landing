@@ -1,17 +1,28 @@
 ---
+import { getEntries } from "astro:content";
+
 import { UAParser } from "ua-parser-js";
 
 export const prerender = false;
 
 const ua = Astro.request.headers.get("user-agent");
 
+const [ios, android] = await getEntries([
+  { collection: "links", id: "download-ios" },
+  { collection: "links", id: "download-android" },
+]);
+
+if (!ios || !android) {
+  throw new Error("Missing download links");
+}
+
 if (ua) {
   const agent = new UAParser(ua);
 
   if (agent.getOS().name === "iOS" || agent.getOS().name === "macOS") {
-    return Astro.redirect(LINK_IOS_STORE);
+    return Astro.redirect(ios.data.url);
   }
 }
 
-return Astro.redirect(LINK_ANDROID_STORE);
+return Astro.redirect(android.data.url);
 ---

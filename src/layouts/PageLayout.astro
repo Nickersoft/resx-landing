@@ -1,6 +1,6 @@
 ---
 import Footer from "@/components/Footer.astro";
-import { Navigation } from "@/components/Navigation";
+import Navigation from "@/components/Navigation.astro";
 import type { Props as BaseLayoutProps } from "@/layouts/BaseLayout.astro";
 import BaseLayout from "./BaseLayout.astro";
 
@@ -9,7 +9,7 @@ export interface Props extends BaseLayoutProps {}
 
 <BaseLayout {...Astro.props}>
   <main>
-    <Navigation currentPage={Astro.url} client:load />
+    <Navigation />
     <slot />
     <Footer />
   </main>

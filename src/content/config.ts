@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import { file, glob } from "astro/loaders";
 
 const restaurants = defineCollection({
@@ -38,6 +38,17 @@ const articles = defineCollection({
     }),
 });
 
+const links = defineCollection({
+  loader: glob({
+    pattern: "*.yml",
+    base: "src/data/links",
+  }),
+  schema: z.object({
+    title: z.string(),
+    url: z.string().url().or(z.string().regex(/^\//)),
+  }),
+});
+
 const faq = defineCollection({
   loader: glob({
     pattern: "faq/*.md",
@@ -47,6 +58,30 @@ const faq = defineCollection({
     question: z.string(),
     order: z.number().optional(),
     pages: z.array(z.enum(["home", "submit", "claim"])).default(["home"]),
+  }),
+});
+
+const navigation = defineCollection({
+  loader: file("src/data/navigation.yml"),
+  schema: z.object({
+    links: z.array(reference("links")),
+    cta: reference("links"),
+  }),
+});
+
+const social = defineCollection({
+  loader: glob({
+    pattern: "*.mdx",
+    base: "src/data/social",
+  }),
+  schema: links.schema,
+});
+
+const footer = defineCollection({
+  loader: file("src/data/footer.yml"),
+  schema: z.object({
+    links: z.array(reference("links")),
+    socials: z.array(reference("social")).default([]),
   }),
 });
 
@@ -65,7 +100,11 @@ const team = defineCollection({
 
 export const collections = {
   testimonials,
+  links,
+  social,
   articles,
+  footer,
+  navigation,
   restaurants,
   faq,
   team,

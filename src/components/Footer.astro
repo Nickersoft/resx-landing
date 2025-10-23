@@ -1,10 +1,25 @@
 ---
 import { Image } from "astro:assets";
+import { getEntries, getEntry, render } from "astro:content";
+
 import logo from "@/assets/svg/logo.svg";
+
 import { Separator } from "@/components/ui/Separator";
 import { Stack } from "@/components/ui/Stack";
-import { Instagram, TikTok } from "@/icons";
-import { Typography } from "./ui/Typography";
+import { Typography } from "@/components/ui/Typography";
+
+const footer = await getEntry("footer", "default");
+
+const socials = await getEntries(footer?.data.socials ?? []).then((entries) =>
+  Promise.all(
+    entries.map(async (social) => ({
+      ...social,
+      ...(await render(social)),
+    })),
+  ),
+);
+
+const links = await getEntries(footer?.data.links ?? []);
 ---
 
 <footer class="container overflow-hidden py-24 lg:max-h-110">
@@ -21,30 +36,32 @@ import { Typography } from "./ui/Typography";
       align="center"
     >
       <Image alt="ResX Logo" src={logo} class="h-auto w-34" />
+
       <Separator className="h-full max-lg:hidden" orientation="vertical" />
 
-      <Stack
-        orientation="row"
-        align="center"
-        gap="sm"
-        className="text-muted-foreground [&_a]:hover:text-primary"
-      >
-        <Typography variant="body" size="md" color="muted">
-          Follow us on
-        </Typography>
-        <a
-          href="#"
-          class="inline-block transition-transform duration-150 ease-out hover:rotate-6"
-        >
-          <Instagram />
-        </a>
-        <a
-          href="#"
-          class="inline-block transition-transform duration-150 ease-out hover:-rotate-8"
-        >
-          <TikTok />
-        </a>
-      </Stack>
+      {
+        socials.length > 0 && (
+          <Stack
+            orientation="row"
+            align="center"
+            gap="sm"
+            className="text-muted-foreground [&_a]:hover:text-primary"
+          >
+            <Typography variant="body" size="md" color="muted">
+              Follow us on
+            </Typography>
+
+            {socials.map(({ data: { url }, Content }) => (
+              <a
+                href={url}
+                class="inline-block transition-transform duration-150 ease-out hover:rotate-6"
+              >
+                <Content />
+              </a>
+            ))}
+          </Stack>
+        )
+      }
     </Stack>
 
     <Stack
@@ -53,9 +70,7 @@ import { Typography } from "./ui/Typography";
       gap="lg"
       align="center"
     >
-      <a href="/about">About Us</a>
-      <a href="/submit">Submit on ResX</a>
-      <a href="/claim">Claim on ResX</a>
+      {links.map((link) => <a href={link.data.url}>{link.data.title}</a>)}
     </Stack>
   </Stack>
 
