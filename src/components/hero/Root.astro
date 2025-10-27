@@ -19,9 +19,7 @@ const {
 ---
 
 <site-hero data-parallax={withParallax}>
-  <section
-    class="from-sand-storm/20 relative overflow-hidden bg-gradient-to-tl"
-  >
+  <section class="from-sand-storm/20 relative overflow-hidden bg-linear-to-tl">
     <div
       {...props}
       class={cn(
@@ -41,9 +39,9 @@ const {
             <>
               <Separator className="w-full" />
               <Download.Root>
-                <Download.Title>Download for your device</Download.Title>
+                <Download.Title>Download</Download.Title>
                 <Download.Description>
-                  Scan the QR code to download for your device
+                  Scan the QR code to download
                 </Download.Description>
               </Download.Root>
             </>
@@ -67,6 +65,10 @@ const {
     }
 
     connectedCallback() {
+      const { matches: isMobile } = window.matchMedia("(max-width: 1024px)");
+
+      if (isMobile) return;
+
       const hero = this.querySelector("section");
 
       if (hero && this.dataset.parallax === "true") {

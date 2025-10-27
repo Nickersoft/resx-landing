@@ -37,7 +37,7 @@ const teamMembers = await getCollection("team");
     class="relative flex flex-col items-center justify-center **:data-[slot=hero-header]:max-w-4xl! **:data-[slot=hero-header]:pt-48"
   >
     <Hero.Title
-      className="slide-in-from-top-10 slide-in-from-left-0! text-center text-[5rem] text-wrap"
+      className="slide-in-from-top-10 slide-in-from-left-0! text-center text-[5rem] text-wrap max-md:text-left max-md:text-[4.5rem]"
       slot="title"
     >
       Making the
@@ -48,7 +48,7 @@ const teamMembers = await getCollection("team");
 
     <Hero.Subtitle
       slot="subtitle"
-      className="slide-in-from-left-0! slide-in-from-top-10 mx-auto max-w-none text-center text-lg"
+      className="slide-in-from-left-0! slide-in-from-top-10 mx-auto max-w-none text-center text-lg max-md:text-left"
     >
       What began as an Instagram page helping people share their last-minute
       reservations, has since grown into an app connecting diners to the city’s
