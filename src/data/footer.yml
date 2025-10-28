@@ -3,6 +3,8 @@ default:
     - about
     - submit
     - claim
+    - privacy
+    - terms
   socials:
     - instagram-nyc
     - tiktok

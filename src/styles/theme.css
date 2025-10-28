@@ -96,6 +96,10 @@
   --animate-carousel-up: carousel-up var(--tw-duration, 30s) linear infinite;
   --animate-carousel-down: carousel-down var(--tw-duration, 30s) linear infinite;
 
+  /* ------------------------------- List Styles ------------------------------- */
+
+  --list-style-type-alpha: lower-alpha;
+
   /* ---------------------------------- Fonts --------------------------------- */
 
   --font-*: initial;

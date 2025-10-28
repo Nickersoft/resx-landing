@@ -5,6 +5,7 @@ import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 import favicons from "astro-favicons";
+import remarkToc from "remark-toc";
 import robots from "astro-robots";
 import { FileSystemIconLoader } from "unplugin-icons/loaders";
 import icons from "unplugin-icons/vite";
@@ -14,6 +15,17 @@ const ORIGIN = "TODO.com";
 // https://astro.build/config
 export default defineConfig({
   site: `https://${ORIGIN}`,
+  markdown: {
+    remarkPlugins: [
+      [
+        remarkToc,
+        {
+          heading: ".*(table[ -]of[ -])?contents?|toc.*",
+          maxDepth: 3,
+        },
+      ],
+    ],
+  },
   experimental: {
     fonts: [
       {

@@ -1,0 +1,20 @@
+---
+import Footer from "@/components/Footer.astro";
+import Navigation from "@/components/Navigation.astro";
+
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout templated title={frontmatter.title}>
+  <main>
+    <Navigation />
+    <article
+      class="prose prose-ol:in-[.alpha]:list-alpha prose-invert prose-ol:in-prose-ol:list-[lower-alpha] prose-neutral prose-headings:font-display mx-auto pt-48"
+    >
+      <slot />
+    </article>
+    <Footer />
+  </main>
+</BaseLayout>
