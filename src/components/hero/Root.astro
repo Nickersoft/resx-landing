@@ -1,7 +1,4 @@
 ---
-import { Separator } from "@/components/ui/Separator";
-
-import * as Download from "@/components/download";
 import type { HTMLAttributes } from "astro/types";
 import { cn } from "@/lib/utils";
 
@@ -29,24 +26,11 @@ const {
     >
       <header
         data-slot="hero-header"
-        class="col-span-2 w-full max-w-2xl space-y-8 pt-64 pb-32 max-lg:pb-16"
+        class="col-span-2 w-full max-w-2xl space-y-8 pt-64 pb-32 max-lg:pb-16 max-md:pt-48"
       >
         <slot name="title" />
         <slot name="subtitle" />
-
-        {
-          !noDownload && (
-            <>
-              <Separator className="w-full" />
-              <Download.Root>
-                <Download.Title>Download</Download.Title>
-                <Download.Description>
-                  Scan the QR code to download
-                </Download.Description>
-              </Download.Root>
-            </>
-          )
-        }
+        <slot name="cta" />
       </header>
 
       <slot name="visual" />

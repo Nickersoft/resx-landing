@@ -28,7 +28,7 @@ To get started, simply hit the "Use This Template" button on this repo to start 
 
 ### Developer Experience
 
-- 📝 **[biome](biomejs.dev)** for lightning-fast linting in JavaScript and TypeScript (written in Rust)
+- 📝 **[oxlint](oxc.rs)** for lightning-fast linting in JavaScript and TypeScript (written in Rust)
 - 🎨 **[Prettier](prettier.io)** for opinionated formatting (only used because Biome's HTML formatting is [incomplete](https://biomejs.dev/internals/language-support/)).
 - 🐶 **[Husky](https://github.com/typicode/husky)** with **[lint-staged](https://github.com/lint-staged/lint-staged)** to automatically run linting on new commits.
 

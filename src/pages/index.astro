@@ -10,6 +10,7 @@ import AnimatedUnderline from "@/components/AnimatedUnderline.astro";
 import * as Hero from "@/components/hero";
 import * as HowItWorks from "@/components/how-it-works";
 import * as News from "@/components/news";
+import * as Download from "@/components/download";
 import * as Premium from "@/components/premium";
 import RestaurantCarousel from "@/components/RestaurantCarousel.astro";
 import TextAccent from "@/components/TextAccent.astro";
@@ -53,6 +54,13 @@ const articles = await getCollection("articles");
       <strong>Never miss out on the best tables.</strong> Claim last-minute openings
       or submit reservations you can't make.
     </Hero.Subtitle>
+
+    <Download.Root slot="cta" url="https://qrco.de/bgPQTJ">
+      <Download.Title>Download</Download.Title>
+      <Download.Description>
+        Scan the QR code to download
+      </Download.Description>
+    </Download.Root>
 
     <div class="relative h-full min-h-150" slot="visual">
       <RestaurantCarousel />
@@ -124,9 +132,18 @@ const articles = await getCollection("articles");
     <Premium.Title slot="title">
       Get even more with <TextAccent>ResX Premium</TextAccent>
     </Premium.Title>
+
     <Premium.Description slot="description">
       Claim. Earn. Save with ResX Rewards.
     </Premium.Description>
+
+    <Download.Root slot="cta" class="max-lg:mt-4" url="https://qrco.de/bgPQs4">
+      <Download.Title> Download and upgrade in-app </Download.Title>
+      <Download.Description>
+        Scan the QR code to download
+      </Download.Description>
+    </Download.Root>
+
     <Premium.FeatureList
       title="Supercharge your experience with"
       slot="feature-list"

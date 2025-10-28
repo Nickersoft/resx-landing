@@ -8,6 +8,7 @@ import claimButton from "@/assets/claim-button.png";
 import booked from "@/assets/booked.png";
 
 import * as Hero from "@/components/hero";
+import * as Download from "@/components/download";
 import * as HowItWorks from "@/components/how-it-works";
 import * as SellingPoints from "@/components/selling-points";
 import * as FAQ from "@/components/faq";
@@ -49,6 +50,13 @@ const faqs = await getCollection("faq", (entry) => {
       any night into your perfect night out. No connections, no waitlists, no hassle.
     </Hero.Subtitle>
 
+    <Download.Root slot="cta" url="https://qrco.de/bgPQwR">
+      <Download.Title>Download</Download.Title>
+      <Download.Description>
+        Scan the QR code to download
+      </Download.Description>
+    </Download.Root>
+
     <div slot="visual" class="relative flex flex-col justify-end lg:h-full">
       <Image
         src={phone}
@@ -84,7 +92,7 @@ const faqs = await getCollection("faq", (entry) => {
         <HandCoin slot="icon" />
         <Image
           src={claimButton}
-          class="mask-t-from-90% mask-t-to-transparent object-[50%_150%] drop-shadow-xl drop-shadow-black"
+          class="size-full mask-t-from-90% mask-t-to-transparent object-contain pb-4 drop-shadow-xl drop-shadow-black"
           layout="constrained"
           slot="image"
           alt="Claim"

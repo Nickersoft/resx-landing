@@ -1,31 +1,48 @@
 ---
-import { getEntry } from "astro:content";
+import { buttonVariants } from "@/components/ui/Button";
 import { GradientBorder } from "@/components/ui/GradientBorder";
 import { QRCode } from "@/components/ui/QRCode";
 import { Stack } from "@/components/ui/Stack";
-import Icon from "~icons/assets/icon";
+import { Separator } from "@/components/ui/Separator";
 
-const downloadLink = await getEntry("links", "download");
+import { ArrowRight } from "@/icons";
+
+import Icon from "~icons/assets/icon";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  url: string;
+  class?: string;
+}
+
+const { url, class: className } = Astro.props;
 ---
 
-{
-  downloadLink && (
-    <Stack
-      orientation="row"
-      className="max-md:flex-col max-md:items-start"
-      align="center"
-      gap="lg"
-      title={downloadLink.data.title}
-    >
-      <GradientBorder className="before:bg-bronze bg-coal z-10 rounded-xl bg-black p-2 shadow-lg">
-        <QRCode value={downloadLink?.data.url} className="aspect-square w-36">
-          <Icon />
-        </QRCode>
-      </GradientBorder>
+<a href={url} class={cn("lg:hidden", buttonVariants(), className)}>
+  Download
+  <ArrowRight />
+</a>
 
-      <div class="space-y-2">
-        <slot />
-      </div>
-    </Stack>
-  )
-}
+<div class={className}>
+  <Separator className="mb-8 max-lg:hidden" />
+
+  <Stack
+    orientation="row"
+    className="max-lg:hidden"
+    align="center"
+    gap="lg"
+    title="Download"
+  >
+    <GradientBorder
+      className="before:bg-bronze bg-coal z-10 rounded-xl bg-black p-2 shadow-lg"
+    >
+      <QRCode value={url} className="aspect-square w-36">
+        <Icon />
+      </QRCode>
+    </GradientBorder>
+
+    <div class="space-y-1">
+      <slot />
+    </div>
+  </Stack>
+</div>

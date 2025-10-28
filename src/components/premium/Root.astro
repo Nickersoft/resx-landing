@@ -1,33 +1,29 @@
 ---
-import * as Download from "@/components/download";
-
 import InView from "@/components/InView.astro";
 
-import { Separator } from "@/components/ui/Separator";
 import Glow from "../Glow.astro";
 ---
 
 <InView once>
   <section id="premium" class="relative overflow-hidden overflow-y-clip">
     <div
-      class="container grid grid-cols-[1fr_400px] items-center gap-16 py-24 max-lg:grid-cols-1"
+      class="container grid grid-cols-[1fr_400px] items-center gap-16 py-24 max-lg:grid-cols-1 max-md:pt-16"
     >
       <aside class="space-y-8">
         <header>
           <slot name="title" />
           <slot name="description" />
+
+          <div class="block lg:hidden">
+            <slot name="cta" />
+          </div>
         </header>
 
         <slot name="feature-list" />
 
-        <Separator />
-
-        <Download.Root>
-          <Download.Title> Download and upgrade in-app </Download.Title>
-          <Download.Description>
-            Scan the QR code to download
-          </Download.Description>
-        </Download.Root>
+        <div class="hidden lg:block">
+          <slot name="cta" />
+        </div>
       </aside>
 
       <div class="relative min-h-100 lg:h-full">

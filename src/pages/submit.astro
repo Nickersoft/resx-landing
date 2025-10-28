@@ -8,6 +8,7 @@ import notifications from "@/assets/notifications.png";
 import phone from "@/assets/phone-submit.png";
 
 import * as Hero from "@/components/hero";
+import * as Download from "@/components/download";
 import * as HowItWorks from "@/components/how-it-works";
 import * as Testimonials from "@/components/testimonials";
 import * as SellingPoints from "@/components/selling-points";
@@ -50,6 +51,13 @@ const faqs = await getCollection("faq", (entry) =>
       <strong>Your canceled res is someone else’s dream dinner</strong> – share it
       with the ResX community and avoid unwanted cancellation fees.
     </Hero.Subtitle>
+
+    <Download.Root slot="cta" url="https://qrco.de/bgPQsI">
+      <Download.Title>Download</Download.Title>
+      <Download.Description>
+        Scan the QR code to download
+      </Download.Description>
+    </Download.Root>
 
     <div slot="visual" class="relative flex flex-col justify-end lg:h-full">
       <Image
