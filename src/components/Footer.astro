@@ -23,56 +23,64 @@ const links = await getEntries(footer?.data.links ?? []);
 ---
 
 <footer class="container overflow-hidden py-24 lg:max-h-110">
-  <Stack
-    orientation="row"
-    justify="between"
-    align="center"
-    className="max-lg:flex-col"
+  <div
+    class="grid grid-cols-[auto_1px_1fr_auto] items-center gap-6 max-lg:grid-cols-1"
   >
+    <Image
+      alt="ResX Logo"
+      src={logo}
+      class="h-auto w-34 lg:col-start-1 lg:row-start-1"
+    />
+
+    <Separator
+      className="h-full max-lg:hidden lg:col-start-2 lg:row-start-1"
+      orientation="vertical"
+    />
+
+    {
+      socials.length > 0 && (
+        <Stack
+          orientation="row"
+          align="center"
+          gap="sm"
+          className="text-muted-foreground lg:col-start-3 lg:row-start-1 [&_a]:hover:text-primary"
+        >
+          <Typography variant="body" size="md" color="muted">
+            Follow us on
+          </Typography>
+
+          {socials.map(({ data: { url }, Content }) => (
+            <a
+              href={url}
+              class="inline-block transition-transform duration-150 ease-out hover:rotate-6"
+            >
+              <Content />
+            </a>
+          ))}
+        </Stack>
+      )
+    }
+
+    <Separator className="w-full lg:hidden" orientation="horizontal" />
+
     <Stack
       orientation="row"
-      className="max-lg:mb-12 max-lg:flex-col lg:h-12"
-      gap="lg"
-      align="center"
-    >
-      <Image alt="ResX Logo" src={logo} class="h-auto w-34" />
-
-      <Separator className="h-full max-lg:hidden" orientation="vertical" />
-
-      {
-        socials.length > 0 && (
-          <Stack
-            orientation="row"
-            align="center"
-            gap="sm"
-            className="text-muted-foreground [&_a]:hover:text-primary"
-          >
-            <Typography variant="body" size="md" color="muted">
-              Follow us on
-            </Typography>
-
-            {socials.map(({ data: { url }, Content }) => (
-              <a
-                href={url}
-                class="inline-block transition-transform duration-150 ease-out hover:rotate-6"
-              >
-                <Content />
-              </a>
-            ))}
-          </Stack>
-        )
-      }
-    </Stack>
-
-    <Stack
-      orientation="row"
-      className="[&>a]:text-muted-foreground [&>a]:hover:text-primary h-12 text-sm *:transition-all *:duration-300 max-lg:flex-col"
+      className="[&>a]:text-muted-foreground [&>a]:hover:text-primary text-sm *:transition-all *:duration-300 max-lg:flex-col max-lg:items-start max-lg:gap-4 lg:col-start-4 lg:h-12"
       gap="lg"
       align="center"
     >
       {links.map((link) => <a href={link.data.url}>{link.data.title}</a>)}
     </Stack>
-  </Stack>
+
+    <Typography
+      color="muted"
+      className="opacity-50 lg:col-start-1 lg:row-start-2"
+      variant="body"
+      size="sm"
+    >
+      Copyright {new Date().getFullYear()} ResX.
+    </Typography>
+  </div>
 
   <Image
     src={logo}
