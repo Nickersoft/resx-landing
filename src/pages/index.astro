@@ -69,6 +69,7 @@ const articles = await getCollection("articles");
     <Image
       slot="background"
       src={hero}
+      width={1280}
       alt="Hero Background"
       class="pointer-events-none absolute inset-0 -z-10 size-full object-cover opacity-15"
       layout="full-width"
@@ -90,6 +91,7 @@ const articles = await getCollection("articles");
         <KeyVariant slot="icon" />
         <Image
           src={claim}
+          width={400}
           layout="full-width"
           slot="image"
           position="bottom"
@@ -102,6 +104,7 @@ const articles = await getCollection("articles");
       >
         <Heart slot="icon" />
         <Image
+          width={400}
           src={share}
           layout="full-width"
           position="left"
@@ -115,6 +118,7 @@ const articles = await getCollection("articles");
       >
         <StarShooting slot="icon" />
         <Image
+          width={400}
           src={earn}
           layout="full-width"
           position="left"

@@ -83,7 +83,13 @@ const faqs = await getCollection("faq", (entry) => {
         description="Browse last-minute tables submitted by our community of diners."
       >
         <MapSearch slot="icon" />
-        <Image src={claim} layout="full-width" slot="image" alt="Discover" />
+        <Image
+          width={400}
+          src={claim}
+          layout="full-width"
+          slot="image"
+          alt="Discover"
+        />
       </HowItWorks.Step>
       <HowItWorks.Step
         title="Claim"
@@ -91,6 +97,7 @@ const faqs = await getCollection("faq", (entry) => {
       >
         <HandCoin slot="icon" />
         <Image
+          width={400}
           src={claimButton}
           class="size-full mask-t-from-90% mask-t-to-transparent object-contain pb-4 drop-shadow-xl drop-shadow-black"
           layout="constrained"
@@ -103,7 +110,13 @@ const faqs = await getCollection("faq", (entry) => {
         description="Get confirmed 2 hours beforehand & ask the original submitter any questions you have."
       >
         <EmoticonOutline slot="icon" />
-        <Image src={booked} layout="full-width" slot="image" alt="You're In" />
+        <Image
+          width={400}
+          src={booked}
+          layout="full-width"
+          slot="image"
+          alt="You're In"
+        />
       </HowItWorks.Step>
     </HowItWorks.StepList>
   </HowItWorks.Root>

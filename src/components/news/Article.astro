@@ -31,6 +31,7 @@ const { article } = Astro.props;
   >
     <CardHeader className="p-0">
       <Image
+        width={600}
         src={article.data.image}
         class="pointer-events-none"
         alt={article.data.title}
