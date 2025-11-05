@@ -1,0 +1,135 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { NewRestaurantsCitySelector } from "@/components/list/NewRestaurantsPage";
+import { NewRestaurantsList } from "@/components/list/NewRestaurantsList";
+import restaurantsData from "@/data/restaurants/new.json";
+
+// City mapping
+const cityMap: { [key: number]: string } = {
+  1: "New York",
+  2: "Miami",
+  3: "London",
+};
+
+// Transform the data to match the format expected by the list viewer
+const restaurants = restaurantsData.map((restaurant: any, index: number) => ({
+  id: index + 1,
+  aliasId: `new-${index}`,
+  name: restaurant.name,
+  detail: {
+    logoUrl: restaurant.imageUrl || undefined,
+    coverUrl: restaurant.imageUrl || undefined,
+  },
+  rating: restaurant.averageRating
+    ? {
+        rating: restaurant.averageRating,
+      }
+    : undefined,
+  location: restaurant.address
+    ? {
+        address: restaurant.address,
+        city: restaurant.cityNumber
+          ? {
+              id: restaurant.cityNumber,
+              name: cityMap[restaurant.cityNumber],
+            }
+          : undefined,
+      }
+    : undefined,
+  cuisineTypes: restaurant.cuisines
+    ? restaurant.cuisines.filter((c: string) => c !== "NEW")
+    : [],
+}));
+
+const totalCount = restaurants.length;
+---
+
+<PageLayout
+  title={`New on ResX | ResX`}
+  description="Discover the newest restaurants on ResX"
+>
+  <!-- Section 1: Title/Subtitle with gradient background -->
+  <div class="from-sand-storm/20 relative overflow-hidden bg-linear-to-tl">
+    <div class="relative z-10 pt-48 text-center">
+      <h1
+        class="animate-in fill-mode-both blur-in-sm slide-in-from-left-3 fade-in inline-block text-[56px] leading-[1.2] font-medium tracking-[-0.5px] text-white delay-100 duration-1000 ease-out"
+      >
+        New on ResX
+      </h1>
+    </div>
+    <div class="relative z-10">
+      <NewRestaurantsCitySelector client:load restaurants={restaurants} />
+    </div>
+    <div class="pb-16"></div>
+  </div>
+
+  <!-- Divider 1 -->
+  <div
+    class="relative h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+  >
+  </div>
+
+  <!-- Section 2: Restaurant List with darker background -->
+  <div class="relative bg-[#191919]">
+    <!-- Radial gradient overlay -->
+    <div
+      class="absolute inset-0 opacity-40"
+      style="background: radial-gradient(ellipse 50% 35% at 50% 50%, rgba(255, 217, 161, 0.5) 0%, rgba(255, 217, 161, 0.1) 100%);"
+    >
+    </div>
+    <div class="relative z-10">
+      <NewRestaurantsList client:load restaurants={restaurants} />
+    </div>
+  </div>
+
+  <!-- Soft divider before QR section -->
+  <div
+    class="relative h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+  >
+  </div>
+
+  <!-- QR Code Section merged with footer background -->
+  <div class="container px-4 py-16">
+    <div
+      class="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-12 lg:grid-cols-2"
+    >
+      <!-- Left: QR Code Section -->
+      <div class="flex flex-col items-center lg:items-start">
+        <div class="flex items-center gap-6">
+          <div
+            class="before:bg-bronze bg-coal z-10 rounded-xl border border-white/10 bg-black p-2 shadow-lg"
+          >
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=https://qrco.de/bgPQTJ"
+              alt="Download ResX App QR Code"
+              class="h-36 w-36"
+            />
+          </div>
+          <div class="space-y-1">
+            <p class="text-lg font-medium text-white">Download the ResX app</p>
+            <p class="text-sm text-white/50">
+              Scan the QR code to download for your device
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Description Text -->
+      <div class="flex items-center justify-center lg:justify-end">
+        <p
+          class="max-w-[422px] text-center text-base leading-[1.4] text-white/50 lg:text-right"
+        >
+          Continue browsing the best restaurants, claim the city's top
+          reservations, or submit reservations and save on cancelation fees with
+          the ResX app.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Soft divider before footer -->
+  <div
+    class="relative h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+  >
+  </div>
+</PageLayout>
