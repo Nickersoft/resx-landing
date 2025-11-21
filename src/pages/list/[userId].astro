@@ -8,6 +8,9 @@ export const prerender = false;
 
 const { userId } = Astro.params;
 
+// Extract cityId from URL query parameters for city-specific favorites
+const cityId = Astro.url.searchParams.get("cityId") || undefined;
+
 // API base URL - defaults to localhost in dev, production URL otherwise
 const API_BASE_URL =
   import.meta.env.PUBLIC_API_BASE_URL || "http://localhost:3000";
@@ -53,7 +56,12 @@ if (!userId) {
     >
     </div>
     <div class="relative z-10">
-      <ListViewer client:load userId={userId} apiBaseUrl={API_BASE_URL} />
+      <ListViewer
+        client:load
+        userId={userId}
+        cityId={cityId}
+        apiBaseUrl={API_BASE_URL}
+      />
     </div>
   </div>
 

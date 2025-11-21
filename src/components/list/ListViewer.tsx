@@ -29,6 +29,7 @@ interface PublicListData {
 
 interface ListViewerProps {
   userId: string;
+  cityId?: string;
   apiBaseUrl: string;
 }
 
@@ -47,7 +48,7 @@ function isMobileDevice(): boolean {
   return hasTouchScreen && isSmallScreen;
 }
 
-export function ListViewer({ userId, apiBaseUrl }: ListViewerProps) {
+export function ListViewer({ userId, cityId, apiBaseUrl }: ListViewerProps) {
   const [data, setData] = useState<PublicListData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -59,8 +60,13 @@ export function ListViewer({ userId, apiBaseUrl }: ListViewerProps) {
 
   useEffect(() => {
     if (isMobileDevice()) {
-      const deepLinkUrl = `resx://list/${userId}`;
-      const webFallbackUrl = `https://resx.co/list/${userId}`;
+      // Include cityId in deep link for city-specific favorites
+      const deepLinkUrl = cityId
+        ? `resx://list/${userId}?cityId=${cityId}`
+        : `resx://list/${userId}`;
+      const webFallbackUrl = cityId
+        ? `https://resx.co/list/${userId}?cityId=${cityId}`
+        : `https://resx.co/list/${userId}`;
 
       window.location.href = deepLinkUrl;
 
@@ -81,9 +87,12 @@ export function ListViewer({ userId, apiBaseUrl }: ListViewerProps) {
 
     const fetchList = async () => {
       try {
-        const response = await fetch(
-          `${apiBaseUrl}/api/favorites/public/${userId}`,
-        );
+        // Build URL with optional cityId for city-specific filtering
+        const url = cityId
+          ? `${apiBaseUrl}/api/favorites/public/${userId}?cityId=${cityId}`
+          : `${apiBaseUrl}/api/favorites/public/${userId}`;
+
+        const response = await fetch(url);
 
         if (!response.ok) {
           throw new Error(
@@ -129,7 +138,7 @@ export function ListViewer({ userId, apiBaseUrl }: ListViewerProps) {
     };
 
     fetchList();
-  }, [userId, apiBaseUrl]);
+  }, [userId, cityId, apiBaseUrl]);
 
   if (isMobileDevice()) {
     return (
